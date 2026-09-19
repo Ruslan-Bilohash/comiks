@@ -171,8 +171,7 @@
         h('button', { class: 'sj-btn go big', type: 'button', onclick: () => { try { ac(); } catch (e) {} sfx.go(); playSolo(el); } }, tx('solo')),
         h('button', { class: 'sj-btn pri big', type: 'button', onclick: () => { try { ac(); } catch (e) {} host(el); } }, tx('host'))),
       h('div', { class: 'sj-row' },
-        h('button', { class: 'sj-btn', type: 'button', onclick: () => join(el, '') }, tx('join')),
-        h('a', { class: 'sj-btn', href: '/comiks/#/hunt' }, '💬 Boblejakt')),
+        h('button', { class: 'sj-btn', type: 'button', onclick: () => join(el, '') }, tx('join'))),
       h('p', {}, tx('how'))));
   }
 
@@ -180,11 +179,6 @@
     const me = { pid: 'me', name: name || youName(), avatar: AVATAR(), lane: 1, score: 0, last: '', local: true };
     R.players.set('me', me);
     return me;
-  }
-  function addBots(R) {
-    [['Pia', '🦊'], ['Nils', '🐻']].forEach(([name, avatar], i) => {
-      R.players.set('bot' + i, { pid: 'bot' + i, name, avatar, lane: i === 0 ? 0 : 2, score: 0, last: '', bot: true });
-    });
   }
 
   function playWorld(S, R) {
@@ -197,7 +191,7 @@
     R.items = [];
     R.hint = tx('hint0');
     R.lastWord = '';
-    R.players.forEach(p => { p.score = 0; p.last = ''; if (!p.bot && p.local) p.lane = 1; });
+    R.players.forEach(p => { p.score = 0; p.last = ''; if (p.local) p.lane = 1; });
     let nid = 1;
     const timerEl = h('span', { class: 'sj-timer' }, DUR + 's');
     const hintTxt = h('span', {}, R.hint);
@@ -267,12 +261,10 @@
       p.score += it.extra ? 2 : 1;
       p.last = it.no;
       R.lastWord = it.no;
-      if (p.local) {
-        wordEl.textContent = tx('last') + ': ' + it.no;
-        hintTxt.textContent = ' Ja! ' + it.no + '!';
-        sfx.grab();
-        speakNo(it.no);
-      }
+      wordEl.textContent = tx('last') + ': ' + it.no;
+      hintTxt.textContent = ' Ja! ' + it.no + '!';
+      sfx.grab();
+      speakNo(it.no);
       board();
     }
     spawn(160); spawn(280); spawn(400);
@@ -287,14 +279,6 @@
       const left = Math.max(0, DUR - (Date.now() - R.t0) / 1000);
       timerEl.textContent = Math.ceil(left) + 's';
       if (Math.random() < 0.28) spawn();
-      R.players.forEach(p => {
-        if (!p.bot) return;
-        if (Math.random() < 0.12) {
-          const ahead = R.items.filter(it => !it.gone && (it.x - R.x) > 40 && (it.x - R.x) < 360);
-          if (ahead.length) p.lane = ahead.sort((a, b) => a.x - b.x)[0].lane;
-          else p.lane = Math.floor(Math.random() * 3);
-        }
-      });
       placeRunners();
       R.items.forEach(it => {
         const pct = (it.x - R.x) / 6.4;
@@ -340,7 +324,6 @@
     const R = { players: new Map(), phase: 'play', dead: false, mountRoot: S.root };
     session = R;
     addMe(R, youName());
-    addBots(R);
     playWorld(S, R);
   }
 
@@ -366,7 +349,6 @@
           h('p', {}, tx('how')),
           h('div', { class: 'sj-row' },
             h('button', { class: 'sj-btn go big', type: 'button', onclick: () => { try { ac(); } catch (e) {} playWorld(S, R); } }, tx('start')),
-            h('button', { class: 'sj-btn', type: 'button', onclick: () => playSolo(el) }, tx('solo')),
             h('button', { class: 'sj-btn', type: 'button', onclick: () => { endSession(); menu(el); } }, tx('close'))))));
     };
     showLobby();
@@ -397,7 +379,7 @@
               kind: 'run', phase: R.phase,
               left: R.t0 ? Math.max(0, DUR - (Date.now() - R.t0) / 1000) : DUR,
               hint: R.hint || '', lastWord: R.lastWord || '',
-              players: [...R.players.values()].filter(p => !p.bot).map(p => ({ pid: p.pid, name: p.name, avatar: p.avatar, lane: p.lane, score: p.score, last: p.last }))
+              players: [...R.players.values()].map(p => ({ pid: p.pid, name: p.name, avatar: p.avatar, lane: p.lane, score: p.score, last: p.last }))
             }
           });
         }
