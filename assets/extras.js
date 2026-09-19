@@ -344,10 +344,8 @@
   const JX = {
     uk: {
       masthead: 'Журнал Комікс·Lab', issue: d => `Випуск від ${d}`, tag: 'Ігри й новинки, які варто спробувати сьогодні', try: 'Спробувати →',
-      lead: ['💬 НОВА ГРА', 'Бульбашкове полювання для класу', 'Вчитель відкриває кімнату й показує QR. На екрані — малюнок і норвезьке слово вголос. Учні на телефонах тиснуть правильну бульбашку — хто швидше, той виграє.', '#/hunt/host', '📺 Відкрити кімнату'],
+      lead: ['🏁 ГРА', 'Логік-гонка', 'Живі аватари мчать доріжками: хто швидше розв’язує логічні задачі, той обганяє. Траса на моніторі, відповіді — на телефонах. Можна й проти ботів!', '#/race', '🏁 Відкрити'],
       cards: [
-        ['💬 НОВА ГРА', 'Бульбашки / Boblejakt', 'Малюнок + норвезьке слово. QR для класу, бульбашки на телефонах. Окрема сторінка: /comiks/game/', '#/hunt'],
-        ['🏁 ГРА', 'Логік-гонка', 'Живі аватари мчать доріжками: хто швидше розв’язує логічні задачі, той обганяє. Траса на моніторі, відповіді — на телефонах. Можна й проти ботів!', '#/race'],
         ['🚀 ГРА', 'Math Rocket', 'Космічна гра на 60 секунд: розв’язуй приклади, збивай астероїди й слухай кожну відповідь норвезькою.', '#/math/rocket'],
         ['🇬🇧 КУРС', 'Англійська через комікси', 'Окремий курс в іншому стилі малюнка: 8 історій, британські голоси, тести англійською й 400+ слів за темами.', '#/english'],
         ['🧮 МАТЕМАТИКА', 'Таблиця множення з картинками', 'Натисни на клітинку — побачиш згенерований малюнок і почуєш «tre ganger fire er tolv».', '#/math'],
@@ -358,10 +356,8 @@
     },
     en: {
       masthead: 'Komiks·Lab Magazine', issue: d => `Issue of ${d}`, tag: 'Games and new features worth trying today', try: 'Try it →',
-      lead: ['💬 NEW GAME', 'Bubble Hunt for the class', 'The teacher opens a room and shows a QR code. The screen shows a picture and says the Norwegian word. Pupils tap the right bubble on their phones — fastest wins.', '#/hunt/host', '📺 Open room'],
+      lead: ['🏁 GAME', 'Logic Race', 'Live avatars race along the track: solve logic puzzles faster to overtake. The track on the monitor, answers on phones. You can also race bots!', '#/race', '🏁 Open'],
       cards: [
-        ['💬 NEW GAME', 'Bubble Hunt', 'Picture + Norwegian word. Class QR, bubbles on phones. Separate page: /comiks/game/', '#/hunt'],
-        ['🏁 GAME', 'Logic Race', 'Live avatars race along the track: solve logic puzzles faster to overtake. The track on the monitor, answers on phones. You can also race bots!', '#/race'],
         ['🚀 GAME', 'Math Rocket', 'A 60-second space game: solve sums, shoot asteroids and hear every answer in Norwegian.', '#/math/rocket'],
         ['🇬🇧 COURSE', 'English through comics', 'A separate course in a different drawing style: 8 stories, British voices, tests in English and 400+ words by topic.', '#/english'],
         ['🧮 MATHS', 'Times tables with pictures', 'Tap a cell to see a generated picture and hear “tre ganger fire er tolv”.', '#/math'],
@@ -372,10 +368,8 @@
     },
     no: {
       masthead: 'Komiks·Lab Magasin', issue: d => `Utgave ${d}`, tag: 'Spill og nyheter du bør prøve i dag', try: 'Prøv →',
-      lead: ['💬 NYTT SPILL', 'Boblejakt for klassen', 'Læreren åpner et rom og viser QR. Skjermen viser et bilde og sier det norske ordet. Elevene trykker riktig boble på mobilen — den raskeste vinner.', '#/hunt/host', '📺 Åpne rom'],
+      lead: ['🏁 SPILL', 'Logikkløpet', 'Levende avatarer løper om kapp: løs logiske oppgaver raskere og forbikjør de andre. Banen på skjermen, svarene på mobilen.', '#/race', '🏁 Åpne'],
       cards: [
-        ['💬 NYTT SPILL', 'Boblejakt', 'Bilde + norsk ord. QR for klassen, bobler på mobilen. Egen side: /comiks/game/', '#/hunt'],
-        ['🏁 SPILL', 'Logikkløpet', 'Levende avatarer løper om kapp: løs logiske oppgaver raskere og forbikjør de andre. Banen på skjermen, svarene på mobilen.', '#/race'],
         ['🚀 SPILL', 'Matte-raketten', 'Et romspill på 60 sekunder: løs regnestykker, skyt asteroider og hør svaret på norsk.', '#/math/rocket'],
         ['🇬🇧 KURS', 'Engelsk med tegneserier', 'Et eget kurs i en annen tegnestil: 8 historier, britiske stemmer og tester på engelsk.', '#/english'],
         ['🧮 MATTE', 'Gangetabellen med bilder', 'Trykk på en rute for å se et bilde og høre «tre ganger fire er tolv».', '#/math'],
@@ -403,20 +397,20 @@
   const PH = {
     uk: { kick: '🎮 ГРАЙ РАЗОМ', title: 'Створи свого героя — і змагайся з сім’єю чи друзями', text: 'Обери тваринку, колір, шапку й окуляри — герой закріплюється за твоїм акаунтом і бігає, літає й стоїть на подіумі в усіх іграх. Рідкісні речі випадають зі скрині за перемоги.',
       make: '✨ Створити героя', edit: '🎨 Змінити героя', steps: ['Створи героя', 'Відкрий гру на ТВ чи ноутбуці', 'Рідні скануть QR телефонами — і старт!'],
-      together: '👨‍👩‍👧 Разом', solo: '🙋 Сам', games: [['flag', '#2e7d32', 'Скарби', 'Біжи персонажем, збирай речі й числа. Норвезька озвучка. QR для класу.', '#/run/host', '#/run/solo'], ['chat', '#6a1b9a', 'Бульбашки', 'Малюнок + норвезьке слово. Телефони тиснуть бульбашку — хто швидше.', '#/hunt/host', '#/hunt'], ['flag', '#2e7d32', 'Логік-гонка', 'Герої мчать доріжками — хто швидше розв’язує логічні задачі.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Космічна арифметика на 60 секунд.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Шахи', '3D-шахи: турнір для класу або партія з другом.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Гра разом', 'Вікторина норвезькою для всієї родини чи класу.', '#/game', '#/tests']],
+      together: '👨‍👩‍👧 Разом', solo: '🙋 Сам', games: [['flag', '#2e7d32', 'Логік-гонка', 'Герої мчать доріжками — хто швидше розв’язує логічні задачі.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Космічна арифметика на 60 секунд.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Шахи', '3D-шахи: турнір для класу або партія з другом.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Гра разом', 'Вікторина норвезькою для всієї родини чи класу.', '#/game', '#/tests']],
       fame: '🏆 Зала слави', fame_d: 'Переможці останніх ігор на цьому пристрої' },
     en: { kick: '🎮 PLAY TOGETHER', title: 'Create your hero — and compete with family or friends', text: 'Pick an animal, colour, hat and glasses — your hero is tied to your account and runs, flies and stands on the podium in every game. Rare items drop from chests when you win.',
       make: '✨ Create a hero', edit: '🎨 Edit your hero', steps: ['Create your hero', 'Open a game on the TV or laptop', 'Family scans the QR with phones — go!'],
-      together: '👨‍👩‍👧 Together', solo: '🙋 Solo', games: [['flag', '#2e7d32', 'Treasure Run', 'Run as your avatar, grab things and numbers. Spoken Norwegian. Class QR.', '#/run/host', '#/run/solo'], ['chat', '#6a1b9a', 'Bubble Hunt', 'A picture + a Norwegian word. Phones tap the bubble — fastest wins.', '#/hunt/host', '#/hunt'], ['flag', '#2e7d32', 'Logic Race', 'Heroes race along the track — whoever solves logic puzzles faster.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Space arithmetic in 60 seconds.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Chess', '3D chess: a class tournament or a game with a friend.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Play together', 'A Norwegian quiz for the whole family or class.', '#/game', '#/tests']],
+      together: '👨‍👩‍👧 Together', solo: '🙋 Solo', games: [['flag', '#2e7d32', 'Logic Race', 'Heroes race along the track — whoever solves logic puzzles faster.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Space arithmetic in 60 seconds.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Chess', '3D chess: a class tournament or a game with a friend.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Play together', 'A Norwegian quiz for the whole family or class.', '#/game', '#/tests']],
       fame: '🏆 Hall of fame', fame_d: 'Winners of the latest games on this device' },
     no: { kick: '🎮 SPILL SAMMEN', title: 'Lag din egen helt – og konkurrer med familie eller venner', text: 'Velg dyr, farge, lue og briller – helten hører til kontoen din og løper, flyr og står på pallen i alle spill. Sjeldne ting finner du i kister når du vinner.',
       make: '✨ Lag en helt', edit: '🎨 Endre helten', steps: ['Lag helten din', 'Åpne et spill på TV-en eller PC-en', 'Familien skanner QR-koden med mobilen – start!'],
-      together: '👨‍👩‍👧 Sammen', solo: '🙋 Alene', games: [['flag', '#2e7d32', 'Skattejakt', 'Løp som avataren, samle ting og tall. Norsk tale. QR til klassen.', '#/run/host', '#/run/solo'], ['chat', '#6a1b9a', 'Boblejakt', 'Bilde + norsk ord. Telefonene trykker boblen — den raskeste vinner.', '#/hunt/host', '#/hunt'], ['flag', '#2e7d32', 'Logikkløpet', 'Heltene løper om kapp – den som løser oppgavene raskest.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Matte-raketten', 'Romregning på 60 sekunder.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Sjakk', '3D-sjakk: klasseturnering eller et parti med en venn.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Spill sammen', 'Norsk quiz for hele familien eller klassen.', '#/game', '#/tests']],
+      together: '👨‍👩‍👧 Sammen', solo: '🙋 Alene', games: [['flag', '#2e7d32', 'Logikkløpet', 'Heltene løper om kapp – den som løser oppgavene raskest.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Matte-raketten', 'Romregning på 60 sekunder.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Sjakk', '3D-sjakk: klasseturnering eller et parti med en venn.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Spill sammen', 'Norsk quiz for hele familien eller klassen.', '#/game', '#/tests']],
       fame: '🏆 Æresgalleriet', fame_d: 'Vinnerne av de siste spillene på denne enheten' }
   };
   PH.ar = { kick: '🎮 العبوا معًا', title: 'أنشئ بطلك — وتنافس مع العائلة أو الأصدقاء', text: 'اختر حيوانًا ولونًا وقبعة ونظارة — بطلك مرتبط بحسابك ويركض ويطير ويقف على منصة التتويج في كل الألعاب. تسقط أغراض نادرة من الصناديق عند الفوز.',
     make: '✨ أنشئ بطلًا', edit: '🎨 عدّل بطلك', steps: ['أنشئ بطلك', 'افتح لعبة على التلفاز أو الحاسوب', 'تمسح العائلة رمز QR بالهواتف — انطلقوا!'],
-    together: '👨‍👩‍👧 معًا', solo: '🙋 وحدي', games: [['chat', '#6a1b9a', 'صيد الفقاعات', 'صورة + كلمة نرويجية. الهواتف تضغط الفقاعة — الأسرع يفوز.', '#/hunt/host', '#/hunt'], ['flag', '#2e7d32', 'سباق المنطق', 'الأبطال يتسابقون — الأسرع في حلّ الألغاز يفوز.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'حساب فضائي في 60 ثانية.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'الشطرنج', 'شطرنج ثلاثي الأبعاد: بطولة للصف أو مباراة مع صديق.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'العبوا معًا', 'مسابقة بالنرويجية للعائلة أو الصف.', '#/game', '#/tests']],
+    together: '👨‍👩‍👧 معًا', solo: '🙋 وحدي', games: [['flag', '#2e7d32', 'سباق المنطق', 'الأبطال يتسابقون — الأسرع في حلّ الألغاز يفوز.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'حساب فضائي في 60 ثانية.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'الشطرنج', 'شطرنج ثلاثي الأبعاد: بطولة للصف أو مباراة مع صديق.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'العبوا معًا', 'مسابقة بالنرويجية للعائلة أو الصف.', '#/game', '#/tests']],
     fame: '🏆 قاعة المشاهير', fame_d: 'الفائزون في آخر الألعاب على هذا الجهاز' };
   const AVX = (code, o) => (window.KomiksAvatars ? window.KomiksAvatars.el(code, o) : document.createTextNode(String(code).split('|')[0]));
   function playHero() {

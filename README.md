@@ -38,8 +38,6 @@ tools\update.bat
 
 ## Клас онлайн (QR-код)
 На великому екрані вчитель відкриває:
-- **Skattejakt** — https://bilohash.com/comiks/game/ або https://bilohash.com/comiks/#/run/solo (біжи, збирай речі й числа; можна одному). Клас: `#/run/host`
-- **Boblejakt** — https://bilohash.com/comiks/#/hunt/host (малюнок + норвезьке слово, бульбашки на телефонах)
 - **Гра разом** — https://bilohash.com/comiks/#/game (вікторина норвезькою)
 - **Логік-гонка** — https://bilohash.com/comiks/#/race/host (аватари біжать доріжкою)
 - **Math Rocket з класом** — https://bilohash.com/comiks/#/math/race

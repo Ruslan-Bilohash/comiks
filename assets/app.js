@@ -840,7 +840,7 @@
 
     const mods = tx('modules');
     const modules = h('section', {}, h('h2', { class: 'sec-title' }, t('modules_title')),
-      h('div', { class: 'module-grid' }, ['run', 'hunt', 'race', 'chess', 'game', 'words', 'grammar', 'english', 'math', 'alphabet', 'numbers', 'plan', 'tests', 'rating'].filter(k => mods[k]).map(k => h('a', { class: 'module m-' + k, href: k === 'hunt' ? '#/hunt' : (k === 'run' ? '#/run/solo' : '#/' + k) }, window.KomiksIcons && window.KomiksIcons.MODULES[k] ? window.KomiksIcons.badge(...window.KomiksIcons.MODULES[k], 30) : h('b', {}, mods[k][0]), h('span', {}, mods[k][1]), h('small', {}, mods[k][2])))));
+      h('div', { class: 'module-grid' }, ['race', 'chess', 'game', 'words', 'grammar', 'english', 'math', 'alphabet', 'numbers', 'plan', 'tests', 'rating'].filter(k => mods[k]).map(k => h('a', { class: 'module m-' + k, href: '#/' + k }, window.KomiksIcons && window.KomiksIcons.MODULES[k] ? window.KomiksIcons.badge(...window.KomiksIcons.MODULES[k], 30) : h('b', {}, mods[k][0]), h('span', {}, mods[k][1]), h('small', {}, mods[k][2])))));
 
     const how = h('section', { class: 'how' }, h('h2', { class: 'sec-title' }, t('how_title')),
       h('ol', { class: 'how-grid' }, tx('how').map(([icon, title, text], i) => h('li', { class: 'how-step' }, h('span', { class: 'how-num' }, i + 1), h('span', { class: 'how-icon' }, icon), h('b', {}, title), h('span', {}, text)))),
@@ -1620,7 +1620,7 @@
         h('div', { class: 'foot-col about' }, h('a', { class: 'logo small', href: '#/' }, h('span', { class: 'logo-bubble' }, '💬'), h('span', { class: 'logo-text' }, h('b', {}, (tx('brand') || ['Комікс', '·Lab'])[0]), h('i', {}, (tx('brand') || ['', '·Lab'])[1]))),
           h('p', {}, F.about), h('p', { class: 'ai' }, F.ai)),
         col('📚 ' + F.learn, [link('#/', navT('comics')), link('#/words', navT('words')), link('#/grammar', navT('grammar')), link('#/english', navT('english')), link('#/math', navT('math')), link('#/alphabet', navT('alphabet')), link('#/numbers', navT('numbers')), link('#/cards', navT('cards')), link('#/plan', navT('plan'))]),
-        col(FX.games, [link('#/run/solo', '🏃 ' + (navT('run') || 'Skattejakt')), link('#/hunt', '💬 ' + (navT('hunt') || 'Boblejakt')), link('#/race', '🏁 ' + navT('race')), link('#/chess', '♟ ' + navT('chess')), link('#/math/rocket', '🚀 Math Rocket'), link('#/math/race', window.KomiksRocket ? window.KomiksRocket.text('with_class') : '👥 Math Rocket'), link('#/game', navT('game')), link('#/tests', navT('tests')), link('#/rating', navT('rating'))]),
+        col(FX.games, [link('#/race', '🏁 ' + navT('race')), link('#/chess', '♟ ' + navT('chess')), link('#/math/rocket', '🚀 Math Rocket'), link('#/math/race', window.KomiksRocket ? window.KomiksRocket.text('with_class') : '👥 Math Rocket'), link('#/game', navT('game')), link('#/tests', navT('tests')), link('#/rating', navT('rating'))]),
         col(FX.community, [link('#/friends', navT('friends')), link('#/players', FX.players), ...(u ? [link('#/player', '👤 ' + navT('account')), h('li', {}, h('a', { href: '#/', onclick: e => { e.preventDefault(); logoutAll(); } }, navT('logout')))] : [link('#/login', navT('login')), link('#/register', navT('register'))]), link('#/settings', navT('settings'))]),
         col('ℹ️ ' + F.info, [link('#/help', navT('help')), link('#/terms', navT('terms')), link('#/sitemap', '🗺️ Sitemap')], [h('h4', {}, F.langs), langBtns])),
       h('div', { class: 'foot-bottom' }, h('span', {}, F.rights ? F.rights(new Date().getFullYear()) : ''), h('a', { class: 'made', href: 'https://bilohash.com/news/', target: '_blank', rel: 'noopener' }, F.made), h('span', { class: 'keys' }, F.keys)));
@@ -1678,8 +1678,6 @@
     else if (view === 'quiz' && id === 'en' && window.KomiksEnglish) el = window.KomiksEnglish.quiz(arg);
     else if (view === 'quiz' && id === 'en-words' && window.KomiksEnglish) el = window.KomiksEnglish.wordsQuiz(arg);
     else if (view === 'race' && window.KomiksRace) el = window.KomiksRace.render(id, arg);
-    else if (view === 'hunt' && window.KomiksHunt) el = window.KomiksHunt.render(id, arg);
-    else if (view === 'run' && window.KomiksRun) el = window.KomiksRun.render(id, arg);
     else if (view === 'chess' && window.KomiksChess) el = window.KomiksChess.render(id, arg);
     else if (view === 'avatar' && window.KomiksProfile) el = window.KomiksProfile.studio();
     else if (view === 'math' && window.KomiksMath) el = window.KomiksMath.render(id, arg);

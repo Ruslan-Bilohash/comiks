@@ -107,7 +107,7 @@ for (const e of fs.readdirSync(DIST)) {
 const copy = f => { const src = path.join(ROOT, f); if (!fs.existsSync(src)) return; const dst = path.join(DIST, f); fs.mkdirSync(path.dirname(dst), { recursive: true }); fs.copyFileSync(src, dst); };
 const pub = W.COMICS.filter(c => !c._private);
 const reg = W.KOMIKS_DATA;
-['assets/app.js', 'assets/art.js', 'assets/i18n.js', 'assets/a11y.js', 'assets/icons.js', 'assets/avatars.js', 'assets/profile.js', 'assets/game.js', 'game/hunt.js', 'game/hunt.css', 'game/run.js', 'game/run.css', 'game/index.html', 'game/room.php', 'assets/grammar.js', 'assets/words.js', 'assets/english.js', 'assets/math.js', 'assets/music.js', 'assets/rocket.js', 'assets/race.js', 'assets/chess.js', 'assets/bots.js', 'assets/players.js', 'assets/friends.js', 'assets/auth.js', 'api/wall.php', 'api/players.php', 'api/lib.php', 'api/auth.php', 'api/config.sample.php', 'api/.htaccess', 'api/admin_ui.php', 'admin.php', 'install.php', 'assets/extras.js', 'assets/vendor/peerjs.min.js', 'assets/vendor/qrcode.js', 'assets/boot.js', 'assets/style.css', 'data/characters.js', 'data/dictionary.js', 'data/basics.js', 'data/phonetics.js', 'data/grammar.js', 'data/words.js', 'data/english.js', 'data/dictionary-en.js', 'data/arabic.js', 'manifest.webmanifest', 'sw.js', 'og-image.png', 'icons/icon-192.png', 'icons/icon-512.png'].forEach(copy);
+['assets/app.js', 'assets/art.js', 'assets/i18n.js', 'assets/a11y.js', 'assets/icons.js', 'assets/avatars.js', 'assets/profile.js', 'assets/game.js', 'game/index.html', 'assets/grammar.js', 'assets/words.js', 'assets/english.js', 'assets/math.js', 'assets/music.js', 'assets/rocket.js', 'assets/race.js', 'assets/chess.js', 'assets/bots.js', 'assets/players.js', 'assets/friends.js', 'assets/auth.js', 'api/wall.php', 'api/players.php', 'api/lib.php', 'api/auth.php', 'api/config.sample.php', 'api/.htaccess', 'api/admin_ui.php', 'admin.php', 'install.php', 'assets/extras.js', 'assets/vendor/peerjs.min.js', 'assets/vendor/qrcode.js', 'assets/boot.js', 'assets/style.css', 'data/characters.js', 'data/dictionary.js', 'data/basics.js', 'data/phonetics.js', 'data/grammar.js', 'data/words.js', 'data/english.js', 'data/dictionary-en.js', 'data/arabic.js', 'manifest.webmanifest', 'sw.js', 'og-image.png', 'icons/icon-192.png', 'icons/icon-512.png'].forEach(copy);
 pub.forEach(c => copy(c._file));
 fs.writeFileSync(path.join(DIST, 'data/index.js'), `window.KOMIKS_DATA = ${JSON.stringify({ version, shared: reg.shared, comics: reg.comics.filter(e => !e.private) }, null, 2)};\n`, 'utf8');
 
@@ -123,14 +123,6 @@ for (const [key, file] of Object.entries(W.AUDIO || {})) {
 fs.writeFileSync(path.join(DIST, 'data/audio.js'), `window.AUDIO = ${JSON.stringify(audio)};\n`, 'utf8');
 fs.writeFileSync(path.join(DIST, 'index.html'), applyHtml(rd('index.html'), pub), 'utf8');
 fs.writeFileSync(path.join(DIST, 'sw.js'), rd('sw.js').replace(/komiks-v[\w-]+/, 'komiks-' + version), 'utf8');
-{
-  const gameHtml = path.join(DIST, 'game/index.html');
-  if (fs.existsSync(gameHtml)) {
-    fs.writeFileSync(gameHtml, fs.readFileSync(gameHtml, 'utf8')
-      .replace(/run\.css(\?v=[^"']*)?/, 'run.css?v=' + version)
-      .replace(/run\.js(\?v=[^"']*)?/, 'run.js?v=' + version), 'utf8');
-  }
-}
 
 
 // 5) статичні сторінки коміксів трьома мовами (окремі адреси + hreflang) і карта сайту
