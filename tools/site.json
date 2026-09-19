@@ -1,0 +1,5 @@
+{
+  "siteUrl": "https://bilohash.com/comiks/",
+  "siteName": "Комікс·Lab",
+  "note": "Замініть siteUrl на адресу сайту (з / в кінці) і запустіть tools\\update.bat — оновляться canonical, Open Graph, sitemap.xml"
+}

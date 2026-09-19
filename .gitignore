@@ -1,0 +1,22 @@
+# Build output (publish dist/ to Hostinger, not git)
+dist/
+
+# Neural TTS clips — thousands of mp3s; generate with tools/gen_audio.py
+audio/
+
+# Secrets and local mail dumps
+api/config.php
+api/data/mail/
+*.sqlite
+*.sqlite-journal
+
+# Private / copyrighted drafts
+_private/
+
+# OS and junk
+.DS_Store
+Thumbs.db
+*.log
+comiks.zip
+dist.zip
+tools/_probe_*.py
