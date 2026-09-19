@@ -43,7 +43,7 @@
     letter: ['abc', '#8e24aa'], firstletter: ['abc', '#8e24aa'], number: ['hash', '#ef6c00'], numword: ['hash', '#ef6c00'], numtype: ['keyboard', '#ef6c00'],
     grammar: ['book', '#5e35b1'], clock: ['clock', '#00838f'], emoji: ['smile', '#f9a825'], speaker: ['eye', '#6d4c41'], math: ['calc', '#e53935']
   };
-  const MODULES = { hunt: ['speech', '#6a1b9a'], race: ['flag', '#2e7d32'], chess: ['chess', '#37474f'], game: ['gamepad', '#e53935'], words: ['tag', '#00897b'], grammar: ['book', '#5e35b1'], english: ['globe', '#1e88e5'], math: ['calc', '#ef6c00'],
+  const MODULES = { run: ['flag', '#2e7d32'], hunt: ['speech', '#6a1b9a'], race: ['flag', '#1565c0'], chess: ['chess', '#37474f'], game: ['gamepad', '#e53935'], words: ['tag', '#00897b'], grammar: ['book', '#5e35b1'], english: ['globe', '#1e88e5'], math: ['calc', '#ef6c00'],
     alphabet: ['abc', '#8e24aa'], numbers: ['hash', '#f9a825'], plan: ['map', '#43a047'], tests: ['checklist', '#d81b60'], rating: ['trophy', '#ffb300'], cards: ['layout', '#546e7a'] };
   const svg = (name, size = 24) => `<svg class="ic ic-${name}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[name] || P.star}</svg>`;
   const el = (name, size) => { const t = document.createElement('template'); t.innerHTML = svg(name, size); return t.content.firstChild; };

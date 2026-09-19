@@ -89,7 +89,7 @@ if ($action === 'event') {
   $msg = $in['msg'] ?? null;
   if (!is_array($msg) || !isset($msg['t'])) fail('msg');
   $t = (string)$msg['t'];
-  if (!in_array($t, ['hello', 'ans', 'ping'], true)) fail('msg');
+  if (!in_array($t, ['hello', 'ans', 'ping', 'move', 'lane'], true)) fail('msg');
   $msg['pid'] = $pid;
   if ($t === 'hello') {
     $msg['name'] = mb_substr(trim((string)($msg['name'] ?? '?')), 0, 20);
