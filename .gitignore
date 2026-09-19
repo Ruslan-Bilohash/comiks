@@ -20,3 +20,4 @@ Thumbs.db
 comiks.zip
 dist.zip
 tools/_probe_*.py
+tools/_probe_*.js

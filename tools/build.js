@@ -123,6 +123,14 @@ for (const [key, file] of Object.entries(W.AUDIO || {})) {
 fs.writeFileSync(path.join(DIST, 'data/audio.js'), `window.AUDIO = ${JSON.stringify(audio)};\n`, 'utf8');
 fs.writeFileSync(path.join(DIST, 'index.html'), applyHtml(rd('index.html'), pub), 'utf8');
 fs.writeFileSync(path.join(DIST, 'sw.js'), rd('sw.js').replace(/komiks-v[\w-]+/, 'komiks-' + version), 'utf8');
+{
+  const gameHtml = path.join(DIST, 'game/index.html');
+  if (fs.existsSync(gameHtml)) {
+    fs.writeFileSync(gameHtml, fs.readFileSync(gameHtml, 'utf8')
+      .replace(/run\.css(\?v=[^"']*)?/, 'run.css?v=' + version)
+      .replace(/run\.js(\?v=[^"']*)?/, 'run.js?v=' + version), 'utf8');
+  }
+}
 
 
 // 5) статичні сторінки коміксів трьома мовами (окремі адреси + hreflang) і карта сайту
