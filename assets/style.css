@@ -2241,6 +2241,15 @@ body.in-rocket .fr-pill, body.in-game .fr-pill { display: none; }
 .au-card h2 { font: 800 1.7rem/1.15 var(--f-head); margin: 10px 0 6px; }
 .au-card h3 { font: 800 1.15rem var(--f-head); margin: 18px 0 8px; }
 .au-lead { color: var(--muted); font-size: 1.05rem; margin: 0 0 14px; }
+.au-demos { margin: 0 0 16px; padding: 12px; border: 3px dashed var(--ink); border-radius: 16px; background: #fff8e4; text-align: left; }
+.au-demo-h { font: 800 1.05rem var(--f-head); margin: 0 0 4px; }
+.au-demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+@media (min-width: 520px) { .au-demo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.au-demo { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 6px; border: 3px solid var(--ink); border-radius: 14px; background: #fff; box-shadow: 3px 3px 0 var(--ink); cursor: pointer; font: inherit; }
+.au-demo:hover { background: var(--yellow); transform: translate(-1px, -1px); }
+.au-demo:active { transform: translate(2px, 2px); box-shadow: none; }
+.au-demo b { font-size: .95rem; }
+.au-demo small { color: var(--muted); font-weight: 700; font-size: .75rem; text-align: center; }
 .au-art { width: 92px; height: 92px; margin: 10px auto 4px; display: grid; place-items: center; font-size: 3rem; background: var(--yellow); border: 4px solid var(--ink); border-radius: 50%; box-shadow: var(--shadow-sm); animation: au-bob 2.6s ease-in-out infinite; }
 .au-form { display: grid; gap: 12px; text-align: left; }
 .au-field { display: grid; gap: 5px; font-weight: 800; }

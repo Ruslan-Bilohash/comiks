@@ -49,6 +49,7 @@ function db(): PDO {
   if (is_mysql()) $pdo->exec("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci");
   else $pdo->exec('PRAGMA foreign_keys = ON');
   migrate($pdo);
+  seed_demo_users();
   return $pdo;
 }
 function is_mysql(): bool { return str_starts_with((string)cfg('db.dsn'), 'mysql:'); }
@@ -64,7 +65,7 @@ function upsert(string $table, array $keys, array $row): void {
   q($sql, array_values($row));
 }
 
-const SCHEMA_VERSION = 4;
+const SCHEMA_VERSION = 5;
 function migrate(PDO $pdo): void {
   $my = is_mysql();
   $pk = $my ? 'INT UNSIGNED AUTO_INCREMENT PRIMARY KEY' : 'INTEGER PRIMARY KEY AUTOINCREMENT';
@@ -96,7 +97,7 @@ function migrate(PDO $pdo): void {
     try { $pdo->exec($ix); } catch (Throwable $e) { /* індекс уже є */ }
   }
   // v2: ролі та блокування (ALTER — лише якщо стовпця ще немає)
-  foreach (['is_admin TINYINT NOT NULL DEFAULT 0', 'blocked_at INT NULL', 'is_moderator TINYINT NOT NULL DEFAULT 0', 'premium TINYINT NOT NULL DEFAULT 0', 'can_invite TINYINT NOT NULL DEFAULT 0', 'msg_pref TINYINT NOT NULL DEFAULT 1', 'premium_until INT NULL', "invited_by $uid NULL"] as $col) {
+  foreach (['is_admin TINYINT NOT NULL DEFAULT 0', 'blocked_at INT NULL', 'is_moderator TINYINT NOT NULL DEFAULT 0', 'premium TINYINT NOT NULL DEFAULT 0', 'can_invite TINYINT NOT NULL DEFAULT 0', 'msg_pref TINYINT NOT NULL DEFAULT 1', 'premium_until INT NULL', "invited_by $uid NULL", 'is_demo TINYINT NOT NULL DEFAULT 0'] as $col) {
     try { $pdo->exec("ALTER TABLE kl_users ADD COLUMN $col"); } catch (Throwable $e) { /* уже є */ }
   }
   foreach (["user_id $uid NULL", 'ip_hash CHAR(64) NULL'] as $col) {
@@ -225,7 +226,7 @@ function pending_notice(?int $userId, string $ipHash): ?array {
     : one('SELECT id, kind, text, created_at FROM kl_notices WHERE seen_at IS NULL AND created_at > ? AND user_id IS NULL AND ip_hash = ? ORDER BY created_at LIMIT 1', [$since, $ipHash]);
 }
 function public_user(array $u): array {
-  return ['id' => (int)$u['id'], 'name' => $u['name'], 'email' => $u['email'], 'lang' => $u['lang'], 'friend_code' => $u['friend_code'], 'share_profile' => (bool)$u['share_profile'], 'verified' => !empty($u['verified_at']), 'created' => gmdate('c', (int)$u['created_at']),
+  return ['id' => (int)$u['id'], 'name' => $u['name'], 'email' => $u['email'], 'lang' => $u['lang'], 'friend_code' => $u['friend_code'], 'share_profile' => (bool)$u['share_profile'], 'verified' => !empty($u['verified_at']), 'demo' => !empty($u['is_demo']), 'created' => gmdate('c', (int)$u['created_at']),
     // преміум — безкоштовно назавжди (друзі адміністратора та запрошені ними); персонал — теж
     'premium' => !empty($u['premium']) || is_staff($u) || (!empty($u['premium_until']) && (int)$u['premium_until'] > time()), 'premium_until' => !empty($u['premium_until']) ? gmdate('c', (int)$u['premium_until']) : null, 'msg_pref' => (int)($u['msg_pref'] ?? 1), 'can_invite' => !empty($u['can_invite']) || !empty($u['is_admin']), 'role' => role_of($u)];
 }
@@ -254,6 +255,47 @@ function take_token(string $t, string $kind): ?array {
   if (!$row || $row['used_at'] || $row['expires_at'] < time()) return null;
   q('UPDATE kl_tokens SET used_at = ? WHERE token_hash = ?', [time(), $row['token_hash']]);
   return one('SELECT * FROM kl_users WHERE id = ?', [$row['user_id']]);
+}
+/** Демо-учні для класу: вхід без пароля (кнопка на #/login). Коди — 6 символів без I/O/0/1. */
+function demo_catalog(): array {
+  return [
+    ['who' => 'kaja', 'name' => 'Kaja', 'email' => 'kaja@demo.bilohash.com', 'code' => 'KAJA2N', 'lang' => 'no', 'level' => 'A1', 'learn' => 'norsk', 'avatar' => '🐧|beanie||norflag|ice', 'blurb' => 'A1 · lundefugl', 'stars' => 18, 'badges' => 3, 'streak' => 5],
+    ['who' => 'espen', 'name' => 'Espen', 'email' => 'espen@demo.bilohash.com', 'code' => 'ESPEN7', 'lang' => 'no', 'level' => 'A2', 'learn' => 'norsk,math', 'avatar' => '🐻|gamer||norflag|aurora', 'blurb' => 'A2 · elg i vest', 'stars' => 34, 'badges' => 6, 'streak' => 9],
+    ['who' => 'liv', 'name' => 'Liv', 'email' => 'liv@demo.bilohash.com', 'code' => 'LIV2NT', 'lang' => 'no', 'level' => 'A1', 'learn' => 'norsk', 'avatar' => '🦊|wizard|||ice', 'blurb' => 'A1 · rev', 'stars' => 12, 'badges' => 2, 'streak' => 3],
+    ['who' => 'sondre', 'name' => 'Sondre', 'email' => 'sondre@demo.bilohash.com', 'code' => 'SOND3R', 'lang' => 'no', 'level' => 'A2', 'learn' => 'norsk,logic', 'avatar' => '🐺|astro||bolt|neon', 'blurb' => 'A2 · logikk', 'stars' => 41, 'badges' => 7, 'streak' => 11],
+    ['who' => 'hana', 'name' => 'Hana', 'email' => 'hana@demo.bilohash.com', 'code' => 'HANA2K', 'lang' => 'en', 'level' => 'B1', 'learn' => 'norsk,english', 'avatar' => '🦉|jester||norflag|midnight', 'blurb' => 'B1 · ugle', 'stars' => 55, 'badges' => 9, 'streak' => 14],
+    ['who' => 'tarek', 'name' => 'Tarek', 'email' => 'tarek@demo.bilohash.com', 'code' => 'TAREK2', 'lang' => 'no', 'level' => 'A2', 'learn' => 'norsk,math', 'avatar' => '🐯|samurai|cyber||lava', 'blurb' => 'A2 · tiger', 'stars' => 29, 'badges' => 5, 'streak' => 7],
+    ['who' => 'noor', 'name' => 'Noor', 'email' => 'noor@demo.bilohash.com', 'code' => 'NUR2KA', 'lang' => 'no', 'level' => 'A1', 'learn' => 'norsk', 'avatar' => '🐰|unicorn||bolt|ice', 'blurb' => 'A1 · kanin', 'stars' => 8, 'badges' => 2, 'streak' => 2],
+    ['who' => 'olav', 'name' => 'Olav', 'email' => 'olav@demo.bilohash.com', 'code' => 'ULAV2N', 'lang' => 'no', 'level' => 'B1', 'learn' => 'norsk,logic,math', 'avatar' => '🦁|astro|laser|norflag|lava', 'blurb' => 'B1 · løve', 'stars' => 62, 'badges' => 11, 'streak' => 20],
+  ];
+}
+function seed_demo_users(): void {
+  try {
+    db()->exec('ALTER TABLE kl_users ADD COLUMN is_demo TINYINT NOT NULL DEFAULT 0');
+  } catch (Throwable $e) { /* already there */ }
+  $now = time();
+  $dummy = hash_password(rand_hex(24));
+  foreach (demo_catalog() as $d) {
+    $u = one('SELECT id FROM kl_users WHERE email = ?', [$d['email']]);
+    if (!$u) {
+      try {
+        q('INSERT INTO kl_users (email, name, pass_hash, lang, friend_code, share_profile, created_at, consent_at, verified_at, is_demo, msg_pref) VALUES (?, ?, ?, ?, ?, 1, ?, ?, ?, 1, 0)',
+          [$d['email'], $d['name'], $dummy, $d['lang'], $d['code'], $now, $now, $now]);
+      } catch (Throwable $e) { /* code/email collision */ }
+      $u = one('SELECT id FROM kl_users WHERE email = ?', [$d['email']]);
+      if (!$u) continue;
+    } else {
+      q('UPDATE kl_users SET is_demo = 1, name = ?, lang = ?, share_profile = 1, verified_at = COALESCE(verified_at, ?), msg_pref = 0 WHERE id = ?',
+        [$d['name'], $d['lang'], $now, $u['id']]);
+    }
+    $uid = (int)$u['id'];
+    upsert('kl_players', ['code'], [
+      'code' => $d['code'], 'user_id' => $uid, 'secret_hash' => sha('komiks-players:demo-' . $d['code']),
+      'name' => $d['name'], 'avatar' => $d['avatar'], 'learn' => $d['learn'], 'level' => $d['level'],
+      'stars' => $d['stars'], 'badges' => $d['badges'], 'streak' => $d['streak'], 'act' => 'read',
+      'snap' => '', 'seen' => $now, 'updated' => $now, 'since' => $now - 14 * 86400,
+    ]);
+  }
 }
 function unique_friend_code(): string {
   $chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';

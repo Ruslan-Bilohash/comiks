@@ -65,6 +65,14 @@ if (method() === 'GET') {
     foreach (q('SELECT k, v FROM kl_user_data WHERE user_id = ?', [$u['id']])->fetchAll() as $r) $data[$r['k']] = json_decode($r['v'], true);
     out(['ok' => true, 'data' => $data]);
   }
+  if ($action === 'demos') {
+    seed_demo_users();
+    $list = [];
+    foreach (demo_catalog() as $d) {
+      $list[] = ['who' => $d['who'], 'name' => $d['name'], 'level' => $d['level'], 'avatar' => $d['avatar'], 'blurb' => $d['blurb']];
+    }
+    out(['ok' => true, 'demos' => $list]);
+  }
   fail('action', 404);
 }
 
@@ -141,12 +149,27 @@ if ($action === 'notice_seen') {
   out(['ok' => true]);
 }
 
+if ($action === 'demo') {
+  rate_or_fail('demo-ip:' . $ip, 40, 900);
+  seed_demo_users();
+  $who = strtolower(preg_replace('/[^a-z]/', '', (string)($in['who'] ?? '')));
+  $u = $who !== '' ? one('SELECT * FROM kl_users WHERE is_demo = 1 AND email = ?', [$who . '@demo.bilohash.com']) : null;
+  if (!$u) fail('wrong', 401);
+  if (!empty($u['blocked_at'])) fail('blocked', 403);
+  start_session((int)$u['id']);
+  out(['ok' => true, 'user' => public_user($u)]);
+}
+
 if ($action === 'login') {
   $email = strtolower(trim((string)($in['email'] ?? '')));
   $pass = (string)($in['password'] ?? '');
   rate_or_fail('login-ip:' . $ip, 20, 900);
   rate_or_fail('login-mail:' . $email, 8, 900);
   $u = valid_email($email) ? one('SELECT * FROM kl_users WHERE email = ?', [$email]) : null;
+  if ($u && !empty($u['is_demo'])) {
+    start_session((int)$u['id']);
+    out(['ok' => true, 'user' => public_user($u)]);
+  }
   // однаковий час відповіді для неіснуючої пошти
   $ok = password_verify($pass, $u['pass_hash'] ?? '$2y$10$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG');
   if (!$u || !$ok) fail('wrong', 401);
@@ -186,6 +209,7 @@ if ($action === 'reset') {
 $u = require_user();
 
 if ($action === 'password') {
+  if (!empty($u['is_demo'])) fail('demo', 403);
   rate_or_fail('pass:' . $u['id'], 10, 3600);
   if (!password_verify((string)($in['old'] ?? ''), $u['pass_hash'])) fail('wrong', 401);
   $pass = (string)($in['password'] ?? '');
@@ -206,6 +230,7 @@ if ($action === 'update') {
 }
 
 if ($action === 'delete') {
+  if (!empty($u['is_demo'])) fail('demo', 403);
   rate_or_fail('del:' . $u['id'], 5, 3600);
   if (!password_verify((string)($in['password'] ?? ''), $u['pass_hash'])) fail('wrong', 401);
   delete_user_all($u);

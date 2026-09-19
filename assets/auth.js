@@ -13,6 +13,7 @@
   const TX = {
     uk: {
       login_t: 'Вхід', login_d: 'Увійди, щоб прогрес зберігався на всіх пристроях.', email: 'Пошта', pass: 'Пароль', pass2: 'Повтори пароль', name: 'Ім’я або нікнейм', login_btn: 'Увійти', no_acc: 'Ще немає акаунта?', reg_link: 'Зареєструватися', forgot_link: 'Забули пароль?',
+      demo_h: 'Спробуй без пароля', demo_d: 'Демо-учні для класу. Натисни ім’я — і одразу в грі.', demo_as: n => 'Грати як ' + n, demo_note: 'Це демо-акаунт без пароля. Його можуть відкрити інші в класі — не зберігай тут особисте.',
       reg_t: 'Створи акаунт', reg_d: 'Безкоштовно. Прогрес, аватар і друзі — на всіх твоїх пристроях.', reg_btn: 'Створити акаунт', have_acc: 'Уже є акаунт?', consent: 'Я погоджуюсь з умовами використання (за дитину погоджуються батьки).', terms: 'Умови', move: 'Перенести мій поточний прогрес у новий акаунт',
       strength: ['дуже слабкий', 'слабкий', 'непоганий', 'надійний', 'дуже надійний'], pass_hint: 'Щонайменше 8 символів. Краще — фраза з кількох слів.',
       sent_t: 'Перевір свою пошту 📬', sent_d: e => `Ми надіслали лист на <b>${e}</b>. Натисни в ньому кнопку «Підтвердити пошту» — і акаунт буде готовий.`, sent_tips: ['Лист зазвичай приходить за хвилину.', 'Не бачиш? Зазирни в «Спам» або «Промоакції».', 'Посилання діє 48 годин.'], resend: 'Надіслати ще раз', resend_in: s => `Надіслати ще раз через ${s} с`, resent: 'Готово! Перевір пошту ще раз.', wrong_email: 'Помилилися в адресі? Зареєструйтеся ще раз',
@@ -21,10 +22,11 @@
       forgot_t: 'Забули пароль?', forgot_d: 'Введи пошту акаунта — ми надішлемо посилання для нового пароля.', forgot_btn: 'Надіслати посилання', forgot_ok: 'Якщо така пошта зареєстрована, лист уже в дорозі. Посилання діє 1 годину.',
       reset_t: 'Новий пароль 🔑', reset_btn: 'Зберегти пароль', reset_ok: 'Пароль змінено — ти увійшов.',
       acc_t: '🔐 Акаунт і безпека', verified: '✅ Пошту підтверджено', change_pass: 'Змінити пароль', old_pass: 'Поточний пароль', new_pass: 'Новий пароль', save: 'Зберегти', saved: 'Збережено ✓', logout: '🚪 Вийти', del_t: 'Видалити акаунт', del_d: 'Буде видалено акаунт, прогрес, профіль і коментарі. Цю дію не можна скасувати.', del_btn: 'Видалити назавжди', del_confirm: 'Точно видалити акаунт і всі дані?', synced: '☁️ Прогрес синхронізується з сервером',
-      err: { wrong: 'Неправильна пошта або пароль.', unverified: 'Пошту ще не підтверджено. Перевір лист або надішли його ще раз.', pass_short: 'Пароль закороткий — щонайменше 8 символів.', pass_weak: 'Цей пароль надто простий.', pass_long: 'Пароль задовгий.', name: 'Вкажи ім’я (2–30 символів, без посилань).', email: 'Перевір адресу пошти.', consent: 'Потрібна згода з умовами.', slow_down: 'Забагато спроб. Спробуй за кілька хвилин.', token: 'Посилання застаріло — запроси нове.', mismatch: 'Паролі не збігаються.', net: 'Немає зв’язку з сервером. Спробуй ще раз.', server: 'Помилка сервера. Спробуй пізніше.', csrf: 'Онови сторінку й спробуй ще раз.', blocked: 'Акаунт заблоковано. Напиши нам, якщо це помилка.' }
+      err: { wrong: 'Неправильна пошта або пароль.', unverified: 'Пошту ще не підтверджено. Перевір лист або надішли його ще раз.', pass_short: 'Пароль закороткий — щонайменше 8 символів.', pass_weak: 'Цей пароль надто простий.', pass_long: 'Пароль задовгий.', name: 'Вкажи ім’я (2–30 символів, без посилань).', email: 'Перевір адресу пошти.', consent: 'Потрібна згода з умовами.', slow_down: 'Забагато спроб. Спробуй за кілька хвилин.', token: 'Посилання застаріло — запроси нове.', mismatch: 'Паролі не збігаються.', net: 'Немає зв’язку з сервером. Спробуй ще раз.', server: 'Помилка сервера. Спробуй пізніше.', csrf: 'Онови сторінку й спробуй ще раз.', blocked: 'Акаунт заблоковано. Напиши нам, якщо це помилка.', demo: 'Демо-акаунт не змінює пароль і не видаляється.' }
     },
     en: {
       login_t: 'Log in', login_d: 'Log in to keep your progress on all your devices.', email: 'Email', pass: 'Password', pass2: 'Repeat password', name: 'Name or nickname', login_btn: 'Log in', no_acc: 'No account yet?', reg_link: 'Sign up', forgot_link: 'Forgot password?',
+      demo_h: 'Try without a password', demo_d: 'Class demo pupils. Tap a name and you are in.', demo_as: n => 'Play as ' + n, demo_note: 'This is a shared demo account with no password. Do not store anything personal here.',
       reg_t: 'Create your account', reg_d: 'Free. Your progress, avatar and friends — on every device.', reg_btn: 'Create account', have_acc: 'Already have an account?', consent: 'I agree to the terms of use (a parent agrees for a child).', terms: 'Terms', move: 'Move my current progress into the new account',
       strength: ['very weak', 'weak', 'okay', 'strong', 'very strong'], pass_hint: 'At least 8 characters. A phrase of several words is best.',
       sent_t: 'Check your email 📬', sent_d: e => `We sent an email to <b>${e}</b>. Tap “Confirm my email” in it and your account will be ready.`, sent_tips: ['It usually arrives within a minute.', 'Can’t see it? Check Spam or Promotions.', 'The link works for 48 hours.'], resend: 'Send again', resend_in: s => `Send again in ${s} s`, resent: 'Done! Check your inbox again.', wrong_email: 'Wrong address? Sign up again',
@@ -33,10 +35,11 @@
       forgot_t: 'Forgot your password?', forgot_d: 'Enter your account email and we will send a link to set a new password.', forgot_btn: 'Send link', forgot_ok: 'If that email is registered, the message is on its way. The link works for 1 hour.',
       reset_t: 'New password 🔑', reset_btn: 'Save password', reset_ok: 'Password changed — you are logged in.',
       acc_t: '🔐 Account & security', verified: '✅ Email confirmed', change_pass: 'Change password', old_pass: 'Current password', new_pass: 'New password', save: 'Save', saved: 'Saved ✓', logout: '🚪 Log out', del_t: 'Delete account', del_d: 'Your account, progress, profile and comments will be deleted. This cannot be undone.', del_btn: 'Delete forever', del_confirm: 'Really delete your account and all data?', synced: '☁️ Progress syncs with the server',
-      err: { wrong: 'Wrong email or password.', unverified: 'Your email is not confirmed yet. Check the email or send it again.', pass_short: 'The password is too short — at least 8 characters.', pass_weak: 'This password is too simple.', pass_long: 'The password is too long.', name: 'Enter a name (2–30 characters, no links).', email: 'Check the email address.', consent: 'Please accept the terms.', slow_down: 'Too many attempts. Try again in a few minutes.', token: 'The link has expired — request a new one.', mismatch: 'Passwords do not match.', net: 'No connection to the server. Please try again.', server: 'Server error. Please try later.', csrf: 'Refresh the page and try again.', blocked: 'This account is blocked. Contact us if this is a mistake.' }
+      err: { wrong: 'Wrong email or password.', unverified: 'Your email is not confirmed yet. Check the email or send it again.', pass_short: 'The password is too short — at least 8 characters.', pass_weak: 'This password is too simple.', pass_long: 'The password is too long.', name: 'Enter a name (2–30 characters, no links).', email: 'Check the email address.', consent: 'Please accept the terms.', slow_down: 'Too many attempts. Try again in a few minutes.', token: 'The link has expired — request a new one.', mismatch: 'Passwords do not match.', net: 'No connection to the server. Please try again.', server: 'Server error. Please try later.', csrf: 'Refresh the page and try again.', blocked: 'This account is blocked. Contact us if this is a mistake.', demo: 'A demo account cannot change password or be deleted.' }
     },
     no: {
       login_t: 'Logg inn', login_d: 'Logg inn for å ha fremgangen på alle enhetene dine.', email: 'E-post', pass: 'Passord', pass2: 'Gjenta passord', name: 'Navn eller kallenavn', login_btn: 'Logg inn', no_acc: 'Har du ikke konto?', reg_link: 'Registrer deg', forgot_link: 'Glemt passord?',
+      demo_h: 'Prøv uten passord', demo_d: 'Demo-elever til klassen. Trykk et navn — så er du inne.', demo_as: n => 'Spill som ' + n, demo_note: 'Dette er en felles demokonto uten passord. Ikke lagre noe personlig her.',
       reg_t: 'Lag en konto', reg_d: 'Gratis. Fremgang, avatar og venner – på alle enheter.', reg_btn: 'Lag konto', have_acc: 'Har du allerede konto?', consent: 'Jeg godtar vilkårene (for barn godtar foreldrene).', terms: 'Vilkår', move: 'Flytt fremgangen min til den nye kontoen',
       strength: ['svært svakt', 'svakt', 'greit', 'sterkt', 'svært sterkt'], pass_hint: 'Minst 8 tegn. En setning med flere ord er best.',
       sent_t: 'Sjekk e-posten din 📬', sent_d: e => `Vi har sendt en e-post til <b>${e}</b>. Trykk på «Bekreft e-posten» – så er kontoen klar.`, sent_tips: ['Den kommer vanligvis innen ett minutt.', 'Ser du den ikke? Sjekk søppelpost.', 'Lenken virker i 48 timer.'], resend: 'Send på nytt', resend_in: s => `Send på nytt om ${s} s`, resent: 'Ferdig! Sjekk innboksen igjen.', wrong_email: 'Feil adresse? Registrer deg på nytt',
@@ -45,11 +48,12 @@
       forgot_t: 'Glemt passordet?', forgot_d: 'Skriv inn e-posten til kontoen, så sender vi en lenke for nytt passord.', forgot_btn: 'Send lenke', forgot_ok: 'Hvis e-posten er registrert, er meldingen på vei. Lenken virker i 1 time.',
       reset_t: 'Nytt passord 🔑', reset_btn: 'Lagre passord', reset_ok: 'Passordet er endret – du er logget inn.',
       acc_t: '🔐 Konto og sikkerhet', verified: '✅ E-posten er bekreftet', change_pass: 'Endre passord', old_pass: 'Nåværende passord', new_pass: 'Nytt passord', save: 'Lagre', saved: 'Lagret ✓', logout: '🚪 Logg ut', del_t: 'Slett konto', del_d: 'Kontoen, fremgangen, profilen og kommentarene slettes. Dette kan ikke angres.', del_btn: 'Slett for alltid', del_confirm: 'Vil du virkelig slette kontoen og alle data?', synced: '☁️ Fremgangen synkroniseres med serveren',
-      err: { wrong: 'Feil e-post eller passord.', unverified: 'E-posten er ikke bekreftet ennå. Sjekk e-posten eller send den på nytt.', pass_short: 'Passordet er for kort – minst 8 tegn.', pass_weak: 'Dette passordet er for enkelt.', pass_long: 'Passordet er for langt.', name: 'Skriv et navn (2–30 tegn, uten lenker).', email: 'Sjekk e-postadressen.', consent: 'Du må godta vilkårene.', slow_down: 'For mange forsøk. Prøv igjen om noen minutter.', token: 'Lenken er utløpt – be om en ny.', mismatch: 'Passordene er ikke like.', net: 'Ingen forbindelse til serveren. Prøv igjen.', server: 'Serverfeil. Prøv senere.', csrf: 'Last inn siden på nytt og prøv igjen.', blocked: 'Kontoen er sperret. Kontakt oss hvis dette er en feil.' }
+      err: { wrong: 'Feil e-post eller passord.', unverified: 'E-posten er ikke bekreftet ennå. Sjekk e-posten eller send den på nytt.', pass_short: 'Passordet er for kort – minst 8 tegn.', pass_weak: 'Dette passordet er for enkelt.', pass_long: 'Passordet er for langt.', name: 'Skriv et navn (2–30 tegn, uten lenker).', email: 'Sjekk e-postadressen.', consent: 'Du må godta vilkårene.', slow_down: 'For mange forsøk. Prøv igjen om noen minutter.', token: 'Lenken er utløpt – be om en ny.', mismatch: 'Passordene er ikke like.', net: 'Ingen forbindelse til serveren. Prøv igjen.', server: 'Serverfeil. Prøv senere.', csrf: 'Last inn siden på nytt og prøv igjen.', blocked: 'Kontoen er sperret. Kontakt oss hvis dette er en feil.', demo: 'Demokontoen kan ikke bytte passord eller slettes.' }
     }
   };
   TX.ar = {
     login_t: 'تسجيل الدخول', login_d: 'سجّل الدخول ليُحفظ تقدّمك على كل أجهزتك.', email: 'البريد الإلكتروني', pass: 'كلمة المرور', pass2: 'أعد كتابة كلمة المرور', name: 'الاسم أو اللقب', login_btn: 'دخول', no_acc: 'ليس لديك حساب؟', reg_link: 'أنشئ حسابًا', forgot_link: 'نسيت كلمة المرور؟',
+    demo_h: 'جرّب بلا كلمة مرور', demo_d: 'تلاميذ تجريبيون للصف. اضغط الاسم وادخل.', demo_as: n => 'العب كـ ' + n, demo_note: 'حساب تجريبي مشترك بلا كلمة مرور. لا تحفظ فيه شيئًا شخصيًا.',
     reg_t: 'أنشئ حسابك', reg_d: 'مجانًا. تقدّمك وشخصيتك وأصدقاؤك — على كل أجهزتك.', reg_btn: 'إنشاء الحساب', have_acc: 'لديك حساب؟', consent: 'أوافق على شروط الاستخدام (عن الطفل يوافق أحد الوالدين).', terms: 'الشروط', move: 'انقل تقدّمي الحالي إلى الحساب الجديد',
     strength: ['ضعيفة جدًا', 'ضعيفة', 'مقبولة', 'قوية', 'قوية جدًا'], pass_hint: '8 أحرف على الأقل. الأفضل عبارة من عدة كلمات.',
     sent_t: 'تحقّق من بريدك 📬', sent_d: e => `أرسلنا رسالة إلى <b>${e}</b>. اضغط فيها على «تأكيد البريد» ويصبح حسابك جاهزًا.`, sent_tips: ['تصل الرسالة عادةً خلال دقيقة.', 'لا تراها؟ تحقّق من مجلد الرسائل غير المرغوب فيها.', 'الرابط صالح لمدة 48 ساعة.'], resend: 'أرسل مجددًا', resend_in: s => `أرسل مجددًا بعد ${s} ث`, resent: 'تم! تحقّق من بريدك مرة أخرى.', wrong_email: 'أخطأت في العنوان؟ سجّل من جديد',
@@ -58,7 +62,7 @@
     forgot_t: 'نسيت كلمة المرور؟', forgot_d: 'اكتب بريد حسابك وسنرسل رابطًا لتعيين كلمة مرور جديدة.', forgot_btn: 'أرسل الرابط', forgot_ok: 'إن كان هذا البريد مسجّلًا فالرسالة في طريقها. الرابط صالح لساعة واحدة.',
     reset_t: 'كلمة مرور جديدة 🔑', reset_btn: 'حفظ كلمة المرور', reset_ok: 'تم تغيير كلمة المرور — لقد سجّلت الدخول.',
     acc_t: '🔐 الحساب والأمان', verified: '✅ تم تأكيد البريد', change_pass: 'تغيير كلمة المرور', old_pass: 'كلمة المرور الحالية', new_pass: 'كلمة المرور الجديدة', save: 'حفظ', saved: 'تم الحفظ ✓', logout: '🚪 تسجيل الخروج', del_t: 'حذف الحساب', del_d: 'سيُحذف الحساب والتقدّم والملف الشخصي والتعليقات. لا يمكن التراجع عن ذلك.', del_btn: 'احذف نهائيًا', del_confirm: 'هل تريد حقًا حذف الحساب وكل البيانات؟', synced: '☁️ يُزامَن التقدّم مع الخادم',
-    err: { wrong: 'بريد أو كلمة مرور خاطئة.', unverified: 'لم يُؤكَّد البريد بعد. تحقّق من الرسالة أو أرسلها مجددًا.', pass_short: 'كلمة المرور قصيرة جدًا — 8 أحرف على الأقل.', pass_weak: 'كلمة المرور هذه بسيطة جدًا.', pass_long: 'كلمة المرور طويلة جدًا.', name: 'اكتب اسمًا (2–30 حرفًا، بلا روابط).', email: 'تحقّق من عنوان البريد.', consent: 'يلزم الموافقة على الشروط.', slow_down: 'محاولات كثيرة. حاول بعد بضع دقائق.', token: 'انتهت صلاحية الرابط — اطلب رابطًا جديدًا.', mismatch: 'كلمتا المرور غير متطابقتين.', net: 'لا يوجد اتصال بالخادم. حاول مجددًا.', server: 'خطأ في الخادم. حاول لاحقًا.', csrf: 'حدّث الصفحة وحاول مجددًا.', blocked: 'هذا الحساب محظور. تواصل معنا إن كان ذلك خطأ.' }
+    err: { wrong: 'بريد أو كلمة مرور خاطئة.', unverified: 'لم يُؤكَّد البريد بعد. تحقّق من الرسالة أو أرسلها مجددًا.', pass_short: 'كلمة المرور قصيرة جدًا — 8 أحرف على الأقل.', pass_weak: 'كلمة المرور هذه بسيطة جدًا.', pass_long: 'كلمة المرور طويلة جدًا.', name: 'اكتب اسمًا (2–30 حرفًا، بلا روابط).', email: 'تحقّق من عنوان البريد.', consent: 'يلزم الموافقة على الشروط.', slow_down: 'محاولات كثيرة. حاول بعد بضع دقائق.', token: 'انتهت صلاحية الرابط — اطلب رابطًا جديدًا.', mismatch: 'كلمتا المرور غير متطابقتين.', net: 'لا يوجد اتصال بالخادم. حاول مجددًا.', server: 'خطأ في الخادم. حاول لاحقًا.', csrf: 'حدّث الصفحة وحاول مجددًا.', blocked: 'هذا الحساب محظور. تواصل معنا إن كان ذلك خطأ.', demo: 'لا يمكن تغيير كلمة مرور الحساب التجريبي أو حذفه.' }
   };
   const PX3 = {
     uk: { inv_banner: n => `🎟 Тебе запросив(ла) ${n}! Цей акаунт буде безкоштовним назавжди 💎`, inv_bad: 'Це запрошення вже використане або застаріло — можна зареєструватися звичайно.',
@@ -223,6 +227,28 @@
     const email = input('email', { autocomplete: 'email', required: true }), pass = input('password', { autocomplete: 'current-password', required: true });
     const msg = msgEl(), btn = h('button', { class: 'btn accent big', type: 'submit' }, ax('login_btn'));
     const extra = h('div', {});
+    const demos = h('div', { class: 'au-demos', hidden: true });
+    const pickDemo = async (who, b) => {
+      msg.textContent = ''; busy(b, true);
+      const r = await post('demo', { who });
+      busy(b, false);
+      if (!r.ok) { msg.textContent = errText(r.error); return; }
+      await applyUser(r.user);
+      location.hash = '#/account'; K.route();
+    };
+    get('demos').then(j => {
+      if (!j || !j.ok || !j.demos || !j.demos.length) return;
+      demos.hidden = false;
+      const Av = window.KomiksAvatars;
+      demos.replaceChildren(
+        h('p', { class: 'au-demo-h' }, ax('demo_h')),
+        h('p', { class: 'au-hint' }, ax('demo_d')),
+        h('div', { class: 'au-demo-grid' }, ...j.demos.map(d => h('button', { type: 'button', class: 'au-demo', title: ax('demo_as', d.name), onclick: ev => pickDemo(d.who, ev.currentTarget) },
+          Av ? Av.el(d.avatar, { size: 52, mood: 'cheer' }) : h('span', {}, '🙂'),
+          h('b', {}, d.name),
+          h('small', {}, d.blurb || d.level))))
+      );
+    });
     const form = h('form', { class: 'au-form' }, field(ax('email'), email), field(ax('pass'), pass, h('a', { class: 'au-link', href: '#/forgot' }, ax('forgot_link'))), msg, extra, btn);
     form.addEventListener('submit', async e => {
       e.preventDefault(); msg.textContent = ''; extra.replaceChildren(); busy(btn, true);
@@ -237,7 +263,7 @@
       location.hash = '#/account'; K.route();
     });
     setTimeout(() => email.focus(), 50);
-    return shell('au-login', art('🔐'), h('h2', {}, ax('login_t')), h('p', { class: 'au-lead' }, ax('login_d')), form,
+    return shell('au-login', art('🔐'), h('h2', {}, ax('login_t')), h('p', { class: 'au-lead' }, ax('login_d')), demos, form,
       h('p', { class: 'au-alt' }, ax('no_acc'), ' ', h('a', { href: '#/register' }, ax('reg_link'))));
   }
   function registerView(invite) {
@@ -353,14 +379,16 @@
       try { const pre = `comiks.u.${sidOf(u)}.`, ks = []; for (let i = 0; i < localStorage.length; i++) ks.push(localStorage.key(i)); ks.filter(k => k.startsWith(pre)).forEach(k => localStorage.removeItem(k)); } catch { /* ignore */ }
       const all = K.raw.get('comiks.users', {}); delete all[sidOf(u)]; K.raw.set('comiks.users', all); S.user = null; K.setSession(null); location.hash = '#/'; K.route(); };
     return h('div', { class: 'box au-acc' }, h('h3', {}, ax('acc_t')),
-      h('p', {}, h('b', {}, u.email), h('br'), h('span', { class: 'au-badge' }, ax('verified')), ' ', h('span', { class: 'au-badge sync' }, ax('synced')),
+      h('p', {}, h('b', {}, u.demo ? u.name : u.email), h('br'),
+        u.demo ? h('span', { class: 'au-badge prem' }, ax('demo_h')) : [h('span', { class: 'au-badge' }, ax('verified')), ' ', h('span', { class: 'au-badge sync' }, ax('synced'))],
         u.premium ? [' ', h('span', { class: 'au-badge prem' }, a3('premium'))] : null, u.role && u.role !== 'user' ? [' ', h('span', { class: 'au-badge staff' }, a3('staff')[u.role])] : null,
         u.role === 'admin' ? [' ', h('a', { class: 'au-badge staff', href: 'admin.php' }, '⚙️ Admin')] : null),
-      u.can_invite ? inviteBox() : null,
-      importBox(),
-      h('details', { class: 'au-det' }, h('summary', {}, ax('change_pass')), field(ax('old_pass'), oldP), field(ax('new_pass'), newP), h('div', { class: 'row-left' }, h('button', { class: 'btn', type: 'button', onclick: savePass }, ax('save')), pm)),
+      u.demo ? h('p', { class: 'au-hint' }, ax('demo_note')) : null,
+      u.can_invite && !u.demo ? inviteBox() : null,
+      u.demo ? null : importBox(),
+      u.demo ? null : h('details', { class: 'au-det' }, h('summary', {}, ax('change_pass')), field(ax('old_pass'), oldP), field(ax('new_pass'), newP), h('div', { class: 'row-left' }, h('button', { class: 'btn', type: 'button', onclick: savePass }, ax('save')), pm)),
       h('div', { class: 'row-left' }, h('button', { class: 'btn', type: 'button', onclick: logout }, ax('logout'))),
-      h('details', { class: 'au-det danger' }, h('summary', {}, ax('del_t')), h('p', { class: 'au-hint' }, ax('del_d')), field(ax('pass'), delP), h('button', { class: 'btn accent', type: 'button', onclick: del }, ax('del_btn')), dm));
+      u.demo ? null : h('details', { class: 'au-det danger' }, h('summary', {}, ax('del_t')), h('p', { class: 'au-hint' }, ax('del_d')), field(ax('pass'), delP), h('button', { class: 'btn accent', type: 'button', onclick: del }, ax('del_btn')), dm));
   }
 
   function importBox() {
