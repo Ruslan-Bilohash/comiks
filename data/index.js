@@ -6,7 +6,7 @@
  * це змушує браузер завантажити свіжі файли, а не старі з кешу.
  */
 window.KOMIKS_DATA = {
-  version: 'mu8wda5w',
+  version: 'mu8xi071',
   shared: [
     'data/characters.js',
     'data/dictionary.js',
@@ -36,6 +36,7 @@ window.KOMIKS_DATA = {
     'assets/friends.js',
     'assets/extras.js',
     'assets/game.js',
+    'game/hunt.js',
     'assets/auth.js'
   ],
   comics: [
