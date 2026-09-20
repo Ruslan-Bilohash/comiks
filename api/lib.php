@@ -307,6 +307,70 @@ function unique_friend_code(): string {
   throw new RuntimeException('friend code');
 }
 function send_verify(array $u): void { send_template($u, 'verify', site_url() . 'api/auth.php?action=verify&token=' . new_token((int)$u['id'], 'verify', VERIFY_TTL)); }
+
+/** Бали з тестів і ігор → kl_players.stars (головна й рейтинг). */
+function user_data_val(int $userId, string $k, $default = null) {
+  $r = one('SELECT v FROM kl_user_data WHERE user_id = ? AND k = ?', [$userId, $k]);
+  if (!$r) return $default;
+  $v = json_decode($r['v'], true);
+  return $v === null ? $default : $v;
+}
+function refresh_rank(array $u): void {
+  if (!$u || !empty($u['is_demo'])) return;
+  $code = strtoupper((string)($u['friend_code'] ?? ''));
+  if (!preg_match('/^[A-HJ-NP-Z2-9]{6}$/', $code)) return;
+  $uid = (int)$u['id'];
+  $prog = user_data_val($uid, 'progress', []);
+  if (!is_array($prog)) $prog = [];
+  $stars = 0;
+  $tests = 0;
+  foreach ($prog as $pr) {
+    if (!is_array($pr)) continue;
+    $s = max(0, (int)($pr['stars'] ?? 0));
+    $stars += $s;
+    if ($s > 0) $tests++;
+  }
+  $stats = user_data_val($uid, 'stats', []);
+  if (!is_array($stats)) $stats = [];
+  $games = max(0, (int)($stats['games'] ?? 0));
+  $race = max(0, (int)($stats['raceWins'] ?? 0));
+  $days = user_data_val($uid, 'days', []);
+  $dayN = is_array($days) ? count($days) : 0;
+  $math = max(0, (int)user_data_val($uid, 'mathBest', 0));
+  $score = $stars * 10 + $tests * 5 + $dayN * 3 + $games * 4 + $race * 12 + min(400, $math);
+  $score = max(0, min(100000, $score));
+  $badges = max(0, min(100, (int)($stats['perfect'] ?? 0) + ($race > 0 ? 1 : 0) + ($math >= 150 ? 1 : 0)));
+  $avatar = user_data_val($uid, 'avatar', '🦊');
+  if (!is_string($avatar) || $avatar === '') $avatar = '🦊';
+  $avatar = substr($avatar, 0, 60);
+  $now = time();
+  $prev = one('SELECT * FROM kl_players WHERE code = ?', [$code]);
+  upsert('kl_players', ['code'], [
+    'code' => $code,
+    'user_id' => $uid,
+    'secret_hash' => $prev['secret_hash'] ?? sha('komiks-players:rank:' . $uid),
+    'name' => $u['name'],
+    'avatar' => $avatar,
+    'learn' => $prev['learn'] ?? 'norsk',
+    'level' => $prev['level'] ?? 'A1',
+    'stars' => $score,
+    'badges' => $badges,
+    'streak' => min(10000, $dayN),
+    'act' => $prev['act'] ?? 'play',
+    'snap' => $prev['snap'] ?? '',
+    'seen' => $now,
+    'updated' => $now,
+    'since' => (int)($prev['since'] ?? $now),
+  ]);
+}
+function refresh_all_ranks(): int {
+  $n = 0;
+  foreach (q('SELECT * FROM kl_users WHERE COALESCE(is_demo, 0) = 0')->fetchAll() as $u) {
+    refresh_rank($u);
+    $n++;
+  }
+  return $n;
+}
 // повне видалення акаунта з усіма даними
 function delete_user_all(array $u): void {
   $db = db(); $db->beginTransaction();

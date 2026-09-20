@@ -421,6 +421,7 @@
     log.unshift(Object.assign({ key, title, score, total, stars: st, date: today() }, extra.place ? { place: extra.place, of: extra.of } : {}));
     store.set('quizlog', log.slice(0, 300));
     bump('quizzes'); if (st === 3) bump('perfect');
+    try { if (window.KomiksPlayers) window.KomiksPlayers.publish(true); } catch (e) { /* ignore */ }
     return st;
   }
   const BADGES = [

@@ -1806,6 +1806,8 @@ body.in-rocket .music-btn.game-music { display: none; }
 .ph-fame h3 { margin: 0; } .ph-fame small { color: #555; }
 .ph-fame-row { display: flex; gap: 12px; overflow-x: auto; padding: 8px 2px; }
 .ph-winner { display: grid; justify-items: center; gap: 2px; min-width: 110px; text-align: center; animation: pop .5s ease-out calc(var(--i) * .08s) both; color: inherit; text-decoration: none; }
+.ph-winner.champ { min-width: 148px; }
+.ph-winner.champ .ph-plinth { background: linear-gradient(180deg, #fff8c4, #ffb300); box-shadow: 0 6px 0 #141414; }
 .ph-winner small { font-size: .75rem; color: #555; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ph-plinth { display: grid; place-items: end center; padding: 4px 10px 0; border-radius: 14px 14px 4px 4px; background: linear-gradient(180deg, #ffe38a, #f5b700); border: 3px solid var(--ink); box-shadow: inset 0 -8px 0 rgba(0, 0, 0, .12); }
 @media (max-width: 760px) { .play-hero { grid-template-columns: 1fr; padding: 16px; } .ph-right { order: -1; } .ph-spot { width: 190px; } .ph-game { grid-template-columns: auto minmax(0, 1fr); } .ph-game-a { grid-column: 1 / -1; justify-content: stretch; } .ph-game-a .btn { flex: 1; } }

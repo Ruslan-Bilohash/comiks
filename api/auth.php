@@ -252,6 +252,7 @@ if ($action === 'data') {
   }
   $cnt = (int)one('SELECT COUNT(*) AS n FROM kl_user_data WHERE user_id = ?', [$u['id']])['n'];
   if ($cnt > 400) fail('too_many_keys', 413);
+  refresh_rank($u);
   out(['ok' => true]);
 }
 
