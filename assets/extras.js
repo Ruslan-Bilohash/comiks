@@ -399,20 +399,20 @@
     uk: { kick: '🎮 ГРАЙ РАЗОМ', title: 'Створи свого героя — і змагайся з сім’єю чи друзями', text: 'Обери тваринку, колір, шапку й окуляри — герой закріплюється за твоїм акаунтом і бігає, літає й стоїть на подіумі в усіх іграх. Рідкісні речі випадають зі скрині за перемоги.',
       make: '✨ Створити героя', edit: '🎨 Змінити героя', steps: ['Створи героя', 'Відкрий гру на ТВ чи ноутбуці', 'Рідні скануть QR телефонами — і старт!'],
       together: '👨‍👩‍👧 Разом', solo: '🙋 Сам', games: [['flag', '#2e7d32', 'Логік-гонка', 'Герої мчать доріжками — хто швидше розв’язує логічні задачі.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Космічна арифметика на 60 секунд.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Шахи', '3D-шахи: турнір для класу або партія з другом.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Гра разом', 'Вікторина норвезькою для всієї родини чи класу.', '#/game', '#/tests']],
-      fame: '🏆 Зала слави', fame_d: 'Найкращий за ігри та тести', champ: 'Найкращий гравець' },
+      fame: '🔥 Найактивніші', fame_d: 'Хто найбільше грає й проходить тести', champ: 'Найактивніший' },
     en: { kick: '🎮 PLAY TOGETHER', title: 'Create your hero — and compete with family or friends', text: 'Pick an animal, colour, hat and glasses — your hero is tied to your account and runs, flies and stands on the podium in every game. Rare items drop from chests when you win.',
       make: '✨ Create a hero', edit: '🎨 Edit your hero', steps: ['Create your hero', 'Open a game on the TV or laptop', 'Family scans the QR with phones — go!'],
       together: '👨‍👩‍👧 Together', solo: '🙋 Solo', games: [['flag', '#2e7d32', 'Logic Race', 'Heroes race along the track — whoever solves logic puzzles faster.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Space arithmetic in 60 seconds.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Chess', '3D chess: a class tournament or a game with a friend.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Play together', 'A Norwegian quiz for the whole family or class.', '#/game', '#/tests']],
-      fame: '🏆 Hall of fame', fame_d: 'Best from games and tests', champ: 'Best player' },
+      fame: '🔥 Most active', fame_d: 'Who plays and takes tests the most', champ: 'Most active' },
     no: { kick: '🎮 SPILL SAMMEN', title: 'Lag din egen helt – og konkurrer med familie eller venner', text: 'Velg dyr, farge, lue og briller – helten hører til kontoen din og løper, flyr og står på pallen i alle spill. Sjeldne ting finner du i kister når du vinner.',
       make: '✨ Lag en helt', edit: '🎨 Endre helten', steps: ['Lag helten din', 'Åpne et spill på TV-en eller PC-en', 'Familien skanner QR-koden med mobilen – start!'],
       together: '👨‍👩‍👧 Sammen', solo: '🙋 Alene', games: [['flag', '#2e7d32', 'Logikkløpet', 'Heltene løper om kapp – den som løser oppgavene raskest.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Matte-raketten', 'Romregning på 60 sekunder.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Sjakk', '3D-sjakk: klasseturnering eller et parti med en venn.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Spill sammen', 'Norsk quiz for hele familien eller klassen.', '#/game', '#/tests']],
-      fame: '🏆 Æresgalleriet', fame_d: 'Best etter spill og tester', champ: 'Beste spiller' }
+      fame: '🔥 Mest aktive', fame_d: 'De som spiller og tar tester mest', champ: 'Mest aktiv' }
   };
   PH.ar = { kick: '🎮 العبوا معًا', title: 'أنشئ بطلك — وتنافس مع العائلة أو الأصدقاء', text: 'اختر حيوانًا ولونًا وقبعة ونظارة — بطلك مرتبط بحسابك ويركض ويطير ويقف على منصة التتويج في كل الألعاب. تسقط أغراض نادرة من الصناديق عند الفوز.',
     make: '✨ أنشئ بطلًا', edit: '🎨 عدّل بطلك', steps: ['أنشئ بطلك', 'افتح لعبة على التلفاز أو الحاسوب', 'تمسح العائلة رمز QR بالهواتف — انطلقوا!'],
     together: '👨‍👩‍👧 معًا', solo: '🙋 وحدي', games: [['flag', '#2e7d32', 'سباق المنطق', 'الأبطال يتسابقون — الأسرع في حلّ الألغاز يفوز.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'حساب فضائي في 60 ثانية.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'الشطرنج', 'شطرنج ثلاثي الأبعاد: بطولة للصف أو مباراة مع صديق.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'العبوا معًا', 'مسابقة بالنرويجية للعائلة أو الصف.', '#/game', '#/tests']],
-    fame: '🏆 قاعة المشاهير', fame_d: 'الأفضل من الألعاب والاختبارات', champ: 'أفضل لاعب' };
+    fame: '🔥 الأكثر نشاطًا', fame_d: 'من يلعب ويختبر أكثر', champ: 'الأكثر نشاطًا' };
   const AVX = (code, o) => (window.KomiksAvatars ? window.KomiksAvatars.el(code, o) : document.createTextNode(String(code).split('|')[0]));
   function playHero() {
     const K = C(), { h } = K;
@@ -422,13 +422,13 @@
     const ic = (n, c) => (window.KomiksIcons ? window.KomiksIcons.badge(n, c, 24) : null);
     const row = h('div', { class: 'ph-fame-row' });
     const fame = h('div', { class: 'ph-fame' }, h('h3', {}, T.fame), h('small', {}, T.fame_d), row);
-    fetch('api/players.php?sort=stars', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).catch(() => null).then(j => {
-      const list = (j && j.ok && j.players) ? j.players.slice(0, 6) : [];
+    fetch('api/players.php?sort=active', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).catch(() => null).then(j => {
+      const list = (j && j.ok && j.players) ? j.players.filter(p => (p.active || 0) > 0).slice(0, 6) : [];
       if (!list.length) { fame.remove(); return; }
       row.replaceChildren(...list.map((p, i) => h('a', { class: 'ph-winner' + (i === 0 ? ' champ' : ''), href: '#/player/c/' + p.code, style: { '--i': i } },
         h('span', { class: 'ph-plinth' }, AVX(p.avatar, { size: 78, mood: 'cheer', crown: i === 0 })),
         h('b', {}, i === 0 ? T.champ : p.name),
-        h('small', {}, (i === 0 ? p.name + ' · ' : '') + '⭐ ' + p.stars))));
+        h('small', {}, (i === 0 ? p.name + ' · ' : '') + '🔥 ' + (p.active || p.streak || 0)))));
     });
     return h('section', { class: 'play-hero' },
       h('div', { class: 'ph-left' },

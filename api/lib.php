@@ -65,7 +65,7 @@ function upsert(string $table, array $keys, array $row): void {
   q($sql, array_values($row));
 }
 
-const SCHEMA_VERSION = 5;
+const SCHEMA_VERSION = 6;
 function migrate(PDO $pdo): void {
   $my = is_mysql();
   $pk = $my ? 'INT UNSIGNED AUTO_INCREMENT PRIMARY KEY' : 'INTEGER PRIMARY KEY AUTOINCREMENT';
@@ -100,6 +100,7 @@ function migrate(PDO $pdo): void {
   foreach (['is_admin TINYINT NOT NULL DEFAULT 0', 'blocked_at INT NULL', 'is_moderator TINYINT NOT NULL DEFAULT 0', 'premium TINYINT NOT NULL DEFAULT 0', 'can_invite TINYINT NOT NULL DEFAULT 0', 'msg_pref TINYINT NOT NULL DEFAULT 1', 'premium_until INT NULL', "invited_by $uid NULL", 'is_demo TINYINT NOT NULL DEFAULT 0'] as $col) {
     try { $pdo->exec("ALTER TABLE kl_users ADD COLUMN $col"); } catch (Throwable $e) { /* уже є */ }
   }
+  try { $pdo->exec('ALTER TABLE kl_players ADD COLUMN active INT NOT NULL DEFAULT 0'); } catch (Throwable $e) { /* уже є */ }
   foreach (["user_id $uid NULL", 'ip_hash CHAR(64) NULL'] as $col) {
     try { $pdo->exec("ALTER TABLE kl_comments ADD COLUMN $col"); } catch (Throwable $e) { /* уже є */ }
   }
@@ -337,8 +338,10 @@ function refresh_rank(array $u): void {
   $days = user_data_val($uid, 'days', []);
   $dayN = is_array($days) ? count($days) : 0;
   $math = max(0, (int)user_data_val($uid, 'mathBest', 0));
+  $quizzes = max(0, (int)($stats['quizzes'] ?? 0));
   $score = $stars * 10 + $tests * 5 + $dayN * 3 + $games * 4 + $race * 12 + min(400, $math);
   $score = max(0, min(100000, $score));
+  $active = max(0, min(100000, $dayN + $games + $tests + $quizzes + $race));
   $badges = max(0, min(100, (int)($stats['perfect'] ?? 0) + ($race > 0 ? 1 : 0) + ($math >= 150 ? 1 : 0)));
   $avatar = user_data_val($uid, 'avatar', '🦊');
   if (!is_string($avatar) || $avatar === '') $avatar = '🦊';
@@ -356,6 +359,7 @@ function refresh_rank(array $u): void {
     'stars' => $score,
     'badges' => $badges,
     'streak' => min(10000, $dayN),
+    'active' => $active,
     'act' => $prev['act'] ?? 'play',
     'snap' => $prev['snap'] ?? '',
     'seen' => $now,

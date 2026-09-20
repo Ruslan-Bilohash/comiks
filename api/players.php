@@ -18,7 +18,7 @@ const LEVELS = ['A1', 'A2', 'B1', 'B2'];
 const PAGE = 24;
 
 function card_out(array $p, bool $withSnap = false): array {
-  $c = ['code' => $p['code'], 'name' => $p['name'], 'avatar' => $p['avatar'], 'learn' => $p['learn'] === '' ? [] : explode(',', $p['learn']), 'level' => $p['level'], 'stars' => (int)$p['stars'], 'badges' => (int)$p['badges'], 'streak' => (int)$p['streak']];
+  $c = ['code' => $p['code'], 'name' => $p['name'], 'avatar' => $p['avatar'], 'learn' => $p['learn'] === '' ? [] : explode(',', $p['learn']), 'level' => $p['level'], 'stars' => (int)$p['stars'], 'badges' => (int)$p['badges'], 'streak' => (int)$p['streak'], 'active' => (int)($p['active'] ?? 0)];
   // онлайн-статус і «коли був» — не публічні: їх бачать лише друзі (напряму через PeerJS, assets/friends.js)
   if ($withSnap) $c['snap'] = $p['snap'];
   return $c;
@@ -47,8 +47,9 @@ if (method() === 'GET') {
   // near=A2 — рекомендації: спершу гравці зі схожим рівнем навчання, далі активніші
   $near = array_search($_GET['near'] ?? '', LEVELS, true);
   $lvlNum = "(CASE level WHEN 'A1' THEN 0 WHEN 'A2' THEN 1 WHEN 'B1' THEN 2 WHEN 'B2' THEN 3 ELSE 0 END)";
+  $sort = (string)($_GET['sort'] ?? '');
   $order = $near !== false ? "ABS($lvlNum - " . (int)$near . '), stars DESC, updated DESC'
-    : (($_GET['sort'] ?? '') === 'stars' ? 'stars DESC, badges DESC' : 'updated DESC');
+    : ($sort === 'stars' ? 'stars DESC, badges DESC' : ($sort === 'active' ? 'active DESC, seen DESC, stars DESC' : 'updated DESC'));
   $rows = q("SELECT * FROM kl_players$w ORDER BY $order LIMIT " . PAGE . ' OFFSET ' . ($page * PAGE), $args)->fetchAll();
   out(['ok' => true, 'total' => $total, 'page' => $page, 'players' => array_map('card_out', $rows)]);
 }
