@@ -8,15 +8,15 @@
   const EX = {
     uk: {
       nav: 'Рейтинг', module: ['🏆', 'Рейтинг', 'гравці, переможці й учні'],
-      r_global: '🌍 Загальний рейтинг', r_global_d: 'Бали з тестів і ігор. Перший також на головній.', view_profile: 'Переглянути профіль', find_players: '🔎 Шукати гравців',
-      r_title: '🏆 Рейтинг і гравці', r_intro: 'Хто найкраще знає норвезьку? Тут — переможці «Гри разом» і учні з акаунтами на цьому пристрої.',
+      r_global: '🌍 Загальний рейтинг', r_global_d: 'Справедливо для всіх: одні правила, лише справжні акаунти. Без ботів і демо.', view_profile: 'Переглянути профіль', find_players: '🔎 Шукати гравців',
+      r_title: '🏆 Рейтинг і гравці', r_intro: 'Шукаємо найкращого гравця. Рейтинг з тестів і ігор — однакові правила для всіх.',
       r_local: '💾 Рейтинг зберігається на цьому пристрої (у браузері). Ігри потрапляють сюди, коли ти ведеш кімнату або граєш у ній.',
       r_players: '🎮 Гравці «Гри разом»', r_students: '👩‍🎓 Учні на цьому пристрої', r_recent: '🕹️ Останні ігри',
       th_rank: '#', th_player: 'Гравець', th_games: 'Ігор', th_wins: '🥇 Перемог', th_points: 'Бали', th_acc: 'Точність', th_speed: 'Сер. час',
       th_student: 'Учень', th_stars: '⭐ Зірки', th_tests: 'Тестів', th_days: 'Днів навчання', th_score: 'Рахунок',
       no_games: 'Ще немає ігор. Створи кімнату в «Гра разом» — і тут з’являться переможці!', play: '🎮 Грати разом', guest: 'Гість (без акаунта)',
       no_students: 'Зареєструйся, щоб потрапити в рейтинг учнів.', register: '✍️ Реєстрація', clear: '🗑️ Очистити історію ігор', clear_q: 'Видалити історію ігор на цьому пристрої?',
-      score_hint: 'Рахунок = зірки × 10 + тести × 5 + дні × 3 + ігри × 4 + перемоги в гонці × 12 + Math Rocket (до 400). Найкращий — на головній.', you: 'ти', players_n: n => `${n} гравц.`,
+      score_hint: 'Рахунок = зірки з тестів × 10 + тести × 5 + ігри × 3 + перемоги в гонці × 10 + Math Rocket (до 200). Однакові правила для всіх.', you: 'ти', players_n: n => `${n} гравц.`,
       qr_title: '📱 Відкрий Комікс·Lab на телефоні', qr_text: 'Скануй QR-код камерою телефона — сайт відкриється одразу. Зручно для уроку: покажи код на екрані, і всі учні зайдуть за секунду.', qr_copy: '📋 Копіювати посилання', qr_copied: 'Скопійовано ✓', qr_share: '📤 Поділитися',
       help_title: '❓ Допомога: як користуватися Комікс·Lab', help_intro: 'Комікс·Lab — безкоштовний тренажер норвезької мови для дітей і дорослих. Тут усе пояснено коротко: з чого почати, як читати, тестуватися й грати разом.',
       quick: '🚀 Швидкий старт за 5 кроків', faq: '💬 Часті питання', sections: '🧭 Розділи сайту', open: 'Відкрити →',
@@ -63,7 +63,7 @@
       th_student: 'Student', th_stars: '⭐ Stars', th_tests: 'Tests', th_days: 'Study days', th_score: 'Score',
       no_games: 'No games yet. Create a room in “Play together” and the winners will show up here!', play: '🎮 Play together', guest: 'Guest (no account)',
       no_students: 'Sign up to appear in the student ranking.', register: '✍️ Sign up', clear: '🗑️ Clear game history', clear_q: 'Delete the game history on this device?',
-      score_hint: 'Score = stars × 10 + tests × 5 + days × 3 + games × 4 + race wins × 12 + Math Rocket (max 400). The best player is on the home page.', you: 'you', players_n: n => `${n} players`,
+      score_hint: 'Score = test stars × 10 + tests × 5 + games × 3 + race wins × 10 + Math Rocket (max 200). Same rules for everyone.', you: 'you', players_n: n => `${n} players`,
       qr_title: '📱 Open Komiks·Lab on your phone', qr_text: 'Scan the QR code with your phone camera and the site opens at once. Great for lessons: show the code on the screen and every student is in within seconds.', qr_copy: '📋 Copy link', qr_copied: 'Copied ✓', qr_share: '📤 Share',
       help_title: '❓ Help: how to use Komiks·Lab', help_intro: 'Komiks·Lab is a free Norwegian trainer for children and adults. Everything is explained briefly here: where to start, how to read, take tests and play together.',
       quick: '🚀 Quick start in 5 steps', faq: '💬 FAQ', sections: '🧭 Site sections', open: 'Open →',
@@ -110,7 +110,7 @@
       th_student: 'Elev', th_stars: '⭐ Stjerner', th_tests: 'Tester', th_days: 'Dager', th_score: 'Sum',
       no_games: 'Ingen spill ennå. Lag et rom i «Spill sammen», så dukker vinnerne opp her!', play: '🎮 Spill sammen', guest: 'Gjest (uten konto)',
       no_students: 'Registrer deg for å komme med på elevlisten.', register: '✍️ Registrer deg', clear: '🗑️ Slett spillhistorikken', clear_q: 'Slette spillhistorikken på denne enheten?',
-      score_hint: 'Sum = stjerner × 10 + tester × 5 + dager × 3 + spill × 4 + løpsseire × 12 + Matte-raketten (maks 400). Best er på forsiden.', you: 'deg', players_n: n => `${n} spillere`,
+      score_hint: 'Sum = teststjerner × 10 + tester × 5 + spill × 3 + løpsseire × 10 + Matte-raketten (maks 200). Samme regler for alle.', you: 'deg', players_n: n => `${n} spillere`,
       qr_title: '📱 Åpne Komiks·Lab på mobilen', qr_text: 'Skann QR-koden med mobilkameraet, så åpnes siden med en gang. Fint i timen: vis koden på skjermen, så er alle inne på sekunder.', qr_copy: '📋 Kopier lenken', qr_copied: 'Kopiert ✓', qr_share: '📤 Del',
       help_title: '❓ Hjelp: slik bruker du Komiks·Lab', help_intro: 'Komiks·Lab er en gratis norsktrener for barn og voksne. Her står kort hvordan du starter, leser, tar tester og spiller sammen.',
       quick: '🚀 Kom i gang på 5 steg', faq: '💬 Ofte stilte spørsmål', sections: '🧭 Delene av nettstedet', open: 'Åpne →',
@@ -158,7 +158,7 @@
     th_student: 'التلميذ', th_stars: '⭐ النجوم', th_tests: 'الاختبارات', th_days: 'أيام التعلّم', th_score: 'النتيجة',
     no_games: 'لا توجد ألعاب بعد. أنشئ غرفة في «العبوا معًا» وسيظهر الفائزون هنا!', play: '🎮 العبوا معًا', guest: 'زائر (بلا حساب)',
     no_students: 'سجّل لتظهر في تصنيف التلاميذ.', register: '✍️ إنشاء حساب', clear: '🗑️ امسح سجل الألعاب', clear_q: 'حذف سجل الألعاب على هذا الجهاز؟',
-    score_hint: 'النتيجة = النجوم × 10 + الاختبارات × 5 + الأيام × 3 + الألعاب × 4 + سباق × 12 + الصاروخ (حتى 400). الأفضل على الصفحة الرئيسية.', you: 'أنت', players_n: n => `${n} لاعب`,
+    score_hint: 'النتيجة = نجوم الاختبار × 10 + الاختبارات × 5 + الألعاب × 3 + السباق × 10 + الصاروخ (حتى 200). نفس القواعد للجميع.', you: 'أنت', players_n: n => `${n} لاعب`,
     qr_title: '📱 افتح Komiks·Lab على هاتفك', qr_text: 'امسح رمز QR بكاميرا الهاتف ويفتح الموقع فورًا. رائع للدروس: اعرض الرمز على الشاشة ويدخل كل التلاميذ خلال ثوانٍ.', qr_copy: '📋 انسخ الرابط', qr_copied: 'تم النسخ ✓', qr_share: '📤 مشاركة',
     help_title: '❓ المساعدة: كيف تستخدم Komiks·Lab', help_intro: 'Komiks·Lab مدرّب مجاني للغة النرويجية للأطفال والكبار. هنا شرح مختصر: من أين تبدأ، وكيف تقرأ وتختبر نفسك وتلعب مع الآخرين.',
     quick: '🚀 بداية سريعة في 5 خطوات', faq: '💬 أسئلة شائعة', sections: '🧭 أقسام الموقع', open: 'افتح ←',
@@ -248,8 +248,7 @@
     const podium = players.length ? (window.KomiksAvatars ? window.KomiksAvatars.podium(players.slice(0, 12).map((p, i) => ({ pid: 'r' + i, name: p.name, avatar: p.avatar, score: p.points })), { points: '⭐' }) : null) : null;
     const global = h('div', { class: 'box rating-box global-rating', hidden: true });
     const frOn = code => !!(window.KomiksFriends && window.KomiksFriends.online().includes(code)); // онлайн бачать лише друзі
-    const withBots = j => { const bots = window.KomiksBots ? window.KomiksBots.cards() : []; const real = j && j.ok && j.players ? j.players : []; return { ok: true, players: real.concat(bots).sort((a, b) => b.stars - a.stars || b.badges - a.badges) }; };
-    fetch('api/players.php?sort=stars', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).catch(() => null).then(withBots).then(j => {
+    fetch('api/players.php?sort=stars', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).catch(() => null).then(j => {
       if (!j || !j.ok || !j.players || !j.players.length) return;
       global.hidden = false;
       global.replaceChildren(h('h3', {}, ex('r_global')), h('p', { class: 'hint' }, ex('r_global_d')),
@@ -399,20 +398,20 @@
     uk: { kick: '🎮 ГРАЙ РАЗОМ', title: 'Створи свого героя — і змагайся з сім’єю чи друзями', text: 'Обери тваринку, колір, шапку й окуляри — герой закріплюється за твоїм акаунтом і бігає, літає й стоїть на подіумі в усіх іграх. Рідкісні речі випадають зі скрині за перемоги.',
       make: '✨ Створити героя', edit: '🎨 Змінити героя', steps: ['Створи героя', 'Відкрий гру на ТВ чи ноутбуці', 'Рідні скануть QR телефонами — і старт!'],
       together: '👨‍👩‍👧 Разом', solo: '🙋 Сам', games: [['flag', '#2e7d32', 'Логік-гонка', 'Герої мчать доріжками — хто швидше розв’язує логічні задачі.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Космічна арифметика на 60 секунд.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Шахи', '3D-шахи: турнір для класу або партія з другом.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Гра разом', 'Вікторина норвезькою для всієї родини чи класу.', '#/game', '#/tests']],
-      fame: '🔥 Найактивніші', fame_d: 'Хто найбільше грає й проходить тести', champ: 'Найактивніший' },
+      fame: '🏆 Найкращий гравець', fame_d: 'Справедливий рейтинг з тестів і ігор', champ: 'Найкращий гравець' },
     en: { kick: '🎮 PLAY TOGETHER', title: 'Create your hero — and compete with family or friends', text: 'Pick an animal, colour, hat and glasses — your hero is tied to your account and runs, flies and stands on the podium in every game. Rare items drop from chests when you win.',
       make: '✨ Create a hero', edit: '🎨 Edit your hero', steps: ['Create your hero', 'Open a game on the TV or laptop', 'Family scans the QR with phones — go!'],
       together: '👨‍👩‍👧 Together', solo: '🙋 Solo', games: [['flag', '#2e7d32', 'Logic Race', 'Heroes race along the track — whoever solves logic puzzles faster.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Space arithmetic in 60 seconds.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Chess', '3D chess: a class tournament or a game with a friend.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Play together', 'A Norwegian quiz for the whole family or class.', '#/game', '#/tests']],
-      fame: '🔥 Most active', fame_d: 'Who plays and takes tests the most', champ: 'Most active' },
+      fame: '🏆 Best player', fame_d: 'Fair ranking from tests and games', champ: 'Best player' },
     no: { kick: '🎮 SPILL SAMMEN', title: 'Lag din egen helt – og konkurrer med familie eller venner', text: 'Velg dyr, farge, lue og briller – helten hører til kontoen din og løper, flyr og står på pallen i alle spill. Sjeldne ting finner du i kister når du vinner.',
       make: '✨ Lag en helt', edit: '🎨 Endre helten', steps: ['Lag helten din', 'Åpne et spill på TV-en eller PC-en', 'Familien skanner QR-koden med mobilen – start!'],
       together: '👨‍👩‍👧 Sammen', solo: '🙋 Alene', games: [['flag', '#2e7d32', 'Logikkløpet', 'Heltene løper om kapp – den som løser oppgavene raskest.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Matte-raketten', 'Romregning på 60 sekunder.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Sjakk', '3D-sjakk: klasseturnering eller et parti med en venn.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Spill sammen', 'Norsk quiz for hele familien eller klassen.', '#/game', '#/tests']],
-      fame: '🔥 Mest aktive', fame_d: 'De som spiller og tar tester mest', champ: 'Mest aktiv' }
+      fame: '🏆 Beste spiller', fame_d: 'Rettferdig ranking fra tester og spill', champ: 'Beste spiller' }
   };
   PH.ar = { kick: '🎮 العبوا معًا', title: 'أنشئ بطلك — وتنافس مع العائلة أو الأصدقاء', text: 'اختر حيوانًا ولونًا وقبعة ونظارة — بطلك مرتبط بحسابك ويركض ويطير ويقف على منصة التتويج في كل الألعاب. تسقط أغراض نادرة من الصناديق عند الفوز.',
     make: '✨ أنشئ بطلًا', edit: '🎨 عدّل بطلك', steps: ['أنشئ بطلك', 'افتح لعبة على التلفاز أو الحاسوب', 'تمسح العائلة رمز QR بالهواتف — انطلقوا!'],
     together: '👨‍👩‍👧 معًا', solo: '🙋 وحدي', games: [['flag', '#2e7d32', 'سباق المنطق', 'الأبطال يتسابقون — الأسرع في حلّ الألغاز يفوز.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'حساب فضائي في 60 ثانية.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'الشطرنج', 'شطرنج ثلاثي الأبعاد: بطولة للصف أو مباراة مع صديق.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'العبوا معًا', 'مسابقة بالنرويجية للعائلة أو الصف.', '#/game', '#/tests']],
-    fame: '🔥 الأكثر نشاطًا', fame_d: 'من يلعب ويختبر أكثر', champ: 'الأكثر نشاطًا' };
+    fame: '🏆 أفضل لاعب', fame_d: 'تصنيف عادل من الاختبارات والألعاب', champ: 'أفضل لاعب' };
   const AVX = (code, o) => (window.KomiksAvatars ? window.KomiksAvatars.el(code, o) : document.createTextNode(String(code).split('|')[0]));
   function playHero() {
     const K = C(), { h } = K;
@@ -422,13 +421,13 @@
     const ic = (n, c) => (window.KomiksIcons ? window.KomiksIcons.badge(n, c, 24) : null);
     const row = h('div', { class: 'ph-fame-row' });
     const fame = h('div', { class: 'ph-fame' }, h('h3', {}, T.fame), h('small', {}, T.fame_d), row);
-    fetch('api/players.php?sort=active', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).catch(() => null).then(j => {
-      const list = (j && j.ok && j.players) ? j.players.filter(p => (p.active || 0) > 0).slice(0, 6) : [];
+    fetch('api/players.php?sort=stars', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).catch(() => null).then(j => {
+      const list = (j && j.ok && j.players) ? j.players.slice(0, 6) : [];
       if (!list.length) { fame.remove(); return; }
       row.replaceChildren(...list.map((p, i) => h('a', { class: 'ph-winner' + (i === 0 ? ' champ' : ''), href: '#/player/c/' + p.code, style: { '--i': i } },
         h('span', { class: 'ph-plinth' }, AVX(p.avatar, { size: 78, mood: 'cheer', crown: i === 0 })),
         h('b', {}, i === 0 ? T.champ : p.name),
-        h('small', {}, (i === 0 ? p.name + ' · ' : '') + '🔥 ' + (p.active || p.streak || 0)))));
+        h('small', {}, (i === 0 ? p.name + ' · ' : '') + '⭐ ' + p.stars))));
     });
     return h('section', { class: 'play-hero' },
       h('div', { class: 'ph-left' },

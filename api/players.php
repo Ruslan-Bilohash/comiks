@@ -35,22 +35,27 @@ if (method() === 'GET') {
   }
   $where = []; $args = [];
   $qs = clean_text((string)($_GET['q'] ?? ''), 30);
-  if ($qs !== '') { $where[] = '(LOWER(name) LIKE ? OR code LIKE ?)'; $like = '%' . str_replace(['%', '_'], ['\%', '\_'], strtolower($qs)) . '%'; $args[] = $like; $args[] = strtoupper($like); }
+  if ($qs !== '') { $where[] = '(LOWER(p.name) LIKE ? OR p.code LIKE ?)'; $like = '%' . str_replace(['%', '_'], ['\%', '\_'], strtolower($qs)) . '%'; $args[] = $like; $args[] = strtoupper($like); }
   $learn = $_GET['learn'] ?? '';
-  if (in_array($learn, LEARN, true)) { $where[] = "(',' || learn || ',') LIKE ?"; $args[] = '%,' . $learn . ',%'; }
+  if (in_array($learn, LEARN, true)) { $where[] = "(',' || p.learn || ',') LIKE ?"; $args[] = '%,' . $learn . ',%'; }
   $level = $_GET['level'] ?? '';
-  if (in_array($level, LEVELS, true)) { $where[] = 'level = ?'; $args[] = $level; }
-  $w = $where ? ' WHERE ' . implode(' AND ', $where) : '';
-  if (is_mysql()) $w = str_replace("(',' || learn || ',')", "CONCAT(',', learn, ',')", $w);
-  $total = (int)one("SELECT COUNT(*) AS n FROM kl_players$w", $args)['n'];
-  $page = max(0, min(50, (int)($_GET['page'] ?? 0)));
-  // near=A2 — рекомендації: спершу гравці зі схожим рівнем навчання, далі активніші
-  $near = array_search($_GET['near'] ?? '', LEVELS, true);
-  $lvlNum = "(CASE level WHEN 'A1' THEN 0 WHEN 'A2' THEN 1 WHEN 'B1' THEN 2 WHEN 'B2' THEN 3 ELSE 0 END)";
+  if (in_array($level, LEVELS, true)) { $where[] = 'p.level = ?'; $args[] = $level; }
   $sort = (string)($_GET['sort'] ?? '');
-  $order = $near !== false ? "ABS($lvlNum - " . (int)$near . '), stars DESC, updated DESC'
-    : ($sort === 'stars' ? 'stars DESC, badges DESC' : ($sort === 'active' ? 'active DESC, seen DESC, stars DESC' : 'updated DESC'));
-  $rows = q("SELECT * FROM kl_players$w ORDER BY $order LIMIT " . PAGE . ' OFFSET ' . ($page * PAGE), $args)->fetchAll();
+  if ($sort === 'stars' || $sort === 'active') {
+    $where[] = 'COALESCE(u.is_demo, 0) = 0';
+    $where[] = 'p.stars > 0';
+  }
+  $w = $where ? ' WHERE ' . implode(' AND ', $where) : '';
+  if (is_mysql()) $w = str_replace("(',' || p.learn || ',')", "CONCAT(',', p.learn, ',')", $w);
+  $from = 'kl_players p LEFT JOIN kl_users u ON u.id = p.user_id';
+  $total = (int)one("SELECT COUNT(*) AS n FROM $from$w", $args)['n'];
+  $page = max(0, min(50, (int)($_GET['page'] ?? 0)));
+  $near = array_search($_GET['near'] ?? '', LEVELS, true);
+  $lvlNum = "(CASE p.level WHEN 'A1' THEN 0 WHEN 'A2' THEN 1 WHEN 'B1' THEN 2 WHEN 'B2' THEN 3 ELSE 0 END)";
+  $order = $near !== false ? "ABS($lvlNum - " . (int)$near . '), p.stars DESC, p.updated DESC'
+    : ($sort === 'stars' ? 'p.stars DESC, p.badges DESC'
+    : ($sort === 'active' ? 'p.active DESC, p.seen DESC, p.stars DESC' : 'p.updated DESC'));
+  $rows = q("SELECT p.* FROM $from$w ORDER BY $order LIMIT " . PAGE . ' OFFSET ' . ($page * PAGE), $args)->fetchAll();
   out(['ok' => true, 'total' => $total, 'page' => $page, 'players' => array_map('card_out', $rows)]);
 }
 
@@ -85,6 +90,7 @@ if ($action === 'upsert') {
     'stars' => max(0, min(100000, (int)($c['stars'] ?? 0))), 'badges' => max(0, min(100, (int)($c['badges'] ?? 0))), 'streak' => max(0, min(10000, (int)($c['streak'] ?? 0))),
     'act' => clean_text((string)($c['act'] ?? ''), 12), 'snap' => $snap, 'seen' => $now, 'updated' => $now, 'since' => (int)($prev['since'] ?? $now),
   ]);
+  if ($me && $me['friend_code'] === $code) refresh_rank($me);
   out(['ok' => true]);
 }
 if ($action === 'remove') {

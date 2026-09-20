@@ -339,7 +339,8 @@ function refresh_rank(array $u): void {
   $dayN = is_array($days) ? count($days) : 0;
   $math = max(0, (int)user_data_val($uid, 'mathBest', 0));
   $quizzes = max(0, (int)($stats['quizzes'] ?? 0));
-  $score = $stars * 10 + $tests * 5 + $dayN * 3 + $games * 4 + $race * 12 + min(400, $math);
+  /* Однакові правила для всіх: тести + ігри. Без ботів, без демо, без бонуса лише за вхід. */
+  $score = $stars * 10 + $tests * 5 + $games * 3 + $race * 10 + min(200, $math);
   $score = max(0, min(100000, $score));
   $active = max(0, min(100000, $dayN + $games + $tests + $quizzes + $race));
   $badges = max(0, min(100, (int)($stats['perfect'] ?? 0) + ($race > 0 ? 1 : 0) + ($math >= 150 ? 1 : 0)));
