@@ -3116,3 +3116,9 @@ a.day-task:hover { background: #fff6d6; }
   .main-nav a { padding: 6px 7px; font-size: .9rem; }
   .logo-text small { display: none; }
 }
+
+/* 🔍 «гравця не знайдено»: пояснення про приватність */
+.nf-box { display: grid; gap: 10px; }
+.nf-box h2 { margin: 0; }
+.nf-me { font-weight: 800; }
+.nf-done { font-weight: 800; color: #2e7d32; }

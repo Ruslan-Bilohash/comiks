@@ -8,7 +8,7 @@
   if (typeof document === 'undefined') return;
   const TX = {
     uk: {
-      title: '👤 Профіль гравця', me: 'Мій профіль', since: d => `з нами з ${d}`, private: '🔒 Гравець закрив свій профіль.', notfound: 'Гравця не знайдено.',
+      title: '👤 Профіль гравця', me: 'Мій профіль', since: d => `з нами з ${d}`, private: '🔒 Гравець закрив свій профіль.', notfound: 'Гравця не знайдено.', nf_why: 'Найчастіша причина — приватність: гравця видно в пошуку й у друзях лише тоді, коли він сам дозволив показ свого профілю. Перевір код друга ще раз — і попроси друга ввімкнути показ у налаштуваннях.', nf_me: 'Щоб тебе бачили друзі, увімкни показ профілю й собі:', nf_on: '🔎 Показати мене в пошуку', nf_set: '🔒 Приватність і налаштування', nf_done: '✅ Тепер тебе видно в пошуку',
       st: { read: 'комікси', tests: 'тести', stars: 'зірки', known: 'слова «знаю»', streak: 'днів поспіль', race: 'перемоги в гонці', rocket: 'рекорд Math Rocket', games: 'ігри разом' },
       badges: (a, b) => `🏅 Отримані значки · ${a} з ${b}`, recent: '📈 Останні результати', none: 'Ще немає результатів.',
       share_t: '🌍 Показ профілю', share_on: 'Дозволити бачити мій профіль, прогрес і результати', share_d: 'Інші гравці цього пристрою та ті, кому ти надішлеш посилання, побачать аватар, ім’я, зірки, значки й результати тестів. Пошта й пароль не показуються ніколи.',
@@ -19,7 +19,7 @@
       ex: { words50: ['50 слів', 'познач «знаю» 50 слів'], words200: ['Поліглот', '200 слів у двох курсах'], race1: ['Перша перемога', 'виграй Логік-гонку'], race10: ['Чемпіон гонок', '10 перемог у Логік-гонці'], rocket: ['Космонавт', '150 очок у Math Rocket'], games5: ['Командний гравець', '5 ігор разом'], collector: ['Колекціонер', '10 речей для аватара'], stars30: ['Зоряний', 'збери 30 зірок'] }
     },
     en: {
-      title: '👤 Player profile', me: 'My profile', since: d => `member since ${d}`, private: '🔒 This player keeps the profile private.', notfound: 'Player not found.',
+      title: '👤 Player profile', me: 'My profile', since: d => `member since ${d}`, private: '🔒 This player keeps the profile private.', notfound: 'Player not found.', nf_why: 'The usual reason is privacy: a player appears in search and in friend lists only after they allow their profile to be shown. Check the friend code again — and ask your friend to turn sharing on in settings.', nf_me: 'To let friends see you, turn your own profile sharing on:', nf_on: '🔎 Show me in search', nf_set: '🔒 Privacy and settings', nf_done: '✅ You are visible in search now',
       st: { read: 'comics', tests: 'tests', stars: 'stars', known: 'words “I know”', streak: 'day streak', race: 'race wins', rocket: 'Math Rocket best', games: 'group games' },
       badges: (a, b) => `🏅 Badges earned · ${a} of ${b}`, recent: '📈 Latest results', none: 'No results yet.',
       share_t: '🌍 Profile visibility', share_on: 'Let others see my profile, progress and results', share_d: 'Other players on this device and anyone you send the link to will see your avatar, name, stars, badges and test results. E-mail and password are never shown.',
@@ -30,7 +30,7 @@
       ex: { words50: ['50 words', 'mark 50 words as known'], words200: ['Polyglot', '200 words in both courses'], race1: ['First win', 'win the Logic Race'], race10: ['Race champion', '10 Logic Race wins'], rocket: ['Astronaut', '150 points in Math Rocket'], games5: ['Team player', '5 group games'], collector: ['Collector', '10 avatar items'], stars30: ['Star student', 'collect 30 stars'] }
     },
     no: {
-      title: '👤 Spillerprofil', me: 'Min profil', since: d => `medlem siden ${d}`, private: '🔒 Spilleren har en privat profil.', notfound: 'Fant ikke spilleren.',
+      title: '👤 Spillerprofil', me: 'Min profil', since: d => `medlem siden ${d}`, private: '🔒 Spilleren har en privat profil.', notfound: 'Fant ikke spilleren.', nf_why: 'Vanligste grunn er personvern: en spiller vises i søk og i vennelister først når han selv har tillatt at profilen vises. Sjekk vennekoden på nytt – og be vennen slå på deling i innstillingene.', nf_me: 'For at venner skal se deg, slå på deling av din egen profil:', nf_on: '🔎 Vis meg i søket', nf_set: '🔒 Personvern og innstillinger', nf_done: '✅ Nå er du synlig i søket',
       st: { read: 'tegneserier', tests: 'tester', stars: 'stjerner', known: 'ord «jeg kan»', streak: 'dager på rad', race: 'seire i løpet', rocket: 'rekord i raketten', games: 'spill sammen' },
       badges: (a, b) => `🏅 Merker · ${a} av ${b}`, recent: '📈 Siste resultater', none: 'Ingen resultater ennå.',
       share_t: '🌍 Synlig profil', share_on: 'La andre se profilen, fremgangen og resultatene mine', share_d: 'Andre spillere på denne enheten og alle som får lenken, ser avatar, navn, stjerner, merker og resultater. E-post og passord vises aldri.',
@@ -42,7 +42,7 @@
     }
   };
   TX.ar = {
-    title: '👤 ملف اللاعب', me: 'ملفي', since: d => `عضو منذ ${d}`, private: '🔒 هذا اللاعب يُبقي ملفه خاصًا.', notfound: 'لم يُعثر على اللاعب.',
+    title: '👤 ملف اللاعب', me: 'ملفي', since: d => `عضو منذ ${d}`, private: '🔒 هذا اللاعب يُبقي ملفه خاصًا.', notfound: 'لم يُعثر على اللاعب.', nf_why: 'السبب الأكثر شيوعًا هو الخصوصية: لا يظهر اللاعب في البحث وقوائم الأصدقاء إلا بعد أن يسمح هو بعرض ملفه. تحقّق من رمز الصديق مجددًا — واطلب منه تفعيل العرض في الإعدادات.', nf_me: 'لكي يراك أصدقاؤك، فعّل عرض ملفك أنت أيضًا:', nf_on: '🔎 أظهرني في البحث', nf_set: '🔒 الخصوصية والإعدادات', nf_done: '✅ صرت ظاهرًا في البحث الآن',
     st: { read: 'قصص', tests: 'اختبارات', stars: 'نجوم', known: 'كلمات «أعرفها»', streak: 'أيام متتالية', race: 'انتصارات السباق', rocket: 'أفضل نتيجة في Math Rocket', games: 'ألعاب جماعية' },
     badges: (a, b) => `🏅 الأوسمة · ${a} من ${b}`, recent: '📈 آخر النتائج', none: 'لا نتائج بعد.',
     share_t: '🌍 ظهور الملف', share_on: 'اسمح للآخرين برؤية ملفي وتقدّمي ونتائجي', share_d: 'سيرى الآخرون شخصيتك واسمك ونجومك وأوسمتك ونتائج اختباراتك. البريد وكلمة المرور لا يظهران أبدًا.',
@@ -303,17 +303,35 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
       h('div', { class: 'pl-cols' }, h('div', { class: 'box' }, h('h3', {}, px('recent')), recent),
         noWall ? null : wallOpts ? wall(wallOpts) : h('div', { class: 'box' }, h('h3', {}, px('wall')), h('p', { class: 'muted' }, px('wall_snap')))));
   }
+  /* Пояснення до «гравця не знайдено»: що робити тому, хто шукає, і що — тому, кого шукають. */
+  function notFoundBox(back = '#/players') {
+    const K = C(), { h } = K;
+    const shown = K.store.get('shareProfile', false);
+    const msg = h('p', { class: 'nf-done', hidden: true }, px('nf_done'));
+    const on = h('button', { class: 'btn accent', type: 'button', onclick: () => { setShare(true); on.hidden = true; msg.hidden = false; } }, px('nf_on'));
+    on.hidden = !!shown;
+    return h('section', { class: 'nf-page' }, K.pageHead(px('title'), back),
+      h('div', { class: 'box nf-box' },
+        h('h2', {}, '🔍 ' + px('notfound')),
+        h('p', {}, px('nf_why')),
+        h('p', { class: 'nf-me' }, px('nf_me')),
+        msg,
+        h('div', { class: 'row-left' }, on,
+          h('a', { class: 'btn', href: '#/privacy' }, px('nf_set')),
+          h('a', { class: 'btn', href: '#/players' }, dx('title')))));
+  }
+
   function render(id, arg) {
     const K = C(), { h } = K;
     const me = K.currentUser();
     if (id === 'c' && /^[A-HJ-NP-Z2-9]{6}$/.test(String(arg || '').toUpperCase())) return byCode(String(arg).toUpperCase());
-    if (id === 's') { const s = fromShare(arg); return s ? profileView(s, { shared: true, wallOpts: s.fc ? { code: s.fc } : null }) : h('section', {}, K.pageHead(px('title')), h('p', {}, px('notfound'))); }
+    if (id === 's') { const s = fromShare(arg); return s ? profileView(s, { shared: true, wallOpts: s.fc ? { code: s.fc } : null }) : notFoundBox('#/'); }
     if (!id || (me && id === me.id)) {
       if (!me) { location.hash = '#/login'; return h('div'); }
       return profileView(snapshot(''), { own: true, wallOpts: { localId: me.id, code: codeOf(''), own: true } });
     }
     const users = K.raw.get('comiks.users', {});
-    if (!users[id]) return h('section', {}, K.pageHead(px('title'), '#/players'), h('p', {}, px('notfound')));
+    if (!users[id]) return notFoundBox();
     if (!K.raw.get(`comiks.u.${id}.shareProfile`, false)) return h('section', {}, K.pageHead(px('title'), '#/players'), h('div', { class: 'box center' }, AV(K.raw.get(`comiks.u.${id}.avatar`, '🦊'), { size: 120, mood: 'sad' }), h('h2', {}, users[id].name), h('p', {}, px('private'))));
     return profileView(snapshot(id), { wallOpts: { localId: id, code: codeOf(id) } });
   }
@@ -458,7 +476,7 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
       if (F.server === false && !F.items.length) { results.replaceChildren(h('p', { class: 'hint' }, dx('off')), local()); return; }
       if (F.loading && !F.items.length) { results.replaceChildren(h('div', { class: 'dir-list' }, Array.from({ length: 6 }, () => h('div', { class: 'dir-card skel' }, h('i'), h('i'), h('i'))))); return; }
       results.replaceChildren(h('p', { class: 'dir-found' }, dx('found', F.total), !F.q && !F.level ? h('small', { class: 'dir-rec' }, ' · ' + dx('rec', levelOf())) : null),
-        F.items.length ? h('div', { class: 'dir-list' }, F.items.map((p, i) => dirCard(p, draw, i))) : h('div', { class: 'dir-empty' }, h('span', {}, '🔭'), h('p', {}, dx('none'))),
+        F.items.length ? h('div', { class: 'dir-list' }, F.items.map((p, i) => dirCard(p, draw, i))) : h('div', { class: 'dir-empty' }, h('span', {}, '🔭'), h('p', {}, dx('none')), h('p', { class: 'hint' }, px('nf_why')), h('a', { class: 'btn small', href: '#/privacy' }, px('nf_set'))),
         F.items.length < F.total ? h('button', { class: 'btn', type: 'button', onclick: () => { F.page++; load(true); } }, dx('more')) : null,
         local());
     }
@@ -500,7 +518,7 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
       const ok = await dirOk();
       const r = ok ? await fetch(DIR_API + '?code=' + encodeURIComponent(code), { cache: 'no-store' }).then(x => x.json()).catch(() => null) : null;
       const s = r && r.ok ? fromShare(r.player.snap) : null;
-      if (!s) { root.replaceChildren(K.pageHead(px('title'), '#/players'), h('p', {}, px('notfound'))); return; }
+      if (!s) { root.replaceChildren(notFoundBox()); return; }
       s.name = r.player.name; s.avatar = r.player.avatar;
       const view = profileView(s, { wallOpts: { code }, online: showOnline({ code, official: !!r.player.official }) });
       const act = socialButtons(code, () => root.replaceWith(byCode(code)));

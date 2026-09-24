@@ -2,7 +2,8 @@
 
 **Live demo → [bilohash.com/comiks](https://bilohash.com/comiks/)**
 
-Short illustrated stories in Norwegian (bokmål), from your first words up to B2. Every line is
+Short illustrated stories in Norwegian (bokmål), from your first words up to B2.
+*(Demo build — see [what is included](#%EF%B8%8F-this-repository-is-a-demo).)* Every line is
 voiced by a neural Norwegian voice, every word shows its translation when you hover or tap it, and
 every story ends with a test. Built for adults moving to Norway, for their children, and for the
 teachers who work with them.
@@ -11,13 +12,28 @@ teachers who work with them.
 
 ---
 
-## What is inside
+## ⚠️ This repository is a demo
+
+It holds the complete app — the router, the tests, the flashcards, the study plan, the games, the
+drawn icons and the build tools — with a **sample of the content**, so the project can be run and
+tested end to end. The full course lives at **[bilohash.com/comiks](https://bilohash.com/comiks/)**.
+
+| | in this repository | on the live site |
+|---|---|---|
+| 📚 Comics | **8** — two per level | **65**, A1 → B2 |
+| 📝 Word topics | **11** | **47** (972 words) |
+| 🔤 Dictionary | 357 words, the ones used in the demo stories | 2 010 words |
+| 🔊 Audio | the manifest only — the mp3s are generated | 9 929 recorded clips |
+| 🇬🇧 English course, 🇸🇦 Arabic translations | not included | included |
+| ⚙️ App, tests, plan, cards, games, tools | **everything** | everything |
+
+## What the app does
 
 | | |
 |---|---|
-| 📚 **65 comics** | A1 → B2: the shop, the doctor, NAV, a flat viewing, a job interview, the tax return, a water leak, the Norwegian exam |
-| 🔊 **9 929 voiced clips** | every line, every word and every praise phrase, recorded with Microsoft neural voices |
-| 📝 **972 words in 47 topics** | each with a drawn picture, audio and a translation |
+| 📚 **Voiced comics** | A1 → B2: the shop, the doctor, NAV, a flat viewing, a job interview, the tax return, the Norwegian exam |
+| 🔊 **Neural Norwegian voices** | every line, every word and every praise phrase |
+| 📝 **Words with drawn pictures** | each with audio and a translation |
 | 📐 **16 grammar topics** | tables, examples and tests: V2 word order, en/ei/et, tenses, prepositions |
 | 🎮 **Games** | Logic Race, Math Rocket, chess, play-together rooms with a QR code for the classroom |
 | 🌍 **4 interface languages** | Norwegian, English, Ukrainian, Arabic — the learning content is always Norwegian |
@@ -104,7 +120,7 @@ index.html              the whole app shell
 assets/                 app.js (router, quizzes, plan, cards) + one file per feature
   ├─ art.js             the comics are drawn as SVG in code, not stored as images
   ├─ pics*.js           128 drawn icons for words and tests
-  ├─ words.js grammar.js english.js math.js race.js chess.js rocket.js
+  ├─ words.js grammar.js math.js race.js chess.js rocket.js
   ├─ write.js exam.js placement.js call.js install.js news.js feedback.js
   └─ style.css          one stylesheet, CSS custom properties, dark mode, high contrast
 data/                   comics, dictionaries, word topics, grammar, audio manifest
@@ -132,7 +148,9 @@ python -m http.server 8941
 ```
 
 Then open <http://localhost:8941/>. Reading, tests, words, grammar, games, the plan and the
-flashcards all work from the files in this repository.
+flashcards all work from the files in this repository — with the eight demo stories.
+
+`tools/make-demo.js` is what trims a full copy down to this demo set.
 
 **The server side is not part of this repository.** Accounts, profile walls, feedback, the AI calls,
 the writing check and the subscription live in a PHP API that is not published here, so the pages
