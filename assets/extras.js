@@ -34,7 +34,7 @@
         ['🔤', 'Алфавіт і звуки', '29 літер, голосні, дзвінкі й глухі приголосні, дифтонги, звукосполучення, німі літери, довгі й короткі голосні, конструктор складів.', '#/alphabet'],
         ['🔢', 'Числа й годинник', 'Числа від 0 до 1000 із конструктором; «Hva er klokka?» — як норвежці називають час (halv ni = 8:30).', '#/numbers'],
         ['🧮', 'Математика', 'Таблиця множення з картинками, тренажер (+ − × ÷) і космічна гра «Math Rocket». Кожен приклад читається норвезькою: «tre ganger fire er tolv».', '#/math'],
-        ['🇬🇧', 'Англійська', 'Окремий курс в іншому стилі коміксу: 8 історій, британські голоси, тести англійською, 400+ слів за темами з позначкою «Знаю».', '#/english'],
+        ['🇬🇧', 'Англійська', 'Окремий курс в іншому стилі коміксу: 8 історій, британські голоси, тести англійською, {n} слів за темами з позначкою «Знаю».', '#/english'],
         ['🧩', 'Тести', 'Тести до кожного коміксу, рівнів A1–B2, граматики, алфавіту, чисел і годинника. Для дітей — 10 питань і 3 варіанти, для дорослих — 14 і 4.', '#/tests'],
         ['🎮', 'Гра разом', 'Кімнати з QR-кодом для класу чи друзів. Ведучий обирає тему (або «🎲 Випадкова кімната»), учасники відповідають на телефонах на час. Питання чесні для всіх — без імен персонажів: відповідь видно на малюнку чи чути в озвученні. На телефоні гра займає весь екран.', '#/game'],
         ['🏆', 'Рейтинг', 'Переможці ігор і учні з акаунтами на цьому пристрої: бали, перемоги, точність і швидкість.', '#/rating'],
@@ -81,7 +81,7 @@
         ['🔤', 'Alphabet and sounds', '29 letters, vowels, voiced and voiceless consonants, diphthongs, letter combinations, silent letters, long and short vowels, a syllable builder.', '#/alphabet'],
         ['🔢', 'Numbers and the clock', 'Numbers from 0 to 1000 with a builder; “Hva er klokka?” — how Norwegians tell the time (halv ni = 8:30).', '#/numbers'],
         ['🧮', 'Maths', 'Times tables with pictures, a trainer (+ − × ÷) and the space game “Math Rocket”. Every sum is read aloud in Norwegian.', '#/math'],
-        ['🇬🇧', 'English', 'A separate course in a different comic style: 8 stories, British voices, tests in English and 400+ words by topic.', '#/english'],
+        ['🇬🇧', 'English', 'A separate course in a different comic style: 8 stories, British voices, tests in English and {n} words by topic.', '#/english'],
         ['🧩', 'Tests', 'Tests for every comic, levels A1–B2, grammar, alphabet, numbers and the clock. Children get 10 questions with 3 options, adults 14 with 4.', '#/tests'],
         ['🎮', 'Play together', 'QR-code rooms for classes or friends. The host picks a topic (or “🎲 Random room”) and players answer on their phones against the clock. Questions are fair — no character names: the answer is visible in the picture or audible. On a phone the game fills the whole screen.', '#/game'],
         ['🏆', 'Ranking', 'Game winners and students with accounts on this device: points, wins, accuracy and speed.', '#/rating'],
@@ -176,7 +176,7 @@
       ['🔤', 'الحروف والأصوات', '29 حرفًا، الحركات، الحروف الساكنة، التركيبات، الحروف الصامتة، مركّب المقاطع.', '#/alphabet'],
       ['🔢', 'الأرقام والساعة', 'الأرقام من 0 إلى 1000 مع مركّب؛ «Hva er klokka?» — كيف يقول النرويجيون الوقت (halv ni = 8:30).', '#/numbers'],
       ['🧮', 'الرياضيات', 'جدول الضرب بالصور ومدرّب (+ − × ÷) ولعبة «Math Rocket» الفضائية. كل مسألة تُقرأ بالنرويجية.', '#/math'],
-      ['🇬🇧', 'الإنجليزية', 'دورة منفصلة: 8 قصص بأصوات بريطانية واختبارات بالإنجليزية وأكثر من 400 كلمة.', '#/english'],
+      ['🇬🇧', 'الإنجليزية', 'دورة منفصلة: 8 قصص بأصوات بريطانية واختبارات بالإنجليزية و{n} كلمة.', '#/english'],
       ['🧩', 'الاختبارات', 'اختبارات لكل قصة والمستويات A1–B2 والقواعد والحروف والأرقام والساعة.', '#/tests'],
       ['🎮', 'العبوا معًا', 'غرف برمز QR للصف أو الأصدقاء. يختار المضيف موضوعًا ويجيب اللاعبون على هواتفهم في وقت محدّد.', '#/game'],
       ['♟', 'الشطرنج', 'شطرنج ثلاثي الأبعاد مع روبوتات وتصنيف Elo وبطولات للصف. النقلات بالنرويجية.', '#/chess'],
@@ -335,7 +335,7 @@
     const copy = h('button', { class: 'btn small', type: 'button', onclick: async () => { try { await navigator.clipboard.writeText(SITE); copy.textContent = ex('qr_copied'); } catch { /* ignore */ } } }, ex('qr_copy'));
     const share = shareButton(SITE);
     box.replaceChildren(h('div', { class: 'qr-promo-inner' }, code,
-      h('div', { class: 'qr-promo-text' }, h('h3', {}, ex('qr_title')), h('p', {}, ex('qr_text')), h('a', { class: 'qr-promo-url', href: SITE }, SITE.replace(/^https:\/\//, '')), h('div', { class: 'row-left' }, copy, share))));
+      h('div', { class: 'qr-promo-text' }, h('h3', {}, ex('qr_title')), h('p', {}, ex('qr_text')), h('a', { class: 'qr-promo-url', href: SITE }, SITE.replace(/^https:\/\//, '')), h('div', { class: 'row-left' }, copy, share, window.KomiksFeedback ? window.KomiksFeedback.button('btn small') : null, window.KomiksInstall ? window.KomiksInstall.button('btn small accent') : null))));
     loadQr().then(() => { try { const qr = window.qrcode(0, 'M'); qr.addData(SITE); qr.make(); code.replaceChildren(K.svgEl(qr.createSvgTag({ cellSize: 6, margin: 2, scalable: true }))); } catch { /* ignore */ } }).catch(() => {});
   }
 
@@ -347,10 +347,10 @@
       lead: ['🏁 ГРА', 'Логік-гонка', 'Живі аватари мчать доріжками: хто швидше розв’язує логічні задачі, той обганяє. Траса на моніторі, відповіді — на телефонах. Можна й проти ботів!', '#/race', '🏁 Відкрити'],
       cards: [
         ['🚀 ГРА', 'Math Rocket', 'Космічна гра на 60 секунд: розв’язуй приклади, збивай астероїди й слухай кожну відповідь норвезькою.', '#/math/rocket'],
-        ['🇬🇧 КУРС', 'Англійська через комікси', 'Окремий курс в іншому стилі малюнка: 8 історій, британські голоси, тести англійською й 400+ слів за темами.', '#/english'],
+        ['🇬🇧 КУРС', 'Англійська через комікси', 'Окремий курс в іншому стилі малюнка: 8 історій, британські голоси, тести англійською й {n} слів за темами.', '#/english'],
         ['🧮 МАТЕМАТИКА', 'Таблиця множення з картинками', 'Натисни на клітинку — побачиш згенерований малюнок і почуєш «tre ganger fire er tolv».', '#/math'],
         ['📐 ГРАМАТИКА', 'hun, han, vi, dere, de', '16 тем від A1 до B2 з таблицями, прикладами й тестами.', '#/grammar'],
-        ['📝 СЛОВА', 'Познач, що вже знаєш', '400+ слів з емодзі й озвученням. Позначка «✓ Знаю» рахується в кабінеті.', '#/words'],
+        ['📝 СЛОВА', 'Познач, що вже знаєш', '{n} слів у {nt} темах — з малюнками й озвученням. Позначка «✓ Знаю» рахується в кабінеті.', '#/words'],
         ['🏆 РЕЙТИНГ', 'Хто найкращий у класі?', 'Переможці ігор, бали, точність і швидкість відповідей.', '#/rating']
       ]
     },
@@ -359,10 +359,10 @@
       lead: ['🏁 GAME', 'Logic Race', 'Live avatars race along the track: solve logic puzzles faster to overtake. The track on the monitor, answers on phones. You can also race bots!', '#/race', '🏁 Open'],
       cards: [
         ['🚀 GAME', 'Math Rocket', 'A 60-second space game: solve sums, shoot asteroids and hear every answer in Norwegian.', '#/math/rocket'],
-        ['🇬🇧 COURSE', 'English through comics', 'A separate course in a different drawing style: 8 stories, British voices, tests in English and 400+ words by topic.', '#/english'],
+        ['🇬🇧 COURSE', 'English through comics', 'A separate course in a different drawing style: 8 stories, British voices, tests in English and {n} words by topic.', '#/english'],
         ['🧮 MATHS', 'Times tables with pictures', 'Tap a cell to see a generated picture and hear “tre ganger fire er tolv”.', '#/math'],
         ['📐 GRAMMAR', 'hun, han, vi, dere, de', '16 topics from A1 to B2 with tables, examples and tests.', '#/grammar'],
-        ['📝 WORDS', 'Mark what you already know', '400+ words with emoji and audio. The “✓ I know it” mark is counted in your account.', '#/words'],
+        ['📝 WORDS', 'Mark what you already know', '{n} words in {nt} topics, with pictures and audio. The “✓ I know it” mark is counted in your account.', '#/words'],
         ['🏆 RANKING', 'Who is the best in class?', 'Game winners, points, accuracy and answer speed.', '#/rating']
       ]
     },
@@ -374,7 +374,7 @@
         ['🇬🇧 KURS', 'Engelsk med tegneserier', 'Et eget kurs i en annen tegnestil: 8 historier, britiske stemmer og tester på engelsk.', '#/english'],
         ['🧮 MATTE', 'Gangetabellen med bilder', 'Trykk på en rute for å se et bilde og høre «tre ganger fire er tolv».', '#/math'],
         ['📐 GRAMMATIKK', 'hun, han, vi, dere, de', '16 temaer fra A1 til B2 med tabeller, eksempler og tester.', '#/grammar'],
-        ['📝 ORD', 'Merk det du kan', 'Over 400 ord med emoji og lyd. Merket «✓ Jeg kan det» telles på siden din.', '#/words'],
+        ['📝 ORD', 'Merk det du kan', '{n} ord i {nt} temaer, med bilder og lyd. Merket «✓ Jeg kan det» telles på siden din.', '#/words'],
         ['🏆 RANGERING', 'Hvem er best i klassen?', 'Vinnere, poeng, treff og svartid.', '#/rating']
       ]
     }
@@ -387,9 +387,9 @@
       ['♟ جديد', 'الشطرنج ثلاثي الأبعاد', 'العب مع الروبوتات أو مع صديق أو نظّم بطولة للصف. تصنيف Elo والنقلات بالنرويجية.', '#/chess'],
       ['🏁 لعبة', 'سباق المنطق', 'شخصيات تتسابق: من يحلّ الألغاز أسرع يتقدّم. المضمار على الشاشة والإجابات على الهواتف.', '#/race'],
       ['🚀 لعبة', 'Math Rocket', 'لعبة فضائية: حلّ المسائل وأسقط الكويكبات واسمع كل إجابة بالنرويجية.', '#/math/rocket'],
-      ['🇬🇧 دورة', 'الإنجليزية بالقصص المصوّرة', '8 قصص بأصوات بريطانية واختبارات بالإنجليزية وأكثر من 400 كلمة.', '#/english'],
+      ['🇬🇧 دورة', 'الإنجليزية بالقصص المصوّرة', '8 قصص بأصوات بريطانية واختبارات بالإنجليزية و{n} كلمة.', '#/english'],
       ['📐 القواعد', 'hun, han, vi, dere, de', '16 موضوعًا من A1 إلى B2 مع جداول وأمثلة واختبارات.', '#/grammar'],
-      ['📝 الكلمات', 'علّم ما تعرفه', 'أكثر من 400 كلمة بالرموز التعبيرية والصوت.', '#/words'],
+      ['📝 الكلمات', 'علّم ما تعرفه', '{n} كلمة في {nt} موضوعًا، بالصور والصوت.', '#/words'],
       ['🏆 التصنيف', 'من الأفضل في الصف؟', 'الفائزون والنقاط والدقة وسرعة الإجابة.', '#/rating']
     ]
   };
@@ -397,20 +397,20 @@
   const PH = {
     uk: { kick: '🎮 ГРАЙ РАЗОМ', title: 'Створи свого героя — і змагайся з сім’єю чи друзями', text: 'Обери тваринку, колір, шапку й окуляри — герой закріплюється за твоїм акаунтом і бігає, літає й стоїть на подіумі в усіх іграх. Рідкісні речі випадають зі скрині за перемоги.',
       make: '✨ Створити героя', edit: '🎨 Змінити героя', steps: ['Створи героя', 'Відкрий гру на ТВ чи ноутбуці', 'Рідні скануть QR телефонами — і старт!'],
-      together: '👨‍👩‍👧 Разом', solo: '🙋 Сам', games: [['flag', '#2e7d32', 'Логік-гонка', 'Герої мчать доріжками — хто швидше розв’язує логічні задачі.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Космічна арифметика на 60 секунд.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Шахи', '3D-шахи: турнір для класу або партія з другом.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Гра разом', 'Вікторина норвезькою для всієї родини чи класу.', '#/game', '#/tests']],
+      together: '👨‍👩‍👧 Разом', solo: '🙋 Сам', games: [['flag', '#2e7d32', 'Логік-гонка', 'Герої мчать доріжками — хто швидше розв’язує логічні задачі.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Космічна арифметика на 60 секунд.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Шахи', '3D-шахи: турнір для класу або партія з другом.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Гра разом', 'Вікторина норвезькою для всієї родини чи класу.', '#/game', '#/tests'], ['comic', '#8e24aa', 'Кімната дієслів', 'Норвезькі дієслова в інтерактивних коміксах і вправах — окрема кімната для класу.', 'https://bilohash.com/comiks/room_1/', 'https://bilohash.com/comiks/room_1/']],
       fame: '🏆 Найкращий гравець', fame_d: 'Справедливий рейтинг з тестів і ігор', champ: 'Найкращий гравець' },
     en: { kick: '🎮 PLAY TOGETHER', title: 'Create your hero — and compete with family or friends', text: 'Pick an animal, colour, hat and glasses — your hero is tied to your account and runs, flies and stands on the podium in every game. Rare items drop from chests when you win.',
       make: '✨ Create a hero', edit: '🎨 Edit your hero', steps: ['Create your hero', 'Open a game on the TV or laptop', 'Family scans the QR with phones — go!'],
-      together: '👨‍👩‍👧 Together', solo: '🙋 Solo', games: [['flag', '#2e7d32', 'Logic Race', 'Heroes race along the track — whoever solves logic puzzles faster.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Space arithmetic in 60 seconds.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Chess', '3D chess: a class tournament or a game with a friend.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Play together', 'A Norwegian quiz for the whole family or class.', '#/game', '#/tests']],
+      together: '👨‍👩‍👧 Together', solo: '🙋 Solo', games: [['flag', '#2e7d32', 'Logic Race', 'Heroes race along the track — whoever solves logic puzzles faster.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'Space arithmetic in 60 seconds.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Chess', '3D chess: a class tournament or a game with a friend.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Play together', 'A Norwegian quiz for the whole family or class.', '#/game', '#/tests'], ['comic', '#8e24aa', 'Verb room', 'Norwegian verbs in interactive comics and exercises — a separate room for the class.', 'https://bilohash.com/comiks/room_1/', 'https://bilohash.com/comiks/room_1/']],
       fame: '🏆 Best player', fame_d: 'Fair ranking from tests and games', champ: 'Best player' },
     no: { kick: '🎮 SPILL SAMMEN', title: 'Lag din egen helt – og konkurrer med familie eller venner', text: 'Velg dyr, farge, lue og briller – helten hører til kontoen din og løper, flyr og står på pallen i alle spill. Sjeldne ting finner du i kister når du vinner.',
       make: '✨ Lag en helt', edit: '🎨 Endre helten', steps: ['Lag helten din', 'Åpne et spill på TV-en eller PC-en', 'Familien skanner QR-koden med mobilen – start!'],
-      together: '👨‍👩‍👧 Sammen', solo: '🙋 Alene', games: [['flag', '#2e7d32', 'Logikkløpet', 'Heltene løper om kapp – den som løser oppgavene raskest.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Matte-raketten', 'Romregning på 60 sekunder.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Sjakk', '3D-sjakk: klasseturnering eller et parti med en venn.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Spill sammen', 'Norsk quiz for hele familien eller klassen.', '#/game', '#/tests']],
+      together: '👨‍👩‍👧 Sammen', solo: '🙋 Alene', games: [['flag', '#2e7d32', 'Logikkløpet', 'Heltene løper om kapp – den som løser oppgavene raskest.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Matte-raketten', 'Romregning på 60 sekunder.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'Sjakk', '3D-sjakk: klasseturnering eller et parti med en venn.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'Spill sammen', 'Norsk quiz for hele familien eller klassen.', '#/game', '#/tests'], ['comic', '#8e24aa', 'Verbrommet', 'Norske verb i interaktive tegneserier og øvelser – et eget rom for klassen.', 'https://bilohash.com/comiks/room_1/', 'https://bilohash.com/comiks/room_1/']],
       fame: '🏆 Beste spiller', fame_d: 'Rettferdig ranking fra tester og spill', champ: 'Beste spiller' }
   };
   PH.ar = { kick: '🎮 العبوا معًا', title: 'أنشئ بطلك — وتنافس مع العائلة أو الأصدقاء', text: 'اختر حيوانًا ولونًا وقبعة ونظارة — بطلك مرتبط بحسابك ويركض ويطير ويقف على منصة التتويج في كل الألعاب. تسقط أغراض نادرة من الصناديق عند الفوز.',
     make: '✨ أنشئ بطلًا', edit: '🎨 عدّل بطلك', steps: ['أنشئ بطلك', 'افتح لعبة على التلفاز أو الحاسوب', 'تمسح العائلة رمز QR بالهواتف — انطلقوا!'],
-    together: '👨‍👩‍👧 معًا', solo: '🙋 وحدي', games: [['flag', '#2e7d32', 'سباق المنطق', 'الأبطال يتسابقون — الأسرع في حلّ الألغاز يفوز.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'حساب فضائي في 60 ثانية.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'الشطرنج', 'شطرنج ثلاثي الأبعاد: بطولة للصف أو مباراة مع صديق.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'العبوا معًا', 'مسابقة بالنرويجية للعائلة أو الصف.', '#/game', '#/tests']],
+    together: '👨‍👩‍👧 معًا', solo: '🙋 وحدي', games: [['flag', '#2e7d32', 'سباق المنطق', 'الأبطال يتسابقون — الأسرع في حلّ الألغاز يفوز.', '#/race/host', '#/race/bots'], ['rocket', '#e53935', 'Math Rocket', 'حساب فضائي في 60 ثانية.', '#/math/race', '#/math/rocket'], ['chess', '#37474f', 'الشطرنج', 'شطرنج ثلاثي الأبعاد: بطولة للصف أو مباراة مع صديق.', '#/chess/host', '#/chess'], ['gamepad', '#1e88e5', 'العبوا معًا', 'مسابقة بالنرويجية للعائلة أو الصف.', '#/game', '#/tests'], ['comic', '#8e24aa', 'غرفة الأفعال', 'الأفعال النرويجية في قصص وتمارين تفاعلية — غرفة خاصة للصف.', 'https://bilohash.com/comiks/room_1/', 'https://bilohash.com/comiks/room_1/']],
     fame: '🏆 أفضل لاعب', fame_d: 'تصنيف عادل من الاختبارات والألعاب', champ: 'أفضل لاعب' };
   const AVX = (code, o) => (window.KomiksAvatars ? window.KomiksAvatars.el(code, o) : document.createTextNode(String(code).split('|')[0]));
   function playHero() {
@@ -434,7 +434,7 @@
         h('span', { class: 'jr-kick' }, T.kick), h('h2', {}, T.title), h('p', {}, T.text),
         h('ol', { class: 'ph-steps' }, T.steps.map(s => h('li', {}, s))),
         h('div', { class: 'ph-games' }, T.games.map(([icon, col, name, desc, together, solo]) => h('div', { class: 'ph-game', style: { '--c': col } },
-          ic(icon, col), h('div', { class: 'ph-game-t' }, h('b', {}, name), h('small', {}, desc)),
+          ic(icon, col), h('div', { class: 'ph-game-t' }, h('b', {}, name), h('small', {}, num(desc))),
           h('div', { class: 'ph-game-a' }, h('a', { class: 'btn accent', href: together }, T.together), h('a', { class: 'btn', href: solo }, T.solo)))))),
       h('div', { class: 'ph-right' },
         h('div', { class: 'ph-spot' }, h('div', { class: 'ph-me' }, AVX(me, { size: 190, mood: 'cheer' })), h('span', { class: 'ph-floor' })),
@@ -470,11 +470,16 @@
     return h('section', { class: 'sitemap' }, K.pageHead(T.title),
       h('div', { class: 'sm-cols' },
         h('div', { class: 'sm-box' }, h('h3', {}, T.learn), links([['#/', nav('comics')], ['#/words', nav('words')], ['#/grammar', nav('grammar')], ['#/english', nav('english')], ['#/math', nav('math')], ['#/alphabet', nav('alphabet')], ['#/numbers', nav('numbers')], ['#/cards', nav('cards')], ['#/plan', nav('plan')], ['#/tests', nav('tests')]])),
-        h('div', { class: 'sm-box' }, h('h3', {}, T.games), links([['#/race', '🏁 ' + nav('race')], ['#/race/host', '📺 ' + nav('race') + ' · QR'], ['#/math/rocket', '🚀 Math Rocket'], ['#/math/race', '👥 Math Rocket · QR'], ['#/game', nav('game')], ['#/rating', nav('rating')]])),
-        h('div', { class: 'sm-box' }, h('h3', {}, T.me), links([['#/account', nav('account') || '👤'], ['#/avatar', '🎨 Avatar'], ['#/help', nav('help') || '❓']]))),
+        h('div', { class: 'sm-box' }, h('h3', {}, T.games), links([['#/race', '🏁 ' + nav('race')], ['#/race/host', '📺 ' + nav('race') + ' · QR'], ['#/math/rocket', '🚀 Math Rocket'], ['#/math/race', '👥 Math Rocket · QR'], ['#/game', nav('game')], ['#/chess', '♟ ' + nav('chess')], ['#/rating', nav('rating')]])),
+        h('div', { class: 'sm-box' }, h('h3', {}, T.me), links([['#/account', nav('account') || '👤'], ['#/avatar', '🎨 Avatar'], ['#/messages', '✉️'], ['#/privacy', '🔒'], ['#/help', nav('help') || '❓'], ['#/whatsnew', '✨']]))),
       h('h2', { class: 'sec-title' }, T.comics(K.COMICS.length)),
       h('div', { class: 'sm-cols' }, groups.map(([l, list]) => h('div', { class: 'sm-box' }, h('h3', {}, T.level(l)), links(list.map(c => [`#/read/${c.id}`, titleOf(c)]))))));
   }
+  // 📝 скільки слів у темах насправді — підставляємо замість {n}, щоб цифра не старіла
+  const NW = () => ((window.WORDS || {}).themes || []).reduce((n, t) => n + t.words.length, 0);
+  const NT = () => ((window.WORDS || {}).themes || []).length;
+  const num = t => String(t).replace(/\{n\}/g, NW()).replace(/\{nt\}/g, NT());
+
   function journal() {
     const K = C(), { h } = K;
     const T = JX[K.ui] || JX.en || JX.uk;
@@ -487,7 +492,7 @@
           h('span', { class: 'jr-kick' }, kick), h('h2', {}, title), h('p', {}, text),
           leadArt(),
           h('div', { class: 'row-left' }, h('a', { class: 'btn accent big', href }, T.try), h('a', { class: 'btn', href }, extra))),
-        h('div', { class: 'jr-cards' }, T.cards.map(([k, t, p, hr]) => h('a', { class: 'jr-card', href: hr }, h('span', { class: 'jr-kick' }, k), h('b', {}, t), h('span', { class: 'jr-text' }, p), h('span', { class: 'jr-try' }, T.try))))));
+        h('div', { class: 'jr-cards' }, T.cards.map(([k, t, p, hr]) => h('a', { class: 'jr-card', href: hr }, h('span', { class: 'jr-kick' }, k), h('b', {}, t), h('span', { class: 'jr-text' }, num(p)), h('span', { class: 'jr-try' }, T.try))))));
   }
 
   window.KomiksExtras = { renderRating, renderHelp, qrPromo, saveGame, journal, playHero, renderSitemap, shareButton, text: ex };

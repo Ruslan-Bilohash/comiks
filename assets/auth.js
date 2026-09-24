@@ -65,23 +65,23 @@
     err: { wrong: 'بريد أو كلمة مرور خاطئة.', unverified: 'لم يُؤكَّد البريد بعد. تحقّق من الرسالة أو أرسلها مجددًا.', pass_short: 'كلمة المرور قصيرة جدًا — 8 أحرف على الأقل.', pass_weak: 'كلمة المرور هذه بسيطة جدًا.', pass_long: 'كلمة المرور طويلة جدًا.', name: 'اكتب اسمًا (2–30 حرفًا، بلا روابط).', email: 'تحقّق من عنوان البريد.', consent: 'يلزم الموافقة على الشروط.', slow_down: 'محاولات كثيرة. حاول بعد بضع دقائق.', token: 'انتهت صلاحية الرابط — اطلب رابطًا جديدًا.', mismatch: 'كلمتا المرور غير متطابقتين.', net: 'لا يوجد اتصال بالخادم. حاول مجددًا.', server: 'خطأ في الخادم. حاول لاحقًا.', csrf: 'حدّث الصفحة وحاول مجددًا.', blocked: 'هذا الحساب محظور. تواصل معنا إن كان ذلك خطأ.', demo: 'لا يمكن تغيير كلمة مرور الحساب التجريبي أو حذفه.' }
   };
   const PX3 = {
-    uk: { inv_banner: n => `🎟 Тебе запросив(ла) ${n}! Цей акаунт буде безкоштовним назавжди 💎`, inv_bad: 'Це запрошення вже використане або застаріло — можна зареєструватися звичайно.',
+    uk: { share_t: '🔎 Показувати мене в пошуку гравців', share_d: 'Інші учні зможуть знайти тебе за ім’ям, побачити аватар і зірки та покликати грати. Пошта не показується ніколи. Змінити можна в «🔒 Конфіденційність».', inv_banner: n => `🎟 Тебе запросив(ла) ${n}! Цей акаунт буде безкоштовним назавжди 💎`, inv_bad: 'Це запрошення вже використане або застаріло — можна зареєструватися звичайно.',
       premium: '💎 Преміум — безкоштовно назавжди', staff: { admin: '👑 Адміністратор', moderator: '🛡 Модератор' }, inv_t: '🎟 Запросити друга', inv_d: 'Друзі, яких ти запросиш, отримають безкоштовний акаунт назавжди. Посилання одноразове й діє 30 днів.',
       inv_new: '🎟 Створити посилання', copy: '📋 Копіювати', copied: 'Скопійовано ✓', share: '📤 Поділитися', inv_used: n => `✅ ${n} приєднався(лася)`, inv_wait: d => `⏳ чекає до ${d}`, inv_old: '⌛ застаріло', inv_list: 'Мої запрошення',
       imp_t: '📥 Перенести прогрес з цього пристрою', imp_d: 'Зірки, пройдені тести, слова, аватар і код друга з локального акаунта перейдуть у серверний — найкращі результати зберігаються.', imp_guest: 'Гостьовий прогрес', imp_done: n => `Готово! Перенесено записів: ${n}. Оновлюємо сторінку…`,
       warn_t: 'Так писати не можна 🙅', warn_d: 'Модератор прибрав твій допис зі стіни. Будь добрим до інших — пиши те, що приємно читати.', ban_t: 'Пауза для стіни ⏸️', ban_d: 'Модератор прибрав твій допис і тимчасово заборонив писати на стінах. Грати й навчатися можна далі!', your_text: 'Твій допис:', understood: 'Зрозуміло 👍' },
-    en: { inv_banner: n => `🎟 ${n} invited you! This account will be free forever 💎`, inv_bad: 'This invitation is already used or expired — you can still sign up normally.',
+    en: { share_t: '🔎 Show me in player search', share_d: 'Other learners can find you by name, see your avatar and stars and invite you to play. Your email is never shown. Change it any time in “🔒 Privacy”.', inv_banner: n => `🎟 ${n} invited you! This account will be free forever 💎`, inv_bad: 'This invitation is already used or expired — you can still sign up normally.',
       premium: '💎 Premium — free forever', staff: { admin: '👑 Administrator', moderator: '🛡 Moderator' }, inv_t: '🎟 Invite a friend', inv_d: 'Friends you invite get a free account forever. Each link works once and lasts 30 days.',
       inv_new: '🎟 Create a link', copy: '📋 Copy', copied: 'Copied ✓', share: '📤 Share', inv_used: n => `✅ ${n} joined`, inv_wait: d => `⏳ waiting until ${d}`, inv_old: '⌛ expired', inv_list: 'My invitations',
       imp_t: '📥 Move progress from this device', imp_d: 'Stars, finished tests, words, avatar and friend code from the local account move into your server account — the best results are kept.', imp_guest: 'Guest progress', imp_done: n => `Done! Records moved: ${n}. Reloading…`,
       warn_t: 'That is not OK 🙅', warn_d: 'A moderator removed your comment from a wall. Be kind to others — write things that are nice to read.', ban_t: 'Wall pause ⏸️', ban_d: 'A moderator removed your comment and paused your wall writing for a while. You can still play and learn!', your_text: 'Your comment:', understood: 'Got it 👍' },
-    no: { inv_banner: n => `🎟 ${n} har invitert deg! Denne kontoen blir gratis for alltid 💎`, inv_bad: 'Invitasjonen er brukt eller utløpt – du kan registrere deg som vanlig.',
+    no: { share_t: '🔎 Vis meg i spillersøket', share_d: 'Andre elever kan finne deg på navn, se avataren og stjernene dine og invitere deg til spill. E-posten vises aldri. Du kan endre dette i «🔒 Personvern».', inv_banner: n => `🎟 ${n} har invitert deg! Denne kontoen blir gratis for alltid 💎`, inv_bad: 'Invitasjonen er brukt eller utløpt – du kan registrere deg som vanlig.',
       premium: '💎 Premium – gratis for alltid', staff: { admin: '👑 Administrator', moderator: '🛡 Moderator' }, inv_t: '🎟 Inviter en venn', inv_d: 'Venner du inviterer, får en gratis konto for alltid. Hver lenke virker én gang i 30 dager.',
       inv_new: '🎟 Lag en lenke', copy: '📋 Kopier', copied: 'Kopiert ✓', share: '📤 Del', inv_used: n => `✅ ${n} ble med`, inv_wait: d => `⏳ venter til ${d}`, inv_old: '⌛ utløpt', inv_list: 'Mine invitasjoner',
       imp_t: '📥 Flytt fremgang fra denne enheten', imp_d: 'Stjerner, fullførte tester, ord, avatar og vennekode fra den lokale kontoen flyttes til serverkontoen – de beste resultatene beholdes.', imp_guest: 'Gjestefremgang', imp_done: n => `Ferdig! Flyttet ${n} poster. Laster inn på nytt …`,
       warn_t: 'Sånn kan vi ikke skrive 🙅', warn_d: 'En moderator fjernet innlegget ditt fra en vegg. Vær snill mot andre – skriv noe som er hyggelig å lese.', ban_t: 'Pause fra veggen ⏸️', ban_d: 'En moderator fjernet innlegget ditt og satte skriving på vegger på pause en stund. Du kan fortsatt spille og lære!', your_text: 'Innlegget ditt:', understood: 'Skjønner 👍' }
   };
-  PX3.ar = { inv_banner: n => `🎟 دعاك ${n}! سيكون هذا الحساب مجانيًا إلى الأبد 💎`, inv_bad: 'هذه الدعوة مستخدمة أو منتهية — يمكنك التسجيل بشكل عادي.',
+  PX3.ar = { share_t: '🔎 أظهرني في البحث عن اللاعبين', share_d: 'يمكن للمتعلّمين الآخرين إيجادك بالاسم ورؤية شخصيتك ونجومك ودعوتك للعب. لا يظهر بريدك أبدًا. يمكنك تغيير ذلك في «🔒 الخصوصية».', inv_banner: n => `🎟 دعاك ${n}! سيكون هذا الحساب مجانيًا إلى الأبد 💎`, inv_bad: 'هذه الدعوة مستخدمة أو منتهية — يمكنك التسجيل بشكل عادي.',
     premium: '💎 مميّز — مجاني إلى الأبد', staff: { admin: '👑 مدير', moderator: '🛡 مشرف' }, inv_t: '🎟 ادعُ صديقًا', inv_d: 'الأصدقاء الذين تدعوهم يحصلون على حساب مجاني إلى الأبد. كل رابط يُستخدم مرة واحدة ويصلح 30 يومًا.',
     inv_new: '🎟 أنشئ رابطًا', copy: '📋 نسخ', copied: 'تم النسخ ✓', share: '📤 مشاركة', inv_used: n => `✅ انضم ${n}`, inv_wait: d => `⏳ ينتظر حتى ${d}`, inv_old: '⌛ منتهية', inv_list: 'دعواتي',
     imp_t: '📥 انقل التقدّم من هذا الجهاز', imp_d: 'تنتقل النجوم والاختبارات المنجزة والكلمات والشخصية ورمز الصديق من الحساب المحلي إلى حسابك على الخادم — وتُحفظ أفضل النتائج.', imp_guest: 'تقدّم الزائر', imp_done: n => `تم! نُقل ${n} سجلًا. جارٍ تحديث الصفحة…`,
@@ -104,7 +104,7 @@
     if (!u) { if (cur && String(cur).startsWith('s')) { K.setSession(null); K.route(); } return Promise.resolve(); }
     const sid = sidOf(u);
     const all = K.raw.get('comiks.users', {});
-    all[sid] = Object.assign({}, all[sid], { id: sid, name: u.name, email: u.email, created: u.created, server: true, verified: u.verified });
+    all[sid] = Object.assign({}, all[sid], { id: sid, name: u.name, email: u.email, created: u.created, server: true, verified: u.verified, demo: !!u.demo, premium: !!u.premium, founder: u.founder || null, role: u.role || 'user' });
     K.raw.set('comiks.users', all);
     const switched = cur !== sid;
     // з якого локального акаунта цього пристрою прийшли (для автоматичного перенесення прогресу)
@@ -273,10 +273,12 @@
     if (code) get('invite&code=' + code).then(j => { banner.hidden = false; banner.classList.toggle('bad', !(j && j.valid)); banner.textContent = j && j.valid ? a3('inv_banner', j.from) : a3('inv_bad'); });
     const name = input('text', { autocomplete: 'nickname', maxlength: 30, required: true }), email = input('email', { autocomplete: 'email', required: true });
     const pass = input('password', { autocomplete: 'new-password', required: true, minlength: 8 }), consent = h('input', { type: 'checkbox' }), move = h('input', { type: 'checkbox', checked: true });
+    const share = h('input', { type: 'checkbox', checked: true });
     const msg = msgEl(), btn = h('button', { class: 'btn accent big', type: 'submit' }, ax('reg_btn'));
     const guestHasData = !K.currentUser() && !!K.store.get('stats', null);
     const form = h('form', { class: 'au-form' }, field(ax('name'), name), field(ax('email'), email), field(ax('pass'), pass, h('small', { class: 'au-hint' }, ax('pass_hint'))), strengthMeter(pass),
       h('label', { class: 'au-check' }, consent, h('span', {}, ax('consent'), ' ', h('a', { href: '#/terms', target: '_blank' }, ax('terms')))),
+      h('label', { class: 'au-check' }, share, h('span', {}, h('b', {}, a3('share_t')), h('small', {}, a3('share_d')))),
       guestHasData ? h('label', { class: 'au-check' }, move, h('span', {}, ax('move'))) : null, msg, btn);
     form.addEventListener('submit', async e => {
       e.preventDefault(); msg.textContent = '';
@@ -285,12 +287,11 @@
       const r = await post('register', { name: name.value.trim(), email: email.value.trim(), password: pass.value, lang: K.ui, consent: true, invite: code || undefined });
       busy(btn, false);
       if (!r.ok) { msg.textContent = errText(r.error); return; }
-      try { sessionStorage.setItem('kl.pendingEmail', email.value.trim()); sessionStorage.setItem('kl.moveGuest', guestHasData && move.checked ? '1' : ''); } catch { /* ignore */ }
+      try { sessionStorage.setItem('kl.pendingEmail', email.value.trim()); sessionStorage.setItem('kl.moveGuest', guestHasData && move.checked ? '1' : ''); sessionStorage.setItem('kl.share', share.checked ? '1' : '0'); } catch { /* ignore */ }
       location.hash = '#/verify-sent';
     });
     setTimeout(() => name.focus(), 50);
     return shell('au-register', art(code ? '🎟' : '✨'), h('h2', {}, ax('reg_t')), banner, h('p', { class: 'au-lead' }, ax('reg_d')), form,
-      window.KomiksProfile && window.KomiksProfile.freeNote ? window.KomiksProfile.freeNote() : null,
       h('p', { class: 'au-alt' }, ax('have_acc'), ' ', h('a', { href: '#/login' }, ax('login_btn'))));
   }
   function resendButton(getEmail) {
@@ -318,7 +319,9 @@
       // перенести гостьовий прогрес, якщо користувач так вибрав під час реєстрації
       let move = ''; try { move = sessionStorage.getItem('kl.moveGuest') || ''; sessionStorage.removeItem('kl.moveGuest'); } catch { /* ignore */ }
       if (move && K.copyGuestProgressTo) K.copyGuestProgressTo(sidOf(j.user));
+      let wantShare = '1'; try { wantShare = sessionStorage.getItem('kl.share') || '1'; sessionStorage.removeItem('kl.share'); } catch { /* ignore */ }
       await applyUser(j.user);
+      if (window.KomiksPlayers) setTimeout(() => window.KomiksPlayers.setShare(wantShare === '1'), 400); // показ у пошуку — як обрав під час реєстрації
       const av = window.KomiksProfile ? window.KomiksProfile.avatar() : '🦊';
       box.querySelector('.au-card').replaceChildren(
         h('div', { class: 'au-hero' }, window.KomiksAvatars ? window.KomiksAvatars.el(av, { size: 150, mood: 'cheer' }) : h('span', {}, '🎉'), h('div', { class: 'au-rays', 'aria-hidden': 'true' })),
@@ -456,6 +459,8 @@
       return true;
     }).then(readyDone, () => readyDone(false));
   }
-  window.KomiksAuth = { render, accountBox, logout, push, get server() { return S.server; }, get user() { return S.user; }, ready: () => S.ready };
+  // перечитати акаунт із сервера (після оплати Преміуму тощо)
+  const refresh = async () => { const j = await get('me'); if (j && j.user) await applyUser(j.user); return j && j.user; };
+  window.KomiksAuth = { render, accountBox, logout, push, refresh, get server() { return S.server; }, get user() { return S.user; }, ready: () => S.ready };
   init();
 })();

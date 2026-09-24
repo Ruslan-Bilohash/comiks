@@ -8,7 +8,7 @@
     meta: { title: 'Комікс·Lab — вчимо норвезьку мову через комікси з озвученням', description: 'Безкоштовний тренажер норвезької мови для дітей і дорослих: комікси A1–B2 з живим озвученням, переклад українською та англійською при наведенні, алфавіт, числа, тести, план навчання.' },
     app_sub: 'Вчимо норвезьку', lang_label: 'Мова інтерфейсу', voice_btn: m => `Голос: ${m} (натисни, щоб змінити)`,
     brand: ['Комікс', '·Lab'],
-    nav: { home: 'Головна', comics: 'Комікси', alphabet: 'Алфавіт', numbers: 'Числа', plan: 'План навчання', tests: 'Тести', cards: 'Картки слів', help: 'Допомога', settings: 'Налаштування', terms: 'Умови використання', account: 'Кабінет', login: 'Увійти', register: 'Реєстрація', logout: 'Вийти' },
+    nav: { today: '📅 Сьогодні', home: 'Головна', comics: 'Комікси', alphabet: 'Алфавіт', numbers: 'Числа', plan: 'План навчання', tests: 'Тести', cards: 'Картки слів', help: 'Допомога', settings: 'Налаштування', terms: 'Умови використання', account: 'Кабінет', login: 'Увійти', register: 'Реєстрація', logout: 'Вийти' },
     foot: {
       about: 'Інтерактивні комікси для вивчення норвезької мови: живі голоси, переклад при наведенні, тести й план навчання.',
       learn: 'Навчання', account: 'Акаунт', info: 'Інформація', langs: 'Мови',
@@ -46,7 +46,7 @@
     rec_err: { 'not-allowed': 'Дозволь доступ до мікрофона (значок 🎙️ в адресному рядку).', 'service-not-allowed': 'Дозволь доступ до мікрофона.', 'no-speech': 'Нічого не почуто — спробуй ще раз голосніше.', network: 'Для розпізнавання потрібен інтернет.', 'audio-capture': 'Мікрофон не знайдено.', 'language-not-supported': 'Норвезька не підтримується розпізнаванням у цьому браузері.' },
     rec_err_other: e => `Не вдалося розпізнати (${e}).`, rec_res: ['Спробуй ще раз 💪', 'Непогано!', 'Добре! 👍', 'Супер вимова! 🌟'], rec_heard: (x, p) => `Почуто: «${x}» · ${p}%`,
     qtr: {
-      who: 'Хто це сказав?', panel: 'З якого кадру ця репліка?', order: 'Розстав кадри по порядку', listen: 'Послухай і вибери правильне слово', picture: 'Що це?', blank: 'Якого слова бракує?', type: 'Напиши слово, якого бракує', truefalse: 'Правда чи ні?', letter: 'Послухай і знайди літеру', firstletter: 'З якої літери починається слово?', number: 'Послухай і знайди число', numword: 'Яке це число?', numtype: 'Напиши число, яке чуєш',
+      hear: 'Послухай — яке речення прозвучало?', hear_hint: 'Текст навмисно сховано. Слухай уважно й вибери правильне речення.', who: 'Хто це сказав?', panel: 'З якого кадру ця репліка?', order: 'Розстав кадри по порядку', listen: 'Послухай і вибери правильне слово', picture: 'Що це?', blank: 'Якого слова бракує?', type: 'Напиши слово, якого бракує', truefalse: 'Правда чи ні?', letter: 'Послухай і знайди літеру', firstletter: 'З якої літери починається слово?', number: 'Послухай і знайди число', numword: 'Яке це число?', numtype: 'Напиши число, яке чуєш',
       exit: 'Вийти', next: 'Далі', result: 'Результат', correct: 'Правильна відповідь', check: 'Перевірити', hint: 'Підказка', slow: 'Повільно', again: 'Ще раз', reread: 'Перечитати', home: 'На головну', order_hint: 'Натискай на кадри в правильному порядку. Натисни ще раз, щоб скасувати.', repeat: 'Повтори ці відповіді', true: 'Правда', false: 'Неправда', only_no: 'Тест норвезькою мовою — наводь на завдання, щоб побачити переклад.'
     },
     cards_title: '🃏 Картки', cards_all: 'усі слова', boxes_tip: 'Коробки: чим правіше, тим краще ти знаєш слово', box_new: 'нові',
@@ -81,7 +81,7 @@
     email_note: '📧 Лист-підтвердження на пошту надсилається лише тоді, коли сайт підключено до поштового сервера. Зараз акаунт і прогрес зберігаються в цьому браузері.',
     cab_title: n => `👤 Кабінет: ${n}`, profile: 'Профіль', member_since: d => `Учень з ${d}`, change_pass: 'Змінити пароль', new_pass: 'Новий пароль', pass_changed: 'Пароль змінено ✓', save: 'Зберегти', saved: 'Збережено ✓',
     delete_acc: 'Видалити акаунт', delete_confirm: 'Видалити акаунт і весь його прогрес на цьому пристрої?', my_stats: '📊 Моя статистика', st_read: 'Прочитано коміксів', st_tests: 'Пройдено тестів', st_words: 'Слова в картках', st_known: 'Позначено «знаю»', st_streak: 'Серія днів',
-    settings_title: '⚙️ Налаштування', s_learner: '👧🧑 Хто навчається', learner: { kids: ['👧 Дитина', 'менше варіантів, великі кнопки, простіші тести'], adults: ['🧑 Дорослий', 'більше питань, письмо та переклад'] },
+    settings_title: '⚙️ Налаштування', s_learner: '👧🧑 Хто навчається', learner: { kids: ['👧 Дитина', 'менше варіантів, великі кнопки, простіші тести'], adults: ['🧑 Дорослий', 'більше питань, письмо та переклад'], hard: ['🔥 Складний', '18 питань і 30 секунд на кожне'], expert: ['🏆 Експерт', '24 питання, 5 варіантів і 18 секунд на кожне'] },
     s_level: '🎓 Рівень навчання', s_level_d: 'Цей рівень буде обрано у фільтрі на головній.', vm_title: '🔊 Голос (лише норвезька)',
     vm: { cheerful: ['Жіночий голос', 'Усе читає природний норвезький жіночий голос Pernille.'], characters: ['Кожному свій', 'Чоловіки — голос Finn, жінки й дівчата — Pernille.'], multi: ['Мультиголоси', 'Кожен персонаж має окремий голос з 11 багатомовних. Можливий легкий акцент.'] },
     neural: n => `🎧 Записані норвезькі нейроголоси Microsoft (${n})`, pitch: 'Висота голосу браузера', pitch_note: 'Діє лише для голосів браузера (коли записаний голос вимкнено).',
@@ -103,16 +103,18 @@
       ['👧', 'Діти / Дорослі', 'Перемикається в налаштуваннях: для дітей менше варіантів і простіші завдання.']
     ],
     warn_title: '⚠️ Попередження',
-    warn_points: ['Усі історії, персонажі, малюнки, переклади й голоси створені штучним інтелектом і можуть містити неточності.', 'Комікс·Lab — навчальна гра, а не офіційний курс: не видає сертифікатів і не замінює вчителя.', 'Дітям — користуватися разом із батьками. Мікрофон вмикається лише після дозволу в браузері.', 'Акаунти й прогрес зберігаються тільки в цьому браузері. Ми не пересилаємо паролі чи записи голосу.'],
+    warn_points: ['Усі історії, персонажі, малюнки, переклади й голоси створені штучним інтелектом і можуть містити неточності.', 'Комікс·Lab — навчальна гра, а не офіційний курс: не видає сертифікатів і не замінює вчителя.', 'Дітям — користуватися разом із батьками. Мікрофон вмикається лише після дозволу в браузері.', 'Без акаунта прогрес зберігається тільки в цьому браузері; з акаунтом — на нашому сервері. Пароль зберігається у вигляді хешу, записи голосу ми не зберігаємо.'],
     terms_full: '📄 Прочитати повні умови використання', consent_label: 'Я прочитав(ла) попередження та погоджуюся з умовами використання (за дитину погоджується дорослий).',
     terms_title: '📄 Умови використання та попередження', consent_given: d => `Ви погодилися з умовами: ${d}.`, terms_updated: d => `Редакція умов від ${d}.`,
     terms: [
       ['Створено штучним інтелектом', 'Історії, персонажі, ілюстрації, переклади, граматичні підказки та озвучення вигадані й створені за допомогою штучного інтелекту. Усі персонажі та події вигадані, збіги випадкові. Матеріали можуть містити помилки.'],
       ['Навчальна мета', 'Застосунок призначений для ознайомлення з норвезькою мовою в ігровій формі. Він не є офіційним курсом і не підтверджує рівень знань.'],
       ['Діти', 'Діти користуються застосунком лише з дозволу та під наглядом батьків або опікунів.'],
-      ['Акаунти', 'Акаунт створюється локально в браузері. Пароль зберігається у вигляді хешу. Пароль 12345 за замовчуванням варто змінити. Надсилання листів можливе лише після підключення поштового сервера.'],
+      ['Акаунти', 'Грати можна й без реєстрації — тоді прогрес лишається тільки в цьому браузері. Акаунт створюється на нашому сервері: потрібні ім’я, пошта й пароль, пошту треба підтвердити листом. Пароль зберігається лише у вигляді криптографічного хешу (Argon2id) — ми його не бачимо й не можемо відновити, лише скинути. Акаунт можна видалити будь-коли в кабінеті: разом із ним зникають прогрес, стіна й повідомлення.'],
+      ['Преміум і оплата', 'Перші 100 учасників отримують Преміум назавжди безкоштовно. Далі діє підписка 69 крон на місяць; без Преміуму доступна обмежена кількість тестів на місяць. Оплату проводить Stripe на своїй сторінці: дані картки не потрапляють на наш сервер і не зберігаються в нас. Скасувати підписку можна будь-коли — Преміум діє до кінця оплаченого періоду.'],
       ['Мікрофон', 'Розпізнавання мови виконує браузер (сервіси Microsoft або Google) за їхніми правилами. Комікс·Lab не зберігає записи голосу.'],
-      ['Дані', 'Прогрес, план і налаштування зберігаються лише в цьому браузері. Видалити їх можна в налаштуваннях або в кабінеті.'],
+      ['Дані', 'Без акаунта прогрес, план і налаштування зберігаються лише в цьому браузері. З акаунтом вони синхронізуються з нашим сервером, щоб бути доступними на інших пристроях. Ім’я та аватар бачать інші учасники лише тоді, коли ви ввімкнули показ у пошуку; пошта не показується нікому. Видалити дані можна в налаштуваннях або в кабінеті.'],
+      ['Спільнота', 'Дописи на стінах і особисті повідомлення модеруються: адміністратор, модератор і учасники акції «перші 100» можуть прибирати образливі дописи, а адміністратор — тимчасово обмежувати доступ до стін. Хто може вам писати й хто бачить вас у пошуку — налаштовується на сторінці «Конфіденційність».'],
       ['Відповідальність', 'Застосунок надається «як є», без гарантій повноти чи безпомилковості.'],
       ['Зміни умов', 'Після зміни умов застосунок попросить погодитися з новою редакцією.']
     ],
@@ -125,7 +127,7 @@
     meta: { title: 'Learn Norwegian with Comics — Free Norwegian Course with Audio (A1–B2) | Komiks·Lab', description: 'Learn Norwegian (Bokmål) online with short voiced comics: real Norwegian voices, English translation of every word, grammar, vocabulary, tests and games. Made for expats moving to Norway — start free.' },
     app_sub: 'Learn Norwegian', lang_label: 'Interface language', voice_btn: m => `Voice: ${m} (click to change)`,
     brand: ['Komiks', '·Lab'],
-    nav: { home: 'Home', comics: 'Comics', alphabet: 'Alphabet', numbers: 'Numbers', plan: 'Study plan', tests: 'Tests', cards: 'Flashcards', help: 'Help', settings: 'Settings', terms: 'Terms of use', account: 'My account', login: 'Log in', register: 'Sign up', logout: 'Log out' },
+    nav: { today: '📅 Today', home: 'Home', comics: 'Comics', alphabet: 'Alphabet', numbers: 'Numbers', plan: 'Study plan', tests: 'Tests', cards: 'Flashcards', help: 'Help', settings: 'Settings', terms: 'Terms of use', account: 'My account', login: 'Log in', register: 'Sign up', logout: 'Log out' },
     foot: {
       about: 'Interactive comics for learning Norwegian: real voices, translation on hover, tests and a study plan.',
       learn: 'Learning', account: 'Account', info: 'Information', langs: 'Languages',
@@ -163,7 +165,7 @@
     rec_err: { 'not-allowed': 'Allow microphone access (the 🎙️ icon in the address bar).', 'service-not-allowed': 'Allow microphone access.', 'no-speech': 'I heard nothing — try again a bit louder.', network: 'Speech recognition needs an internet connection.', 'audio-capture': 'No microphone found.', 'language-not-supported': 'Norwegian is not supported by speech recognition in this browser.' },
     rec_err_other: e => `Could not recognise speech (${e}).`, rec_res: ['Try again 💪', 'Not bad!', 'Good! 👍', 'Great pronunciation! 🌟'], rec_heard: (x, p) => `Heard: “${x}” · ${p}%`,
     qtr: {
-      who: 'Who said this?', panel: 'Which panel is this line from?', order: 'Put the panels in the right order', listen: 'Listen and choose the right word', picture: 'What is this?', blank: 'Which word is missing?', type: 'Write the missing word', truefalse: 'True or false?', letter: 'Listen and find the letter', firstletter: 'Which letter does the word start with?', number: 'Listen and find the number', numword: 'Which number is this?', numtype: 'Write the number you hear',
+      hear: 'Listen — which sentence did you hear?', hear_hint: 'The text is hidden on purpose. Listen carefully and pick the right sentence.', who: 'Who said this?', panel: 'Which panel is this line from?', order: 'Put the panels in the right order', listen: 'Listen and choose the right word', picture: 'What is this?', blank: 'Which word is missing?', type: 'Write the missing word', truefalse: 'True or false?', letter: 'Listen and find the letter', firstletter: 'Which letter does the word start with?', number: 'Listen and find the number', numword: 'Which number is this?', numtype: 'Write the number you hear',
       exit: 'Exit', next: 'Next', result: 'Result', correct: 'Correct answer', check: 'Check', hint: 'Hint', slow: 'Slowly', again: 'Try again', reread: 'Read again', home: 'Home', order_hint: 'Tap the panels in the right order. Tap again to undo.', repeat: 'Practise these answers', true: 'True', false: 'False', only_no: 'The test is in Norwegian — hover over a task to see the translation.'
     },
     cards_title: '🃏 Flashcards', cards_all: 'all words', boxes_tip: 'Boxes: the further right, the better you know the word', box_new: 'new',
@@ -198,7 +200,7 @@
     email_note: '📧 A confirmation email is only sent once the site is connected to a mail server. For now, your account and progress are stored in this browser.',
     cab_title: n => `👤 Account: ${n}`, profile: 'Profile', member_since: d => `Learning since ${d}`, change_pass: 'Change password', new_pass: 'New password', pass_changed: 'Password changed ✓', save: 'Save', saved: 'Saved ✓',
     delete_acc: 'Delete account', delete_confirm: 'Delete the account and all its progress on this device?', my_stats: '📊 My statistics', st_read: 'Comics read', st_tests: 'Tests passed', st_words: 'Words in flashcards', st_known: 'Marked “I know”', st_streak: 'Day streak',
-    settings_title: '⚙️ Settings', s_learner: '👧🧑 Who is learning', learner: { kids: ['👧 Child', 'fewer options, big buttons, simpler tests'], adults: ['🧑 Adult', 'more questions, writing and translation'] },
+    settings_title: '⚙️ Settings', s_learner: '👧🧑 Who is learning', learner: { kids: ['👧 Child', 'fewer options, big buttons, simpler tests'], adults: ['🧑 Adult', 'more questions, writing and translation'], hard: ['🔥 Hard', '18 questions and 30 seconds each'], expert: ['🏆 Expert', '24 questions, 5 options and 18 seconds each'] },
     s_level: '🎓 Learning level', s_level_d: 'This level will be selected in the filter on the home page.', vm_title: '🔊 Voice (Norwegian only)',
     vm: { cheerful: ['Female voice', 'Everything is read by the natural Norwegian female voice Pernille.'], characters: ['Own voice', 'Men get the voice Finn, women and girls get Pernille.'], multi: ['Many voices', 'Each character gets its own voice from 11 multilingual voices. A slight accent is possible.'] },
     neural: n => `🎧 Recorded Norwegian neural voices by Microsoft (${n})`, pitch: 'Browser voice pitch', pitch_note: 'Only applies to browser voices (when recorded voices are off).',
@@ -220,16 +222,18 @@
       ['👧', 'Child / Adult', 'Switch in Settings: children get fewer options and simpler tasks.']
     ],
     warn_title: '⚠️ Warning',
-    warn_points: ['All stories, characters, drawings, translations and voices are created with artificial intelligence and may contain mistakes.', 'Komiks·Lab is a learning game, not an official course: it gives no certificates and does not replace a teacher.', 'Children should use it together with a parent. The microphone only works after you allow it in the browser.', 'Accounts and progress are stored only in this browser. We never send passwords or voice recordings anywhere.'],
+    warn_points: ['All stories, characters, drawings, translations and voices are created with artificial intelligence and may contain mistakes.', 'Komiks·Lab is a learning game, not an official course: it gives no certificates and does not replace a teacher.', 'Children should use it together with a parent. The microphone only works after you allow it in the browser.', 'Without an account your progress stays only in this browser; with an account it is stored on our server. Passwords are kept as a hash, and we never store voice recordings.'],
     terms_full: '📄 Read the full terms of use', consent_label: 'I have read the warning and agree to the terms of use (for a child, an adult agrees).',
     terms_title: '📄 Terms of use and warning', consent_given: d => `You agreed to the terms: ${d}.`, terms_updated: d => `Terms version of ${d}.`,
     terms: [
       ['Created with AI', 'Stories, characters, illustrations, translations, grammar hints and voices are fictional and created with artificial intelligence. Any resemblance to real people is coincidental. Materials may contain errors.'],
       ['Educational purpose', 'The app is a playful introduction to Norwegian. It is not an official course and does not certify language level.'],
       ['Children', 'Children may only use the app with the permission and supervision of a parent or guardian.'],
-      ['Accounts', 'Accounts are created locally in the browser. Passwords are stored as a hash. Change the default password 12345. Emails can only be sent once a mail server is connected.'],
+      ['Accounts', 'You can play without registering — then your progress stays only in this browser. An account is created on our server: name, email and password, with the email confirmed by a letter. The password is stored only as a cryptographic hash (Argon2id) — we cannot see or recover it, only reset it. You can delete the account at any time in your account page, together with your progress, wall and messages.'],
+      ['Premium and payment', 'The first 100 members get Premium free forever. After that it is a subscription of 69 NOK per month; without Premium a limited number of tests per month is available. Payment is handled by Stripe on its own page: card details never reach our server and are not stored by us. You can cancel at any time — Premium lasts until the end of the paid period.'],
       ['Microphone', 'Speech recognition is performed by the browser (Microsoft or Google services) under their own rules. Komiks·Lab does not store voice recordings.'],
-      ['Data', 'Progress, plan and settings are stored only in this browser. You can delete them in Settings or in your account.'],
+      ['Data', 'Without an account, progress, plan and settings are stored only in this browser. With an account they are synced with our server so they are available on your other devices. Your name and avatar are visible to others only if you turned on “show me in player search”; your email is never shown. You can delete your data in Settings or in your account.'],
+      ['Community', 'Wall posts and private messages are moderated: the administrator, moderators and members of the “first 100” programme can remove offensive posts, and the administrator can temporarily restrict access to walls. Who may write to you and who can find you in search is set on the Privacy page.'],
       ['Liability', 'The app is provided “as is”, without any guarantee of completeness or accuracy.'],
       ['Changes', 'When the terms change, the app will ask you to agree to the new version.']
     ],
@@ -242,7 +246,7 @@
     meta: { title: 'Lær norsk med tegneserier – gratis norskkurs med lyd (A1–B2) | Komiks·Lab', description: 'Lær norsk (bokmål) på nett med korte tegneserier: ekte norske stemmer, engelsk oversettelse av hvert ord, grammatikk, ordforråd, tester og spill. For deg som flytter til Norge.' },
     app_sub: 'Lær norsk', lang_label: 'Språk', voice_btn: m => `Stemme: ${m} (trykk for å bytte)`,
     brand: ['Komiks', '·Lab'],
-    nav: { home: 'Hjem', comics: 'Tegneserier', alphabet: 'Alfabetet', numbers: 'Tall', plan: 'Læringsplan', tests: 'Tester', cards: 'Ordkort', help: 'Hjelp', settings: 'Innstillinger', terms: 'Vilkår for bruk', account: 'Min side', login: 'Logg inn', register: 'Registrer deg', logout: 'Logg ut' },
+    nav: { today: '📅 I dag', home: 'Hjem', comics: 'Tegneserier', alphabet: 'Alfabetet', numbers: 'Tall', plan: 'Læringsplan', tests: 'Tester', cards: 'Ordkort', help: 'Hjelp', settings: 'Innstillinger', terms: 'Vilkår for bruk', account: 'Min side', login: 'Logg inn', register: 'Registrer deg', logout: 'Logg ut' },
     foot: {
       about: 'Interaktive tegneserier for å lære norsk: ekte stemmer, tester og en læringsplan.',
       learn: 'Læring', account: 'Konto', info: 'Informasjon', langs: 'Språk',
@@ -312,7 +316,7 @@
     email_note: '📧 En bekreftelse på e-post sendes bare når nettstedet er koblet til en e-postserver. Foreløpig lagres konto og fremgang i denne nettleseren.',
     cab_title: n => `👤 Min side: ${n}`, profile: 'Profil', member_since: d => `Lærer siden ${d}`, change_pass: 'Endre passord', new_pass: 'Nytt passord', pass_changed: 'Passordet er endret ✓', save: 'Lagre', saved: 'Lagret ✓',
     delete_acc: 'Slett konto', delete_confirm: 'Slette kontoen og all fremgang på denne enheten?', my_stats: '📊 Min statistikk', st_read: 'Leste tegneserier', st_tests: 'Fullførte tester', st_words: 'Ord i ordkort', st_known: 'Merket «kan det»', st_streak: 'Dager på rad',
-    settings_title: '⚙️ Innstillinger', s_learner: '👧🧑 Hvem lærer', learner: { kids: ['👧 Barn', 'færre valg, store knapper, enklere tester'], adults: ['🧑 Voksen', 'flere spørsmål og skriving'] },
+    settings_title: '⚙️ Innstillinger', s_learner: '👧🧑 Hvem lærer', learner: { kids: ['👧 Barn', 'færre valg, store knapper, enklere tester'], adults: ['🧑 Voksen', 'flere spørsmål og skriving'], hard: ['🔥 Vanskelig', '18 spørsmål og 30 sekunder på hvert'], expert: ['🏆 Ekspert', '24 spørsmål, 5 valg og 18 sekunder på hvert'] },
     s_level: '🎓 Læringsnivå', s_level_d: 'Dette nivået blir valgt i filteret på forsiden.', vm_title: '🔊 Stemme (bare norsk)',
     vm: { cheerful: ['Kvinnestemme', 'Alt leses av den naturlige norske kvinnestemmen Pernille.'], characters: ['Egen stemme', 'Menn får stemmen Finn, kvinner og jenter får Pernille.'], multi: ['Mange stemmer', 'Hver figur har sin egen stemme blant 11 flerspråklige stemmer. Litt aksent kan forekomme.'] },
     neural: n => `🎧 Innspilte norske nevrale stemmer fra Microsoft (${n})`, pitch: 'Tonehøyde for nettleserstemmen', pitch_note: 'Gjelder bare nettleserstemmer (når innspilte stemmer er av).',
@@ -334,16 +338,18 @@
       ['👧', 'Barn / Voksen', 'Byttes i innstillingene: barn får færre valg og enklere oppgaver.']
     ],
     warn_title: '⚠️ Advarsel',
-    warn_points: ['Alle historier, figurer, tegninger, oversettelser og stemmer er laget med kunstig intelligens og kan inneholde feil.', 'Komiks·Lab er et læringsspill, ikke et offisielt kurs: det gir ingen sertifikater og erstatter ikke en lærer.', 'Barn bør bruke appen sammen med en voksen. Mikrofonen virker bare når du gir tillatelse i nettleseren.', 'Kontoer og fremgang lagres bare i denne nettleseren. Vi sender aldri passord eller lydopptak videre.'],
+    warn_points: ['Alle historier, figurer, tegninger, oversettelser og stemmer er laget med kunstig intelligens og kan inneholde feil.', 'Komiks·Lab er et læringsspill, ikke et offisielt kurs: det gir ingen sertifikater og erstatter ikke en lærer.', 'Barn bør bruke appen sammen med en voksen. Mikrofonen virker bare når du gir tillatelse i nettleseren.', 'Uten konto lagres fremgangen bare i denne nettleseren; med konto lagres den på serveren vår. Passord lagres som en hash, og vi lagrer aldri lydopptak.'],
     terms_full: '📄 Les alle vilkårene', consent_label: 'Jeg har lest advarselen og godtar vilkårene for bruk (for barn godtar en voksen).',
     terms_title: '📄 Vilkår for bruk og advarsel', consent_given: d => `Du godtok vilkårene: ${d}.`, terms_updated: d => `Vilkårene er datert ${d}.`,
     terms: [
       ['Laget med KI', 'Historier, figurer, illustrasjoner, oversettelser, grammatikktips og stemmer er oppdiktet og laget med kunstig intelligens. Likheter med virkelige personer er tilfeldige. Innholdet kan inneholde feil.'],
       ['Læringsformål', 'Appen er en lekende introduksjon til norsk. Den er ikke et offisielt kurs og dokumenterer ikke språknivå.'],
       ['Barn', 'Barn kan bare bruke appen med tillatelse og tilsyn fra foreldre eller foresatte.'],
-      ['Kontoer', 'Kontoer lages lokalt i nettleseren. Passord lagres som en hash. Endre standardpassordet 12345. E-post kan bare sendes når en e-postserver er koblet til.'],
+      ['Kontoer', 'Du kan spille uten å registrere deg – da lagres fremgangen bare i denne nettleseren. En konto opprettes på serveren vår: navn, e-post og passord, og e-posten bekreftes med en lenke. Passordet lagres bare som en kryptografisk hash (Argon2id) – vi kan verken se eller hente det fram, bare nullstille det. Du kan slette kontoen når som helst på Min side, sammen med fremgang, vegg og meldinger.'],
+      ['Premium og betaling', 'De 100 første medlemmene får Premium gratis for alltid. Deretter koster det 69 kr per måned; uten Premium er antallet prøver per måned begrenset. Betalingen skjer hos Stripe på deres egen side: kortopplysninger kommer aldri til serveren vår og lagres ikke hos oss. Du kan si opp når som helst – Premium varer ut den betalte perioden.'],
       ['Mikrofon', 'Talegjenkjenning utføres av nettleseren (tjenester fra Microsoft eller Google) etter deres regler. Komiks·Lab lagrer ikke lydopptak.'],
-      ['Data', 'Fremgang, plan og innstillinger lagres bare i denne nettleseren. Du kan slette dem i innstillingene eller på Min side.'],
+      ['Data', 'Uten konto lagres fremgang, plan og innstillinger bare i denne nettleseren. Med konto synkroniseres de med serveren vår slik at de er tilgjengelige på andre enheter. Navn og avatar vises for andre bare hvis du har slått på «vis meg i spillersøket»; e-posten vises aldri. Du kan slette dataene i innstillingene eller på Min side.'],
+      ['Fellesskap', 'Innlegg på vegger og private meldinger modereres: administrator, moderatorer og medlemmer av «de 100 første» kan fjerne støtende innlegg, og administrator kan midlertidig begrense tilgangen til vegger. Hvem som kan skrive til deg og hvem som finner deg i søket, styrer du på Personvern-siden.'],
       ['Ansvar', 'Appen leveres «som den er», uten garanti for at innholdet er fullstendig eller feilfritt.'],
       ['Endringer', 'Når vilkårene endres, ber appen deg godta den nye versjonen.']
     ],
@@ -358,7 +364,7 @@
     meta: { title: 'تعلّم النرويجية مع القصص المصوّرة — دورة مجانية بالصوت (A1–B2) | Komiks·Lab', description: 'تعلّم اللغة النرويجية عبر الإنترنت بقصص مصوّرة قصيرة وأصوات نرويجية حقيقية وترجمة لكل كلمة وقواعد ومفردات واختبارات وألعاب. مصمّم للقادمين الجدد إلى النرويج — ابدأ مجانًا.' },
     app_sub: 'تعلّم النرويجية', lang_label: 'لغة الواجهة', voice_btn: m => `الصوت: ${m} (اضغط للتغيير)`,
     brand: ['Komiks', '·Lab'],
-    nav: { home: 'الرئيسية', comics: 'القصص', alphabet: 'الحروف', numbers: 'الأرقام', plan: 'خطة التعلّم', tests: 'الاختبارات', cards: 'البطاقات', help: 'المساعدة', settings: 'الإعدادات', terms: 'شروط الاستخدام', account: 'حسابي', login: 'تسجيل الدخول', register: 'إنشاء حساب', logout: 'تسجيل الخروج',
+    nav: { today: '📅 اليوم', home: 'الرئيسية', comics: 'القصص', alphabet: 'الحروف', numbers: 'الأرقام', plan: 'خطة التعلّم', tests: 'الاختبارات', cards: 'البطاقات', help: 'المساعدة', settings: 'الإعدادات', terms: 'شروط الاستخدام', account: 'حسابي', login: 'تسجيل الدخول', register: 'إنشاء حساب', logout: 'تسجيل الخروج',
       race: 'سباق المنطق', game: 'العبوا معًا', words: 'الكلمات', grammar: 'القواعد', english: 'الإنجليزية', math: 'الرياضيات', rating: 'التصنيف', friends: 'الأصدقاء', chess: 'الشطرنج', players: 'اللاعبون' },
     foot: {
       about: 'قصص مصوّرة تفاعلية لتعلّم النرويجية: أصوات حقيقية، ترجمة عند التمرير، اختبارات وخطة تعلّم.',
@@ -398,7 +404,7 @@
     rec_err: { 'not-allowed': 'اسمح بالوصول إلى الميكروفون (أيقونة 🎙️ في شريط العنوان).', 'service-not-allowed': 'اسمح بالوصول إلى الميكروفون.', 'no-speech': 'لم أسمع شيئًا — حاول مجددًا بصوت أعلى.', network: 'التعرّف على الكلام يحتاج إلى الإنترنت.', 'audio-capture': 'لم يُعثر على ميكروفون.', 'language-not-supported': 'هذا المتصفح لا يدعم التعرّف على النرويجية.' },
     rec_err_other: e => `تعذّر التعرّف على الكلام (${e}).`, rec_res: ['حاول مجددًا 💪', 'ليس سيئًا!', 'جيد! 👍', 'نطق رائع! 🌟'], rec_heard: (x, p) => `سمعت: «${x}» · ${p}٪`,
     qtr: {
-      who: 'من قال هذا؟', panel: 'من أي لقطة هذه الجملة؟', order: 'رتّب اللقطات بالترتيب الصحيح', listen: 'استمع واختر الكلمة الصحيحة', picture: 'ما هذا؟', blank: 'ما الكلمة الناقصة؟', type: 'اكتب الكلمة الناقصة', truefalse: 'صحيح أم خطأ؟', letter: 'استمع وجد الحرف', firstletter: 'بأي حرف تبدأ الكلمة؟', number: 'استمع وجد الرقم', numword: 'ما هذا الرقم؟', numtype: 'اكتب الرقم الذي تسمعه',
+      hear: 'استمع — أي جملة سمعت؟', hear_hint: 'النص مخفي عمدًا. استمع جيدًا واختر الجملة الصحيحة.', who: 'من قال هذا؟', panel: 'من أي لقطة هذه الجملة؟', order: 'رتّب اللقطات بالترتيب الصحيح', listen: 'استمع واختر الكلمة الصحيحة', picture: 'ما هذا؟', blank: 'ما الكلمة الناقصة؟', type: 'اكتب الكلمة الناقصة', truefalse: 'صحيح أم خطأ؟', letter: 'استمع وجد الحرف', firstletter: 'بأي حرف تبدأ الكلمة؟', number: 'استمع وجد الرقم', numword: 'ما هذا الرقم؟', numtype: 'اكتب الرقم الذي تسمعه',
       exit: 'خروج', next: 'التالي', result: 'النتيجة', correct: 'الإجابة الصحيحة', check: 'تحقّق', hint: 'تلميح', slow: 'ببطء', again: 'حاول مجددًا', reread: 'اقرأ مجددًا', home: 'الرئيسية', order_hint: 'اضغط على اللقطات بالترتيب الصحيح. اضغط مرة أخرى للتراجع.', repeat: 'تدرّب على هذه الإجابات', true: 'صحيح', false: 'خطأ', only_no: 'الاختبار بالنرويجية — مرّر فوق المهمة لترى الترجمة.'
     },
     cards_title: '🃏 البطاقات', cards_all: 'كل الكلمات', boxes_tip: 'الصناديق: كلما اتجهت يسارًا، كنت تعرف الكلمة أفضل', box_new: 'جديدة',
@@ -433,7 +439,7 @@
     email_note: '📧 تُرسل رسالة التأكيد عند ربط الموقع بخادم بريد.',
     cab_title: n => `👤 الحساب: ${n}`, profile: 'الملف الشخصي', member_since: d => `يتعلّم منذ ${d}`, change_pass: 'تغيير كلمة المرور', new_pass: 'كلمة مرور جديدة', pass_changed: 'تم تغيير كلمة المرور ✓', save: 'حفظ', saved: 'تم الحفظ ✓',
     delete_acc: 'حذف الحساب', delete_confirm: 'حذف الحساب وكل تقدّمه على هذا الجهاز؟', my_stats: '📊 إحصائياتي', st_read: 'قصص مقروءة', st_tests: 'اختبارات ناجحة', st_words: 'كلمات في البطاقات', st_known: 'مُعلَّمة «أعرفها»', st_streak: 'أيام متتالية',
-    settings_title: '⚙️ الإعدادات', s_learner: '👧🧑 من يتعلّم', learner: { kids: ['👧 طفل', 'خيارات أقل وأزرار كبيرة واختبارات أبسط'], adults: ['🧑 بالغ', 'أسئلة أكثر وكتابة وترجمة'] },
+    settings_title: '⚙️ الإعدادات', s_learner: '👧🧑 من يتعلّم', learner: { kids: ['👧 طفل', 'خيارات أقل وأزرار كبيرة واختبارات أبسط'], adults: ['🧑 بالغ', 'أسئلة أكثر وكتابة وترجمة'], hard: ['🔥 صعب', '18 سؤالًا و30 ثانية لكل سؤال'], expert: ['🏆 خبير', '24 سؤالًا و5 خيارات و18 ثانية لكل سؤال'] },
     s_level: '🎓 مستوى التعلّم', s_level_d: 'سيُختار هذا المستوى في التصفية على الصفحة الرئيسية.', vm_title: '🔊 الصوت (بالنرويجية فقط)',
     vm: { cheerful: ['صوت نسائي', 'تقرأ كل شيء المذيعة النرويجية Pernille بصوت طبيعي.'], characters: ['صوت لكل شخصية', 'الرجال بصوت Finn، والنساء والفتيات بصوت Pernille.'], multi: ['أصوات كثيرة', 'لكل شخصية صوتها من 11 صوتًا متعدد اللغات. قد تظهر لكنة خفيفة.'] },
     neural: n => `🎧 أصوات نرويجية عصبية مسجّلة من Microsoft (${n})`, pitch: 'نبرة صوت المتصفح', pitch_note: 'تنطبق فقط على أصوات المتصفح.',
@@ -455,16 +461,18 @@
       ['👧', 'طفل / بالغ', 'غيّر ذلك في الإعدادات: للأطفال خيارات أقل ومهام أبسط.']
     ],
     warn_title: '⚠️ تنبيه',
-    warn_points: ['جميع القصص والشخصيات والرسومات والترجمات والأصوات أُنشئت بالذكاء الاصطناعي وقد تحتوي على أخطاء.', 'Komiks·Lab لعبة تعليمية وليست دورة رسمية: لا تمنح شهادات ولا تحلّ محل المعلّم.', 'يستخدمه الأطفال مع أحد الوالدين. الميكروفون يعمل فقط بعد السماح به في المتصفح.', 'لا نرسل كلمات المرور أو التسجيلات الصوتية إلى أي مكان.'],
+    warn_points: ['جميع القصص والشخصيات والرسومات والترجمات والأصوات أُنشئت بالذكاء الاصطناعي وقد تحتوي على أخطاء.', 'Komiks·Lab لعبة تعليمية وليست دورة رسمية: لا تمنح شهادات ولا تحلّ محل المعلّم.', 'يستخدمه الأطفال مع أحد الوالدين. الميكروفون يعمل فقط بعد السماح به في المتصفح.', 'بدون حساب يبقى التقدّم في هذا المتصفح فقط، ومع حساب يُحفظ على خادمنا. تُحفظ كلمة المرور كبصمة مشفّرة ولا نحفظ التسجيلات الصوتية.'],
     terms_full: '📄 اقرأ شروط الاستخدام كاملة', consent_label: 'قرأت التنبيه وأوافق على شروط الاستخدام (عن الطفل يوافق شخص بالغ).',
     terms_title: '📄 شروط الاستخدام والتنبيه', consent_given: d => `وافقت على الشروط: ${d}.`, terms_updated: d => `نسخة الشروط بتاريخ ${d}.`,
     terms: [
       ['أُنشئ بالذكاء الاصطناعي', 'القصص والشخصيات والرسوم والترجمات والأصوات خيالية وأُنشئت بالذكاء الاصطناعي. أي تشابه مع أشخاص حقيقيين محض صدفة. قد تحتوي المواد على أخطاء.'],
       ['الغرض التعليمي', 'التطبيق مدخل ممتع إلى النرويجية. ليس دورة رسمية ولا يشهد بمستوى اللغة.'],
       ['الأطفال', 'يستخدم الأطفال التطبيق فقط بإذن وإشراف أحد الوالدين أو الوصي.'],
-      ['الحسابات', 'تُحفظ كلمات المرور مشفّرة. لا تستخدم كلمة مرور بسيطة.'],
+      ['الحسابات', 'يمكنك اللعب دون تسجيل — عندها يبقى تقدّمك في هذا المتصفح فقط. يُنشأ الحساب على خادمنا: الاسم والبريد وكلمة المرور، مع تأكيد البريد برسالة. تُحفظ كلمة المرور كبصمة تشفيرية (Argon2id) فقط — لا نراها ولا نستطيع استرجاعها، بل إعادة تعيينها فقط. يمكنك حذف الحساب في أي وقت من صفحة الحساب مع التقدّم والجدار والرسائل.'],
+      ['البريميوم والدفع', 'يحصل أول 100 عضو على بريميوم مجانًا للأبد. بعد ذلك اشتراك بـ69 كرونة شهريًا؛ وبدون بريميوم يتاح عدد محدود من الاختبارات شهريًا. يتم الدفع عبر Stripe على صفحتها: بيانات البطاقة لا تصل إلى خادمنا ولا نحتفظ بها. يمكنك الإلغاء في أي وقت — يستمر البريميوم حتى نهاية المدة المدفوعة.'],
       ['الميكروفون', 'يتم التعرّف على الكلام عبر المتصفح (خدمات Microsoft أو Google) وفق قواعدها. لا يحفظ Komiks·Lab التسجيلات الصوتية.'],
-      ['البيانات', 'يُحفظ التقدّم والخطة والإعدادات في حسابك ويمكنك حذفها في أي وقت.'],
+      ['البيانات', 'بدون حساب يُحفظ التقدّم والخطة والإعدادات في هذا المتصفح فقط. ومع الحساب تُزامَن مع خادمنا لتكون متاحة على أجهزتك الأخرى. يظهر اسمك وشخصيتك للآخرين فقط إذا فعّلت «أظهرني في البحث»؛ ولا يظهر بريدك أبدًا. يمكنك حذف البيانات من الإعدادات أو من صفحة الحساب.'],
+      ['المجتمع', 'تخضع منشورات الجدران والرسائل الخاصة للإشراف: يمكن للمدير والمشرفين وأعضاء «أول 100» إزالة المنشورات المسيئة، ويمكن للمدير تقييد الوصول إلى الجدران مؤقتًا. تحدّد من يمكنه مراسلتك ومن يجدك في البحث من صفحة «الخصوصية».'],
       ['المسؤولية', 'يُقدَّم التطبيق «كما هو» دون ضمان للاكتمال أو الدقة.'],
       ['التغييرات', 'عند تغيير الشروط سيطلب منك التطبيق الموافقة على النسخة الجديدة.']
     ],

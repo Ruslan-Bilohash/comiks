@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Komiks·Lab — screenshot helper</title>
+<!--
+  Допоміжна сторінка лише для tools/gen-screens.js.
+  Проставляє згоду з умовами, мову та «бачив підказку про відгук», щоб на знімках
+  не було вікна привітання, і одразу перекидає на потрібний розділ:
+      shot-init.html?ui=en&go=%23/words/familie
+  У збірку dist не потрапляє.
+-->
+<script>
+  const p = new URLSearchParams(location.search);
+  const set = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* private mode */ } };
+  set('comiks.consent', { v: '2026-09-23', at: new Date().toISOString() });
+  set('comiks.welcomed', true);
+  set('comiks.ui', p.get('ui') || 'en');
+  set('comiks.settings', { level: 'adults', levelFilter: 'all', rate: 1, voices: {}, voiceMode: 'cheerful', cheerPitch: 1.35, audio: true, tr: ['en'] });
+  try { localStorage.setItem('kl.fbIntro', '1'); } catch (e) { /* ignore */ }
+  location.replace('../index.html' + (p.get('go') || '#/'));
+</script>

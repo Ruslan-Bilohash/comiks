@@ -1,0 +1,28 @@
+{
+  "appId": "com.bilohash.komikslab",
+  "appName": "Komiks·Lab",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#fff8ea"
+  },
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#fff8ea",
+    "limitsNavigationsToAppBoundDomains": false
+  },
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "https",
+    "cleartext": false,
+    "allowNavigation": ["bilohash.com", "*.bilohash.com"]
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 900,
+      "backgroundColor": "#ffd23f",
+      "showSpinner": false,
+      "androidSplashResourceName": "splash"
+    }
+  }
+}

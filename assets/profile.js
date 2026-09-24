@@ -208,7 +208,8 @@
       h('p', { class: 'hint' }, px('in_games')),
       h('a', { class: 'btn accent', href: '#/avatar' }, px('open_studio')));
   }
-  const freeNote = () => { const { h } = C(); return h('p', { class: 'free-reg' }, px('free_reg')); };
+  // ліміт «30 годин» скасовано: тепер діє акція «перші 100» і підписка, тож нічого не обіцяємо
+  const freeNote = () => null;
 
   /* для форм приєднання до ігор: показати аватар акаунта замість вибору */
   function joinAvatar(onChange) {

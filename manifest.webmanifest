@@ -1,28 +1,88 @@
 {
   "name": "Komiks·Lab — Learn Norwegian with Comics",
   "short_name": "Komiks·Lab",
-  "description": "Voiced comics, word-by-word English translation, tests and games for learning Norwegian.",
+  "description": "Voiced comics, word-by-word translation, tests, games and AI phone calls for learning Norwegian.",
   "lang": "en",
-  "start_url": "./",
+  "dir": "ltr",
+  "id": "/comiks/",
+  "start_url": "./?src=app",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
   "background_color": "#fff8ea",
   "theme_color": "#ffd23f",
   "categories": [
     "education",
-    "kids"
+    "kids",
+    "books"
   ],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "prefer_related_applications": false,
   "icons": [
+    { "src": "icons/icon-48.png", "sizes": "48x48", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-64.png", "sizes": "64x64", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-72.png", "sizes": "72x72", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-144.png", "sizes": "144x144", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-256.png", "sizes": "256x256", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-384.png", "sizes": "384x384", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-1024.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/maskable-1024.png", "sizes": "1024x1024", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/mono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "monochrome" }
+  ],
+  "screenshots": [
     {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "icons/screenshot-wide.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Norwegian comics with real voices"
     },
     {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
+      "src": "icons/screenshot-narrow.png",
+      "sizes": "1080x1920",
       "type": "image/png",
-      "purpose": "any maskable"
+      "form_factor": "narrow",
+      "label": "Learn Norwegian on your phone"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Min læringsplan",
+      "short_name": "Plan",
+      "description": "Neste steg i læringen din",
+      "url": "./#/plan",
+      "icons": [{ "src": "icons/sc-plan.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Ord",
+      "short_name": "Ord",
+      "description": "Tematiske ord med lyd",
+      "url": "./#/words",
+      "icons": [{ "src": "icons/sc-words.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Samtale på norsk",
+      "short_name": "Samtale",
+      "description": "Ring en figur og snakk norsk",
+      "url": "./#/call",
+      "icons": [{ "src": "icons/sc-call.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Prøver",
+      "short_name": "Prøver",
+      "description": "Test deg selv",
+      "url": "./#/tests",
+      "icons": [{ "src": "icons/sc-tests.png", "sizes": "96x96", "type": "image/png" }]
     }
   ]
 }

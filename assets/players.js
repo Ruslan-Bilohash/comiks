@@ -178,12 +178,12 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
     return { q: { a, op, b }, opts: [...opts].sort(() => Math.random() - 0.5), local: ans };
   }
   const FRUIT = ['🍎', '🍓', '🍊', '⭐', '🎈', '🐞', '🍪', '🌼'];
-  function captchaView(cap, onPick) {
+  function captchaView(cap, onPick, title) {   // title — свій заголовок (вікно відгуку)
     const { h } = C();
     const { a, op, b } = cap.q, sign = op === '+' ? '+' : '−', icon = FRUIT[(a * 3 + b) % FRUIT.length];
     const dots = (n, cross = 0) => h('span', { class: 'cap-dots' }, Array.from({ length: n }, (_, i) => h('i', { class: i >= n - cross ? 'x' : '' }, icon)));
     return h('div', { class: 'cap', role: 'group' },
-      h('b', { class: 'cap-t' }, px('cap_t')),
+      h('b', { class: 'cap-t' }, title || px('cap_t')),
       h('div', { class: 'cap-eq' }, h('span', { class: 'cap-n n1' }, a), h('span', { class: 'cap-op' }, sign), h('span', { class: 'cap-n n2' }, b), h('span', { class: 'cap-op' }, '='), h('span', { class: 'cap-n q' }, '?')),
       op === '+' ? h('div', { class: 'cap-pics' }, dots(a), h('em', {}, '+'), dots(b)) : h('div', { class: 'cap-pics' }, dots(a, b)),
       h('div', { class: 'cap-opts' }, cap.opts.map((v, i) => h('button', { class: 'cap-opt c' + (i + 1), type: 'button', onclick: () => onPick(v) }, v))));
@@ -209,7 +209,7 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
         S.mode = 'server';
         if (own) await claim(code);
         const r = await fetch(API + '?owner=' + code, { cache: 'no-store' }).then(x => x.json()).catch(() => null);
-        S.items = r && r.ok ? r.comments : []; S.open = !r || r.open !== false; S.mod = !!(r && r.mod);
+        S.items = r && r.ok ? r.comments : []; S.open = !r || r.open !== false; S.mod = !!(r && r.mod); S.ban = !!(r && r.ban);
       } else if (localId) {
         S.mode = 'local';
         S.items = K.raw.get(wallKey(localId), []).map(m => ({ id: m.id, name: m.name, avatar: m.av, text: m.text, date: m.date, from: m.from }));
@@ -255,7 +255,7 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
       S.msg = r.ok ? mx('done') : px('err').net; load();
     }
     const modBar = m => h('div', { class: 'pl-mod' }, h('button', { type: 'button', onclick: () => mod(m, 'mod_delete') }, mx('del')), h('button', { type: 'button', onclick: () => mod(m, 'mod_warn') }, mx('warn')),
-      [1, 24, 168].map(hh => h('button', { type: 'button', class: 'ban', onclick: () => mod(m, 'mod_ban', hh) }, mx('ban', hh))));
+      S.ban ? [1, 24, 168].map(hh => h('button', { type: 'button', class: 'ban', onclick: () => mod(m, 'mod_ban', hh) }, mx('ban', hh))) : null);
     let tick = 0;
     function draw() {
       clearInterval(tick);
@@ -319,22 +319,22 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
   }
   /* ---------- каталог гравців (api/players.php): пошук, фільтри, «дружити», «позмагатися» ---------- */
   const DX = {
-    uk: { title: '🔎 Гравці', intro: 'Шукай інших учнів, дивись їхні профілі, додавай у друзі й змагайся в іграх.', ph: 'Ім’я або код друга…', all: 'Усі', level_all: 'Будь-який рівень', online: 'Лише онлайн', found: n => `Знайдено: ${n}`, more: 'Показати ще',
+    uk: { official: '💬 офіційний акаунт', botTag: '🤖 віртуальний гравець', title: '🔎 Гравці', intro: 'Шукай інших учнів, дивись їхні профілі, додавай у друзі й змагайся в іграх.', ph: 'Ім’я або код друга…', all: 'Усі', level_all: 'Будь-який рівень', online: 'Лише онлайн', found: n => `Знайдено: ${n}`, more: 'Показати ще',
       learn: { norsk: '🇳🇴 Норвезька', english: '🇬🇧 Англійська', math: '🧮 Математика', logic: '🧩 Логіка' }, none: 'Нікого не знайдено — зміни фільтри.', off: 'Спільний пошук працює на сайті bilohash.com. Нижче — гравці цього пристрою.',
-      not_listed: 'Тебе поки не видно в пошуку. Увімкни «Показувати мій профіль» у кабінеті.', to_account: 'До кабінету', on_device: '💻 На цьому пристрої',
+      not_listed: 'Тебе поки не видно в пошуку — інші не можуть тебе знайти.', show_me: '🔎 Показати мене в пошуку', to_account: 'До кабінету', on_device: '💻 На цьому пристрої',
       profile: '👤 Профіль', befriend: '➕ Дружити', friend: '✓ Друг', pending: '⏳ Запит надіслано', compete: '🏁 Позмагатися', you: 'це ти', online_now: '🟢 онлайн', seen: d => `був(ла) ${d}`, compete_later: 'Запит у друзі надіслано — змагайтеся, щойно друг прийме й буде онлайн.', loading: '⏳ Шукаємо…', s_stars: 'зірки', s_badges: 'значки', s_days: 'днів поспіль', c_total: 'гравців', c_near: l => `твого рівня ${l}`, same: '✨ твій рівень', rec: l => `✨ Рекомендовано: спершу гравці твого рівня (${l})` },
-    en: { title: '🔎 Players', intro: 'Find other learners, view their profiles, add friends and compete in games.', ph: 'Name or friend code…', all: 'All', level_all: 'Any level', online: 'Online only', found: n => `Found: ${n}`, more: 'Show more',
+    en: { official: '💬 official account', botTag: '🤖 virtual player', title: '🔎 Players', intro: 'Find other learners, view their profiles, add friends and compete in games.', ph: 'Name or friend code…', all: 'All', level_all: 'Any level', online: 'Online only', found: n => `Found: ${n}`, more: 'Show more',
       learn: { norsk: '🇳🇴 Norwegian', english: '🇬🇧 English', math: '🧮 Maths', logic: '🧩 Logic' }, none: 'Nobody found — change the filters.', off: 'Shared search works on bilohash.com. Below are the players on this device.',
-      not_listed: 'You are not visible in search yet. Turn on “show my profile” in your account.', to_account: 'To my account', on_device: '💻 On this device',
+      not_listed: 'You are not visible in search yet — others cannot find you.', show_me: '🔎 Show me in search', to_account: 'To my account', on_device: '💻 On this device',
       profile: '👤 Profile', befriend: '➕ Add friend', friend: '✓ Friend', pending: '⏳ Request sent', compete: '🏁 Compete', you: 'this is you', online_now: '🟢 online', seen: d => `seen ${d}`, compete_later: 'Friend request sent — compete as soon as they accept and are online.', loading: '⏳ Searching…', s_stars: 'stars', s_badges: 'badges', s_days: 'day streak', c_total: 'players', c_near: l => `at your level ${l}`, same: '✨ your level', rec: l => `✨ Recommended: players at your level (${l}) first` },
-    no: { title: '🔎 Spillere', intro: 'Finn andre elever, se profilene deres, legg til venner og konkurrer i spill.', ph: 'Navn eller vennekode …', all: 'Alle', level_all: 'Alle nivåer', online: 'Bare pålogget', found: n => `Funnet: ${n}`, more: 'Vis flere',
+    no: { official: '💬 offisiell konto', botTag: '🤖 virtuell spiller', title: '🔎 Spillere', intro: 'Finn andre elever, se profilene deres, legg til venner og konkurrer i spill.', ph: 'Navn eller vennekode …', all: 'Alle', level_all: 'Alle nivåer', online: 'Bare pålogget', found: n => `Funnet: ${n}`, more: 'Vis flere',
       learn: { norsk: '🇳🇴 Norsk', english: '🇬🇧 Engelsk', math: '🧮 Matte', logic: '🧩 Logikk' }, none: 'Fant ingen – endre filtrene.', off: 'Felles søk virker på bilohash.com. Under ser du spillerne på denne enheten.',
-      not_listed: 'Du er ikke synlig i søket ennå. Slå på «vis profilen min» på siden din.', to_account: 'Til min side', on_device: '💻 På denne enheten',
+      not_listed: 'Du er ikke synlig i søket ennå – andre finner deg ikke.', show_me: '🔎 Vis meg i søket', to_account: 'Til min side', on_device: '💻 På denne enheten',
       profile: '👤 Profil', befriend: '➕ Bli venn', friend: '✓ Venn', pending: '⏳ Forespørsel sendt', compete: '🏁 Konkurrer', you: 'dette er deg', online_now: '🟢 pålogget', seen: d => `sist sett ${d}`, compete_later: 'Venneforespørsel sendt – konkurrer når vennen godtar og er pålogget.', loading: '⏳ Søker …', s_stars: 'stjerner', s_badges: 'merker', s_days: 'dager på rad', c_total: 'spillere', c_near: l => `på ditt nivå ${l}`, same: '✨ ditt nivå', rec: l => `✨ Anbefalt: spillere på ditt nivå (${l}) først` }
   };
-  DX.ar = { title: '🔎 اللاعبون', intro: 'ابحث عن متعلّمين آخرين، وشاهد ملفاتهم، وأضف أصدقاء وتنافس في الألعاب.', ph: 'الاسم أو رمز الصديق…', all: 'الكل', level_all: 'أي مستوى', online: 'المتصلون فقط', found: n => `النتائج: ${n}`, more: 'عرض المزيد',
+  DX.ar = { official: '💬 حساب رسمي', botTag: '🤖 لاعب افتراضي', title: '🔎 اللاعبون', intro: 'ابحث عن متعلّمين آخرين، وشاهد ملفاتهم، وأضف أصدقاء وتنافس في الألعاب.', ph: 'الاسم أو رمز الصديق…', all: 'الكل', level_all: 'أي مستوى', online: 'المتصلون فقط', found: n => `النتائج: ${n}`, more: 'عرض المزيد',
     learn: { norsk: '🇳🇴 النرويجية', english: '🇬🇧 الإنجليزية', math: '🧮 الرياضيات', logic: '🧩 المنطق' }, none: 'لم يُعثر على أحد — غيّر عوامل التصفية.', off: 'البحث المشترك يعمل على bilohash.com. أدناه لاعبو هذا الجهاز.',
-    not_listed: 'أنت غير ظاهر في البحث بعد. فعّل «أظهر ملفي» في حسابك.', to_account: 'إلى حسابي', on_device: '💻 على هذا الجهاز',
+    not_listed: 'أنت غير ظاهر في البحث بعد — لا يستطيع الآخرون إيجادك.', show_me: '🔎 أظهرني في البحث', to_account: 'إلى حسابي', on_device: '💻 على هذا الجهاز',
     profile: '👤 الملف', befriend: '➕ أضف صديقًا', friend: '✓ صديق', pending: '⏳ أُرسل الطلب', compete: '🏁 تنافس', you: 'هذا أنت', online_now: '🟢 متصل', seen: d => `شوهد ${d}`, compete_later: 'أُرسل طلب الصداقة — تنافسا حالما يقبل ويكون متصلًا.', loading: '⏳ جارٍ البحث…', s_stars: 'نجوم', s_badges: 'أوسمة', s_days: 'أيام متتالية', c_total: 'لاعب', c_near: l => `بمستواك ${l}`, same: '✨ مستواك', rec: l => `✨ مقترح: اللاعبون بمستواك (${l}) أولًا` };
   const dx = (k, ...a) => { const t = DX[C().ui] || DX.en || DX.uk; const v = k in t ? t[k] : (DX.en || DX.uk)[k]; return typeof v === 'function' ? v(...a) : v; };
   const DIR_API = 'api/players.php';
@@ -394,16 +394,22 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
     else if (f && f.status === 'pending') wrap.append(h('span', { class: 'dir-chip' }, dx('pending')));
     else if (f && f.status === 'incoming') wrap.append(h('button', { class: 'btn accent', type: 'button', onclick: () => { F.accept(code); if (onChange) onChange(); } }, '✓ ' + dx('friend')));
     else wrap.append(h('button', { class: 'btn', type: 'button', onclick: befriend }, dx('befriend')), h('button', { class: 'btn accent', type: 'button', onclick: () => { if (window.KomiksBots && window.KomiksBots.isBot(code)) { location.hash = '#/race/bots/' + code; return; } F.add(code); wrap.replaceChildren(say(dx('compete_later'))); } }, dx('compete')));
+    if (window.KomiksMessages) { const mb = window.KomiksMessages.writeBtn(code); if (mb) wrap.append(mb); } // ✉️ написати гравцеві
     return wrap;
   }
   // онлайн-статус бачать лише друзі (PeerJS між друзями); іншим гравцям він не показується
   const friendOn = code => !!(window.KomiksFriends && window.KomiksFriends.online().includes(code));
+  /* 🟢 Онлайн бачимо лише в друзів — крім двох випадків: віртуальні гравці (боти) завжди онлайн,
+     і офіційний акаунт Комікс·Lab (адміністратор) — щоб до нього завжди можна було звернутися. */
+  const showOnline = p => !!(p && (p.bot || p.official)) || friendOn(p && p.code);
   function dirCard(p, redraw, i = 0) {
     const K = C(), { h } = K;
-    const on = friendOn(p.code), same = p.level === levelOf();
+    const on = showOnline(p), same = p.level === levelOf();
     const stat = (ic, v, label) => h('div', { class: 'dir-stat' }, h('b', {}, ic + ' ' + v), h('small', {}, label));
     return h('div', { class: 'dir-card lv-' + (p.level || 'A1') + (on ? ' on' : ''), style: { '--i': i } },
-      h('div', { class: 'dir-band' }, h('span', { class: 'dir-lvl' }, p.level || 'A1'), on ? h('span', { class: 'dir-live' }, h('i'), dx('online_now').replace('🟢 ', '')) : same ? h('span', { class: 'dir-seen' }, dx('same')) : null),
+      h('div', { class: 'dir-band' }, h('span', { class: 'dir-lvl' }, p.level || 'A1'),
+        on ? h('span', { class: 'dir-live' }, h('i'), dx('online_now').replace('🟢 ', '')) : same ? h('span', { class: 'dir-seen' }, dx('same')) : null,
+        p.official ? h('span', { class: 'dir-tag off' }, dx('official')) : p.bot ? h('span', { class: 'dir-tag' }, dx('botTag')) : null),
       h('a', { class: 'dir-ava', href: '#/player/c/' + p.code, 'aria-label': dx('profile') }, AV(p.bot || (window.KomiksAvatars && window.KomiksAvatars.valid(p.avatar)) ? p.avatar : '🙂', { size: 104, mood: on ? 'cheer' : 'idle' })),
       h('b', { class: 'dir-name' }, p.name),
       h('div', { class: 'dir-tags' }, (p.learn || []).map(l => h('span', { class: 'dir-chip' }, dx('learn')[l] || l))),
@@ -418,7 +424,7 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
   }
   const LV = ['A1', 'A2', 'B1', 'B2'];
   const sortDir = arr => { const my = LV.indexOf(levelOf()), d = p => Math.abs(Math.max(0, LV.indexOf(p.level)) - my);
-    return arr.slice().sort((a, b) => (d(a) - d(b)) || (friendOn(b.code) - friendOn(a.code)) || (b.stars - a.stars)); };
+    return arr.slice().sort((a, b) => (d(a) - d(b)) || (showOnline(b) - showOnline(a)) || (b.stars - a.stars)); };
   function list() {
     const K = C(), { h } = K;
     const me = K.currentUser();
@@ -473,7 +479,8 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
       fetch(DIR_API + '?level=' + myLv, { cache: 'no-store' }).then(x => x.json()).then(j => { cNear.textContent = (j && j.ok ? j.total : 0) + nBotsNear; }).catch(() => {}); });
     root.classList.add('dir-page');
     root.append(hero,
-      me && !K.store.get('shareProfile', false) ? h('div', { class: 'note-box' }, dx('not_listed'), ' ', h('a', { class: 'btn small', href: '#/account' }, dx('to_account'))) : null,
+      me && !K.store.get('shareProfile', false) ? h('div', { class: 'note-box' }, dx('not_listed'), ' ',
+        h('button', { class: 'btn small accent', type: 'button', onclick: () => { setShare(true); load(); } }, dx('show_me')), ' ', h('a', { class: 'btn small', href: '#/privacy' }, '🔒')) : null,
       h('div', { class: 'dir-bar' }, h('label', { class: 'dir-search' }, h('span', { 'aria-hidden': 'true' }, '🔎'), search), chips, h('div', { class: 'dir-row' }, levelSel)),
       results);
     load();
@@ -495,7 +502,7 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
       const s = r && r.ok ? fromShare(r.player.snap) : null;
       if (!s) { root.replaceChildren(K.pageHead(px('title'), '#/players'), h('p', {}, px('notfound'))); return; }
       s.name = r.player.name; s.avatar = r.player.avatar;
-      const view = profileView(s, { wallOpts: { code }, online: friendOn(code) });
+      const view = profileView(s, { wallOpts: { code }, online: showOnline({ code, official: !!r.player.official }) });
       const act = socialButtons(code, () => root.replaceWith(byCode(code)));
       if (act) view.querySelector('.pl-id').append(act);
       root.replaceWith(view);
@@ -519,5 +526,9 @@ ${got ? '' : '<g transform="translate(66 64)"><circle r="13" fill="#141414"/><re
   }
     // код для ігор і рейтингу: лише залогінений гравець із дозволеним показом профілю
   const myPublicCode = () => { const K = C(); return K.currentUser() && K.store.get('shareProfile', false) ? (codeOf('') || '') : ''; };
-  window.KomiksPlayers = { render, list, accountBox, badgeGrid, snapshot, shareUrl, fromShare, publish, myPublicCode, BADGES };
+  // для сторінки конфіденційності: показ у пошуку й відкрита стіна
+  const setShare = on => { const K = C(); K.store.set('shareProfile', !!on); setWallOpen(!!on && K.store.get('wallOpen', true) !== false); publish(true); };
+  const setWall = on => setWallOpen(!!on);
+  window.KomiksPlayers = { render, list, accountBox, badgeGrid, snapshot, shareUrl, fromShare, publish, myPublicCode, setShare, setWall, BADGES,
+    captchaView };                                       // той самий приклад використовує вікно відгуку
 })();

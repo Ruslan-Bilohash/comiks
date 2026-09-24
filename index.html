@@ -39,12 +39,40 @@
 <meta name="twitter:description" content="Short comics in Norwegian with real voices, English translation on hover, tests and games. Learn the Norwegian you need for work and everyday life in Norway.">
 
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<!-- 🖼️ Ярлик застосунку: вкладка, панель задач Windows, робочий стіл Android та iPhone -->
+<link rel="icon" href="icons/favicon.ico" sizes="16x16 32x32 48x48 256x256">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="167x167" href="icons/apple-touch-icon-167.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152.png">
+<link rel="mask-icon" href="icons/icon-512.png" color="#141414">
+<meta name="application-name" content="Komiks·Lab">
+<meta name="apple-mobile-web-app-title" content="Komiks·Lab">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="msapplication-TileColor" content="#ffd23f">
+<meta name="msapplication-TileImage" content="icons/mstile-150.png">
+<meta name="msapplication-config" content="browserconfig.xml">
+<!-- екрани запуску на iPhone/iPad (щоб не блимало білим) -->
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1179x2556.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1284x2778.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1242x2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1536x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1668x2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-1620x2160.png" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-2048x2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;900&family=Pangolin&family=Rubik:wght@500;700;900&display=swap">
-<!-- ver:css --><link rel="stylesheet" href="assets/style.css?v=muacuk2r"><!-- /ver:css -->
+<!-- ver:css --><link rel="stylesheet" href="assets/style.css?v=mufew357"><!-- /ver:css -->
 
 <script type="application/ld+json">
 {
@@ -86,6 +114,7 @@
     <span class="logo-text"><b>Komiks</b><i>·Lab</i><small>Lær norsk</small></span>
   </a>
   <nav id="mainNav" class="main-nav" aria-label="Meny">
+    <a href="#/today" data-k="today">📅 I dag</a>
     <a href="#/game" data-k="game">🎮 Spill sammen</a>
     <a href="#/words" data-k="words">Ord</a>
     <a href="#/english" data-k="english">Engelsk</a>
@@ -130,7 +159,7 @@
     <li>Voiced Norwegian comics: listen to every line, slow it down, repeat.</li>
     <li>English translation of every word and sentence on hover, with grammar hints.</li>
     <li>Norwegian grammar with tables: pronouns, present and past tense, en/ei/et nouns, adjectives, prepositions and word order.</li>
-    <li>400+ words by topic: work, housing, food, health, family, weather and free time.</li>
+    <li>972 words in 47 topics: work, housing, food, health, family, traffic, winter, public services and free time — each with a picture and audio.</li>
     <li>Tests in Norwegian, flashcards with spaced repetition, the Logic Race and Math Rocket games, and a personal study plan.</li>
     <li>Play together: a teacher or a friend opens a room with a QR code and everyone answers on their phones.</li>
   </ul>
@@ -345,6 +374,251 @@
     <p>Words: <span lang="nb">en sykkel</span> — a bike · <span lang="nb">sykle</span> — to cycle · <span lang="nb">et dekk</span> — a tyre · <span lang="nb">bytte</span> — to change · <span lang="nb">en punktering</span> — a flat tyre · <span lang="nb">piggdekk</span> — studded tyres · <span lang="nb">is</span> — ice · <span lang="nb">skli</span> — to slip · <span lang="nb">kulda</span> — the cold · <span lang="nb">minus ti grader</span> — minus ten degrees · <span lang="nb">anbefale</span> — to recommend · <span lang="nb">overalt</span> — everywhere · <span lang="nb">verktøy</span> — tools · <span lang="nb">et hjul</span> — a wheel · <span lang="nb">ødelagt</span> — broken, ruined · <span lang="nb">en refleks</span> — a reflector · <span lang="nb">ei lykt</span> — a lamp · <span lang="nb">en kø</span> — a queue · <span lang="nb">et sykkelløp</span> — a bike race</p>
     <p><a href="https://bilohash.com/comiks/komiks/p119/">Read “The Bike Maniac” — Norwegian comic with English translation</a></p>
   </article>
+  <article>
+    <h3>Synes or tror? <small lang="nb">(Synes eller tror?, A2)</small></h3>
+    <p>Nora cannot decide: is “I think” synes or tror? Musa explains it simply: synes is my opinion about something I know, tror is a guess about something I do not know yet.</p>
+    <p lang="nb">Nora klarer ikke å velge: heter det «jeg synes» eller «jeg tror»? Musa forklarer enkelt: synes er min mening om noe jeg kjenner, tror er en gjetning om noe jeg ikke vet ennå.</p>
+    <p>Words: <span lang="nb">å synes</span> — to think (have an opinion) · <span lang="nb">å tro</span> — to think, to guess; to believe · <span lang="nb">en mening</span> — an opinion · <span lang="nb">en gjetning</span> — a guess · <span lang="nb">å smake</span> — to taste · <span lang="nb">å kjenne</span> — to know, to be familiar with · <span lang="nb">sikkert</span> — for sure · <span lang="nb">ei suppe</span> — a soup · <span lang="nb">morsom</span> — funny · <span lang="nb">kjedelig</span> — boring · <span lang="nb">billig</span> — cheap · <span lang="nb">å stole på</span> — to trust · <span lang="nb">nettopp</span> — exactly · <span lang="nb">to ganger</span> — twice · <span lang="nb">flink</span> — good at, clever</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p120/">Read “Synes or tror?” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Min, mi, mitt or mine? <small lang="nb">(Min, mi, mitt eller mine?, A1)</small></h3>
+    <p>Everything is mixed up at school: whose backpack, whose book and whose shoes? Leo and Mia learn to say “my” and “your” in Norwegian — the form depends on the gender and number of the thing.</p>
+    <p lang="nb">Alt er blandet sammen på skolen: hvem sin sekk, hvem si bok og hvem sine sko? Leo og Mia lærer å si «min, mi, mitt, mine» – formen følger ordet.</p>
+    <p>Words: <span lang="nb">min / mi / mitt / mine</span> — my · <span lang="nb">din / di / ditt / dine</span> — your · <span lang="nb">hankjønn</span> — masculine (en) · <span lang="nb">hunkjønn</span> — feminine (ei) · <span lang="nb">intetkjønn</span> — neuter (et) · <span lang="nb">flertall</span> — plural · <span lang="nb">en sekk</span> — a backpack · <span lang="nb">ei bok</span> — a book · <span lang="nb">et pennal</span> — a pencil case · <span lang="nb">en sko</span> — a shoe · <span lang="nb">en kopp</span> — a cup · <span lang="nb">ei dør</span> — a door · <span lang="nb">begge</span> — both · <span lang="nb">vanlig</span> — common, usual · <span lang="nb">det samme</span> — the same</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p121/">Read “Min, mi, mitt or mine?” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Sin or hans? <small lang="nb">(Sin eller hans?, A2)</small></h3>
+    <p>Musa took a bike — his own or the neighbour’s? One word changes everything: sin means “his own”, hans means “his” (someone else’s). The family sorts out hans, hennes, vår and deres with simple examples.</p>
+    <p lang="nb">Musa tok en sykkel – sin egen eller naboens? Ett ord forandrer alt: sin betyr sin egen, hans betyr en annens. Familien går gjennom hans, hennes, vår og deres.</p>
+    <p>Words: <span lang="nb">sin / si / sitt / sine</span> — one’s own · <span lang="nb">hans</span> — his (someone else’s) · <span lang="nb">hennes</span> — hers · <span lang="nb">vår / vårt / våre</span> — our · <span lang="nb">deres</span> — your (plural); their · <span lang="nb">en regel</span> — a rule · <span lang="nb">enkel</span> — simple · <span lang="nb">egen</span> — own · <span lang="nb">en forskjell</span> — a difference · <span lang="nb">å peke på</span> — to point at · <span lang="nb">å kaste</span> — to throw · <span lang="nb">å vaske</span> — to wash · <span lang="nb">en nabo</span> — a neighbour · <span lang="nb">ei hylle</span> — a shelf · <span lang="nb">akkurat</span> — exactly</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p122/">Read “Sin or hans?” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>At the pharmacy <small lang="nb">(På apoteket, A2)</small></h3>
+    <p>Maria has a sore throat and goes to the pharmacy. The pharmacist asks about her symptoms, suggests tablets and explains how to take them — and whether a prescription is needed.</p>
+    <p lang="nb">Maria har vondt i halsen og går på apoteket. Farmasøyten spør om symptomer, foreslår tabletter og forklarer hvordan hun skal ta dem – og om hun trenger resept.</p>
+    <p>Words: <span lang="nb">et apotek</span> — a pharmacy · <span lang="nb">en farmasøyt</span> — a pharmacist · <span lang="nb">vondt i halsen</span> — a sore throat · <span lang="nb">en feber</span> — a fever · <span lang="nb">en hoste</span> — a cough · <span lang="nb">ei hodepine</span> — a headache · <span lang="nb">en tablett</span> — a tablet · <span lang="nb">ei sugetablett</span> — a lozenge · <span lang="nb">en resept</span> — a prescription · <span lang="nb">ei dose</span> — a dose · <span lang="nb">å hvile</span> — to rest · <span lang="nb">allergisk</span> — allergic · <span lang="nb">å bestille time</span> — to book an appointment · <span lang="nb">en fastlege</span> — a GP · <span lang="nb">god bedring</span> — get well soon</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p123/">Read “At the pharmacy” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>The appraisal talk <small lang="nb">(Medarbeidersamtalen, B2)</small></h3>
+    <p>Once a year every employee in Norway has a talk with their manager: what went well, what is hard and where to go next. Denys prepares, talks about his workload and courses — and carefully raises the question of salary.</p>
+    <p lang="nb">En gang i året har alle ansatte i Norge en medarbeidersamtale: hva som har gått bra, hva som er krevende og veien videre. Denys forbereder seg, snakker om arbeidsmengde og kurs – og tar forsiktig opp lønn.</p>
+    <p>Words: <span lang="nb">ei medarbeidersamtale</span> — an appraisal talk · <span lang="nb">en leder</span> — a manager · <span lang="nb">ei arbeidsmengde</span> — a workload · <span lang="nb">krevende</span> — demanding · <span lang="nb">å oppleve at</span> — to feel that · <span lang="nb">å rekke</span> — to manage in time · <span lang="nb">overtid</span> — overtime · <span lang="nb">å si ifra</span> — to speak up · <span lang="nb">å fordele</span> — to distribute · <span lang="nb">ei prosjektledelse</span> — project management · <span lang="nb">på sikt</span> — in the long run · <span lang="nb">et ansvar</span> — responsibility · <span lang="nb">ei forhandling</span> — a negotiation · <span lang="nb">ei tilbakemelding</span> — feedback · <span lang="nb">et mål</span> — a goal · <span lang="nb">ei rutine</span> — a routine · <span lang="nb">fornøyd</span> — pleased</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p124/">Read “The appraisal talk” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>At the NAV office <small lang="nb">(På NAV-kontoret, B1)</small></h3>
+    <p>Ruslan has lost his job and visits NAV for the first time. The adviser explains how to apply, which documents are needed and how long the decision takes.</p>
+    <p lang="nb">Ruslan har mistet jobben og er hos NAV for første gang. Veilederen forklarer hvordan han søker, hvilke papirer han trenger, og hvor lenge han må vente på vedtaket.</p>
+    <p>Words: <span lang="nb">å miste jobben</span> — to lose your job · <span lang="nb">ei oppsigelse</span> — a notice of dismissal · <span lang="nb">dagpenger</span> — unemployment benefit · <span lang="nb">ei arbeidsavtale</span> — an employment contract · <span lang="nb">en lønnsslipp</span> — a payslip · <span lang="nb">å søke digitalt</span> — to apply online · <span lang="nb">et vedtak</span> — an official decision · <span lang="nb">et meldekort</span> — a report card for NAV · <span lang="nb">ei innboks</span> — an inbox · <span lang="nb">å kutte kostnader</span> — to cut costs · <span lang="nb">en veileder</span> — an adviser · <span lang="nb">uklar</span> — unclear · <span lang="nb">aktivt</span> — actively · <span lang="nb">hver fjortende dag</span> — every fortnight</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p125/">Read “At the NAV office” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Viewing a flat <small lang="nb">(Visning av leilighet, B1)</small></h3>
+    <p>Alina is looking for a flat and comes to a viewing. She asks about bills, the deposit and house rules — and learns that a lease can be for a fixed period.</p>
+    <p lang="nb">Alina leter etter leilighet og er på visning. Hun spør om strøm, depositum og husordensregler – og får vite at kontrakten kan være tidsbestemt.</p>
+    <p>Words: <span lang="nb">ei visning</span> — a viewing · <span lang="nb">en kvadratmeter</span> — a square metre · <span lang="nb">ledig</span> — available · <span lang="nb">ei husleie</span> — the rent · <span lang="nb">inkludert</span> — included · <span lang="nb">i tillegg</span> — in addition · <span lang="nb">et depositum</span> — a deposit · <span lang="nb">ei depositumskonto</span> — a deposit account · <span lang="nb">tidsbestemt</span> — for a fixed period · <span lang="nb">løpende</span> — open-ended · <span lang="nb">ei oppsigelse</span> — notice · <span lang="nb">en part</span> — a party · <span lang="nb">husordensregler</span> — house rules · <span lang="nb">ro</span> — quiet · <span lang="nb">et steg</span> — a step</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p126/">Read “Viewing a flat” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>A parents’ meeting <small lang="nb">(Foreldremøte, B1)</small></h3>
+    <p>Musa goes to a parents’ meeting for the first time. The teacher talks about the class, a school trip and phone rules, and the parents agree who does what.</p>
+    <p lang="nb">Musa er på foreldremøte for første gang. Læreren forteller om klassen, en tur og mobilreglene, og foreldrene blir enige om hvem som gjør hva.</p>
+    <p>Words: <span lang="nb">et foreldremøte</span> — a parents’ meeting · <span lang="nb">å trives</span> — to feel comfortable · <span lang="nb">et samarbeid</span> — cooperation · <span lang="nb">et halvår</span> — a term, half-year · <span lang="nb">mobilregler</span> — phone rules · <span lang="nb">ei skoletid</span> — school hours · <span lang="nb">å bli med</span> — to come along · <span lang="nb">et skriv</span> — a written notice · <span lang="nb">ei pakkeliste</span> — a packing list · <span lang="nb">å gi beskjed</span> — to let someone know · <span lang="nb">å melde fra</span> — to report · <span lang="nb">trygg</span> — safe, confident · <span lang="nb">når som helst</span> — any time · <span lang="nb">å lure på</span> — to wonder</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p127/">Read “A parents’ meeting” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>At the dentist <small lang="nb">(Hos tannlegen, B1)</small></h3>
+    <p>Denys has toothache. The dentist finds a cavity, explains the treatment and the price, and reminds him that dental care is free for children under eighteen.</p>
+    <p lang="nb">Denys har vondt i en tann. Tannlegen finner et hull, forklarer behandlingen og prisen, og minner om at barn under atten år får gratis tannbehandling.</p>
+    <p>Words: <span lang="nb">en tannlege</span> — a dentist · <span lang="nb">ei tann</span> — a tooth · <span lang="nb">å ha vondt</span> — to be in pain · <span lang="nb">å tygge</span> — to chew · <span lang="nb">et røntgenbilde</span> — an X-ray · <span lang="nb">et hull</span> — a cavity · <span lang="nb">å trekke ei tann</span> — to pull out a tooth · <span lang="nb">å bore</span> — to drill · <span lang="nb">ei fylling</span> — a filling · <span lang="nb">ei bedøvelse</span> — an anaesthetic · <span lang="nb">et trykk</span> — pressure · <span lang="nb">ei behandling</span> — treatment · <span lang="nb">å pusse tenner</span> — to brush your teeth · <span lang="nb">en tanntråd</span> — dental floss · <span lang="nb">en kontroll</span> — a check-up</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p128/">Read “At the dentist” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>First day at a new job <small lang="nb">(Første dag på ny jobb, B1)</small></h3>
+    <p>Alina starts a new job. Her manager shows her the workplace and explains safety rules, lunch and how to ask for time off.</p>
+    <p lang="nb">Alina begynner i ny jobb. Lederen viser arbeidsplassen og forteller om HMS, lunsj og hvordan hun ber om fri.</p>
+    <p>Words: <span lang="nb">et lag</span> — a team · <span lang="nb">å glede seg til</span> — to look forward to · <span lang="nb">et nøkkelkort</span> — a key card · <span lang="nb">HMS</span> — health and safety · <span lang="nb">ei rømningsvei</span> — an emergency exit · <span lang="nb">ei førstehjelp</span> — first aid · <span lang="nb">et verneutstyr</span> — protective gear · <span lang="nb">et verneombud</span> — a safety representative · <span lang="nb">ei matpakke</span> — a packed lunch · <span lang="nb">ei kantine</span> — a canteen · <span lang="nb">å be om fri</span> — to ask for time off · <span lang="nb">ei egenmelding</span> — self-certified sick leave · <span lang="nb">omsorgsdager</span> — carer’s days · <span lang="nb">å si fra</span> — to speak up, report · <span lang="nb">lurt</span> — wise</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p129/">Read “First day at a new job” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>At the library <small lang="nb">(På biblioteket, B1)</small></h3>
+    <p>Nora wants to borrow books and discovers that a Norwegian library is also free courses, a language café and a place to work.</p>
+    <p lang="nb">Nora vil låne bøker og oppdager at biblioteket også har gratis kurs, språkkafé og plass til å jobbe.</p>
+    <p>Words: <span lang="nb">et bibliotek</span> — a library · <span lang="nb">å låne</span> — to borrow · <span lang="nb">ei legitimasjon</span> — ID · <span lang="nb">et lånekort</span> — a library card · <span lang="nb">ei lånetid</span> — a loan period · <span lang="nb">å forlenge</span> — to extend · <span lang="nb">ei skranke</span> — a service desk · <span lang="nb">å levere</span> — to return, hand in · <span lang="nb">ei påminnelse</span> — a reminder · <span lang="nb">et gebyr</span> — a fee · <span lang="nb">en språkkafé</span> — a language café · <span lang="nb">å øve</span> — to practise · <span lang="nb">ei lesesal</span> — a reading room · <span lang="nb">et grupperom</span> — a group room · <span lang="nb">å bestille</span> — to book</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p130/">Read “At the library” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>The bus is delayed <small lang="nb">(Bussen er forsinket, B1)</small></h3>
+    <p>Snow makes the bus twenty minutes late. The driver explains the connection, and Maria learns about the taxi refund rule.</p>
+    <p lang="nb">Snøen gjør at bussen er tjue minutter forsinket. Sjåføren forklarer overgangen, og Maria får vite om taxigarantien.</p>
+    <p>Words: <span lang="nb">forsinket</span> — delayed · <span lang="nb">ei forsinkelse</span> — a delay · <span lang="nb">å stå fast</span> — to be stuck · <span lang="nb">glatt</span> — slippery · <span lang="nb">å rekke</span> — to catch, to make it · <span lang="nb">en overgang</span> — a connection · <span lang="nb">ei strekning</span> — a route · <span lang="nb">å gjelde</span> — to be valid · <span lang="nb">ei refusjon</span> — a refund · <span lang="nb">ei perrong</span> — a platform · <span lang="nb">heldigvis</span> — luckily · <span lang="nb">å gå av</span> — to get off · <span lang="nb">forsiktig</span> — carefully · <span lang="nb">i like måte</span> — same to you</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p131/">Read “The bus is delayed” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Making a complaint about a product <small lang="nb">(Å klage på en vare, B1)</small></h3>
+    <p>Ruslan’s headphones broke after two months. He learns what a formal complaint is, why the receipt matters and that the right lasts two years.</p>
+    <p lang="nb">Ruslans hodetelefoner gikk i stykker etter to måneder. Han lærer hva reklamasjon er, hvorfor kvitteringen er viktig, og at retten varer i to år.</p>
+    <p>Words: <span lang="nb">å klage</span> — to complain · <span lang="nb">å reklamere</span> — to make a formal complaint · <span lang="nb">ei reklamasjonsrett</span> — the right to complain · <span lang="nb">ei kvittering</span> — a receipt · <span lang="nb">ei vare</span> — goods, an item · <span lang="nb">en feil</span> — a fault · <span lang="nb">å virke</span> — to work · <span lang="nb">ei reparasjon</span> — a repair · <span lang="nb">å ha krav på</span> — to be entitled to · <span lang="nb">pengene tilbake</span> — a refund · <span lang="nb">digital</span> — digital · <span lang="nb">å vare</span> — to last · <span lang="nb">hodetelefoner</span> — headphones · <span lang="nb">normalt</span> — normally</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p132/">Read “Making a complaint about a product” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>The Norwegian exam <small lang="nb">(Norskprøven, B1)</small></h3>
+    <p>Alina is preparing for the Norwegian exam. The teacher explains the four parts, how to register and what to do if you get nervous in the speaking test.</p>
+    <p lang="nb">Alina forbereder seg til norskprøven. Læreren forklarer de fire delene, hvordan man melder seg opp, og hva man gjør hvis man blir nervøs i muntlig.</p>
+    <p>Words: <span lang="nb">ei prøve</span> — an exam, a test · <span lang="nb">å melde seg opp</span> — to register for an exam · <span lang="nb">senest</span> — at the latest · <span lang="nb">ei del</span> — a part · <span lang="nb">muntlig</span> — oral, spoken · <span lang="nb">skriftlig</span> — written · <span lang="nb">nervøs</span> — nervous · <span lang="nb">å gjenta</span> — to repeat · <span lang="nb">å begrunne</span> — to give reasons · <span lang="nb">ei mening</span> — an opinion · <span lang="nb">å forklare</span> — to explain · <span lang="nb">ei kommunikasjon</span> — communication · <span lang="nb">et nivå</span> — a level · <span lang="nb">et ordforråd</span> — vocabulary · <span lang="nb">å fortsette</span> — to continue</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p133/">Read “The Norwegian exam” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>At the gym <small lang="nb">(På treningssenteret, B1)</small></h3>
+    <p>Leo wants to join a gym. The instructor explains membership types, the binding period, group classes — and how to cancel properly.</p>
+    <p lang="nb">Leo vil begynne på treningssenter. Instruktøren forklarer medlemskap, bindingstid, gruppetimer – og hvordan man sier opp riktig.</p>
+    <p>Words: <span lang="nb">et treningssenter</span> — a gym · <span lang="nb">et medlem</span> — a member · <span lang="nb">et medlemskap</span> — a membership · <span lang="nb">ei bindingstid</span> — a binding period · <span lang="nb">å si opp</span> — to cancel, give notice · <span lang="nb">en gruppetime</span> — a group class · <span lang="nb">å booke</span> — to book · <span lang="nb">ei vekt</span> — a weight · <span lang="nb">ei innføring</span> — an introduction · <span lang="nb">en instruktør</span> — an instructor · <span lang="nb">skriftlig</span> — in writing · <span lang="nb">et varsel</span> — notice · <span lang="nb">ei bekreftelse</span> — a confirmation · <span lang="nb">et valg</span> — a choice · <span lang="nb">å trene</span> — to train</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p134/">Read “At the gym” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Sorting waste <small lang="nb">(Søppelsortering, B1)</small></h3>
+    <p>A neighbour explains the sorting system to Maria: blue bags for plastic, green for food waste, bottles with a deposit and a trip to the recycling station.</p>
+    <p lang="nb">Naboen forklarer sorteringen for Maria: blå poser til plast, grønne til matavfall, flasker med pant og en tur til gjenvinningsstasjonen.</p>
+    <p>Words: <span lang="nb">ei søppelsortering</span> — waste sorting · <span lang="nb">en pose</span> — a bag · <span lang="nb">et matavfall</span> — food waste · <span lang="nb">et restavfall</span> — residual waste · <span lang="nb">ei papp</span> — cardboard · <span lang="nb">en container</span> — a container · <span lang="nb">pant</span> — a deposit on bottles · <span lang="nb">ei pantemaskin</span> — a bottle deposit machine · <span lang="nb">veldedig</span> — charitable · <span lang="nb">ei gjenvinningsstasjon</span> — a recycling station · <span lang="nb">farlig avfall</span> — hazardous waste · <span lang="nb">ei renovasjon</span> — refuse collection · <span lang="nb">et borettslag</span> — a housing co-op · <span lang="nb">et gebyr</span> — a fee · <span lang="nb">ei vane</span> — a habit</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p135/">Read “Sorting waste” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>At the hairdresser <small lang="nb">(Hos frisøren, B1)</small></h3>
+    <p>Nora books a haircut. She learns how to describe what she wants, asks about the price and finds out that tips are not expected in Norway.</p>
+    <p lang="nb">Nora bestiller time hos frisøren. Hun lærer å forklare hva hun vil ha, spør om prisen og får vite at tips ikke er vanlig i Norge.</p>
+    <p>Words: <span lang="nb">en frisør</span> — a hairdresser · <span lang="nb">ei ledig time</span> — a free appointment · <span lang="nb">ei avbestilling</span> — a cancellation · <span lang="nb">et klipp</span> — a haircut · <span lang="nb">kortere</span> — shorter · <span lang="nb">et lag</span> — a layer · <span lang="nb">ei lugg</span> — a fringe · <span lang="nb">ei farge</span> — colour · <span lang="nb">ei vask</span> — a wash · <span lang="nb">i tillegg</span> — on top · <span lang="nb">tips</span> — a tip · <span lang="nb">vanlig</span> — usual · <span lang="nb">å bestille time</span> — to book an appointment · <span lang="nb">senere</span> — later</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p136/">Read “At the hairdresser” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>At the garage <small lang="nb">(På bilverkstedet, B1)</small></h3>
+    <p>Musa comes for the annual check, but the mechanic hears a strange noise in the brakes. They discuss the estimate, the guarantee and a courtesy car.</p>
+    <p lang="nb">Musa kommer til EU-kontroll, men mekanikeren hører en rar lyd i bremsene. De snakker om pristilbud, garanti og lånebil.</p>
+    <p>Words: <span lang="nb">et bilverksted</span> — a garage · <span lang="nb">EU-kontroll</span> — the annual vehicle test · <span lang="nb">ei brems</span> — a brake · <span lang="nb">ei bremskloss</span> — a brake pad · <span lang="nb">slitt</span> — worn · <span lang="nb">ei lyd</span> — a sound · <span lang="nb">rar</span> — strange · <span lang="nb">å merke</span> — to notice · <span lang="nb">et pristilbud</span> — a price estimate · <span lang="nb">ei avtale</span> — an agreement · <span lang="nb">ei garanti</span> — a guarantee · <span lang="nb">ei del</span> — a part · <span lang="nb">ei faktura</span> — an invoice · <span lang="nb">ei lånebil</span> — a courtesy car · <span lang="nb">godkjent</span> — approved, passed</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p137/">Read “At the garage” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Winter holiday in the mountains <small lang="nb">(Vinterferie på fjellet, B1)</small></h3>
+    <p>A family plans a week in a cabin. Dad checks the forecast and the avalanche warning, and the children make a packing list and learn the mountain code.</p>
+    <p lang="nb">Familien planlegger en uke på hytta. Pappa sjekker værmeldingen og skredvarselet, og barna lager pakkeliste og lærer fjellvettreglene.</p>
+    <p>Words: <span lang="nb">ei vinterferie</span> — the winter holiday · <span lang="nb">ei hytte</span> — a cabin · <span lang="nb">ei værmelding</span> — a weather forecast · <span lang="nb">sterk vind</span> — strong wind · <span lang="nb">et skredvarsel</span> — an avalanche warning · <span lang="nb">bratt</span> — steep · <span lang="nb">ei fare</span> — danger · <span lang="nb">merket</span> — marked · <span lang="nb">ei løype</span> — a trail · <span lang="nb">ull</span> — wool · <span lang="nb">vindtett</span> — windproof · <span lang="nb">ei vott</span> — a mitten · <span lang="nb">fjellvettreglene</span> — the mountain code · <span lang="nb">å snu</span> — to turn back · <span lang="nb">ei skam</span> — shame</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p138/">Read “Winter holiday in the mountains” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>A difficult talk with a neighbour <small lang="nb">(En vanskelig nabosamtale, B1)</small></h3>
+    <p>Denys cannot sleep because of late-night music. He learns to raise the issue calmly: describe the fact, say how it feels and suggest a solution.</p>
+    <p lang="nb">Denys får ikke sove på grunn av musikk om natta. Han lærer å ta det opp rolig: beskrive fakta, si hvordan det oppleves, og foreslå en løsning.</p>
+    <p>Words: <span lang="nb">en nabo</span> — a neighbour · <span lang="nb">å si fra</span> — to speak up · <span lang="nb">å krangle</span> — to argue · <span lang="nb">å dundre</span> — to thump · <span lang="nb">ei vegg</span> — a wall · <span lang="nb">å sove</span> — to sleep · <span lang="nb">å høres</span> — to be heard · <span lang="nb">å feire</span> — to celebrate · <span lang="nb">ro</span> — quiet · <span lang="nb">en hverdag</span> — a weekday · <span lang="nb">helt greit</span> — absolutely fine · <span lang="nb">med en gang</span> — straight away · <span lang="nb">ei dugnad</span> — a communal work day · <span lang="nb">lettere</span> — easier</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p139/">Read “A difficult talk with a neighbour” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>A housing co-op meeting <small lang="nb">(Husmøte i borettslaget, B2)</small></h3>
+    <p>The residents decide whether to install EV chargers. Musa learns how a formal meeting works: make a proposal, argue for it and vote.</p>
+    <p lang="nb">Beboerne skal bestemme om de vil sette opp ladepunkter for elbil. Musa lærer hvordan et husmøte fungerer: fremme et forslag, argumentere og stemme.</p>
+    <p>Words: <span lang="nb">et husmøte</span> — a house meeting · <span lang="nb">ei saksliste</span> — an agenda · <span lang="nb">ei sak</span> — an item, a case · <span lang="nb">å be om ordet</span> — to ask for the floor · <span lang="nb">et forslag</span> — a proposal · <span lang="nb">å fremme et forslag</span> — to put forward a proposal · <span lang="nb">å begrunne</span> — to justify · <span lang="nb">et ladepunkt</span> — a charging point · <span lang="nb">ei investering</span> — an investment · <span lang="nb">et vedlikeholdsfond</span> — a maintenance fund · <span lang="nb">å stemme</span> — to vote · <span lang="nb">blank stemme</span> — an abstention · <span lang="nb">å vedta</span> — to adopt, to pass · <span lang="nb">en protokoll</span> — the minutes · <span lang="nb">et styre</span> — a board</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p140/">Read “A housing co-op meeting” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Job application and CV <small lang="nb">(Jobbsøknad og CV, B2)</small></h3>
+    <p>Alina writes a job application and Maria shows how to make it convincing: concrete examples instead of vague phrases, and a one-page CV.</p>
+    <p lang="nb">Alina skriver en jobbsøknad, og Maria viser hvordan den blir overbevisende: konkrete eksempler i stedet for vage fraser, og en CV på én side.</p>
+    <p>Words: <span lang="nb">ei jobbsøknad</span> — a job application · <span lang="nb">generell</span> — general, vague · <span lang="nb">et eksempel</span> — an example · <span lang="nb">et resultat</span> — a result · <span lang="nb">å innføre</span> — to introduce · <span lang="nb">ei rutine</span> — a routine · <span lang="nb">ei ventetid</span> — waiting time · <span lang="nb">en prosent</span> — per cent · <span lang="nb">konkret</span> — concrete · <span lang="nb">ei utdanning</span> — education · <span lang="nb">ei erfaring</span> — experience · <span lang="nb">ei referanse</span> — a reference · <span lang="nb">ei forespørsel</span> — a request · <span lang="nb">å oppfylle krav</span> — to meet requirements · <span lang="nb">ei annonse</span> — an advert · <span lang="nb">ærlig</span> — honest</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p141/">Read “Job application and CV” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>The tax settlement <small lang="nb">(Skatteoppgjøret, B2)</small></h3>
+    <p>Denys gets his tax settlement and owes money. A colleague explains how to check the return, which deductions exist and how to change the tax card.</p>
+    <p lang="nb">Denys har fått skatteoppgjøret og må betale restskatt. En kollega forklarer hvordan han sjekker skattemeldingen, hvilke fradrag som finnes, og hvordan han endrer skattekortet.</p>
+    <p>Words: <span lang="nb">et skatteoppgjør</span> — a tax settlement · <span lang="nb">ei skattemelding</span> — a tax return · <span lang="nb">ei restskatt</span> — underpaid tax · <span lang="nb">å skylde</span> — to owe · <span lang="nb">et fradrag</span> — a deduction · <span lang="nb">et reisefradrag</span> — travel allowance · <span lang="nb">ei fagforeningskontingent</span> — a union fee · <span lang="nb">renter</span> — interest · <span lang="nb">ansvarlig</span> — responsible · <span lang="nb">å klage</span> — to appeal · <span lang="nb">å endre</span> — to amend, change · <span lang="nb">et skattekort</span> — a tax card · <span lang="nb">å trekke</span> — to withhold · <span lang="nb">et beløp</span> — an amount · <span lang="nb">en termin</span> — an instalment · <span lang="nb">ubehagelig</span> — unpleasant</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p142/">Read “The tax settlement” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>A mortgage at the bank <small lang="nb">(Boliglån i banken, B2)</small></h3>
+    <p>Musa and Maria want to buy a flat. The bank adviser works out how much they can borrow and explains fixed versus floating interest.</p>
+    <p lang="nb">Musa og Maria vil kjøpe leilighet. Bankrådgiveren regner ut hvor mye de kan låne, og forklarer forskjellen på fast og flytende rente.</p>
+    <p>Words: <span lang="nb">et boliglån</span> — a mortgage · <span lang="nb">et finansieringsbevis</span> — a mortgage certificate · <span lang="nb">ei egenkapital</span> — own capital, equity · <span lang="nb">ei kjøpesum</span> — the purchase price · <span lang="nb">ei månedskostnad</span> — a monthly cost · <span lang="nb">ei rente</span> — an interest rate · <span lang="nb">fast rente</span> — a fixed rate · <span lang="nb">flytende rente</span> — a floating rate · <span lang="nb">ei forutsigbarhet</span> — predictability · <span lang="nb">ei avveining</span> — a trade-off · <span lang="nb">felleskostnader</span> — shared costs · <span lang="nb">å stressteste</span> — to stress-test · <span lang="nb">å godkjenne</span> — to approve · <span lang="nb">en virkedag</span> — a working day · <span lang="nb">å vurdere</span> — to consider</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p143/">Read “A mortgage at the bank” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Water damage and insurance <small lang="nb">(Vannskade og forsikring, B2)</small></h3>
+    <p>A pipe bursts in Nora’s flat. She reports it to the insurer, learns about the excess, waits for the assessor and sees why photos matter.</p>
+    <p lang="nb">Et rør sprakk hos Nora. Hun melder skaden til forsikringen, lærer om egenandel, venter på takstmannen og skjønner hvorfor bilder er viktige.</p>
+    <p>Words: <span lang="nb">ei vannskade</span> — water damage · <span lang="nb">et rør</span> — a pipe · <span lang="nb">å sprekke</span> — to burst · <span lang="nb">ei hovedkran</span> — the main tap · <span lang="nb">ei forsikring</span> — insurance · <span lang="nb">å melde fra</span> — to report · <span lang="nb">ei egenandel</span> — an excess, deductible · <span lang="nb">å dekke</span> — to cover · <span lang="nb">plutselig</span> — sudden · <span lang="nb">vedlikeholdt</span> — maintained · <span lang="nb">ei erstatning</span> — compensation · <span lang="nb">å redusere</span> — to reduce · <span lang="nb">en takstmann</span> — an assessor · <span lang="nb">ei årsak</span> — a cause · <span lang="nb">et oppgjør</span> — a payout · <span lang="nb">en håndverker</span> — a tradesman</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p144/">Read “Water damage and insurance” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Home office or office? <small lang="nb">(Hjemmekontor eller kontor?, B2)</small></h3>
+    <p>At a meeting the team argues about remote work: productivity versus community. They practise giving arguments and find a compromise.</p>
+    <p lang="nb">På møtet diskuterer teamet hjemmekontor: produktivitet mot fellesskap. De øver på å argumentere og finner et kompromiss.</p>
+    <p>Words: <span lang="nb">et hjemmekontor</span> — a home office · <span lang="nb">ei produktivitet</span> — productivity · <span lang="nb">et fellesskap</span> — a community · <span lang="nb">å avbryte</span> — to interrupt · <span lang="nb">et kvarter</span> — a quarter of an hour · <span lang="nb">på den andre siden</span> — on the other hand · <span lang="nb">ei tillit</span> — trust · <span lang="nb">nyansatt</span> — a new employee · <span lang="nb">å oppsummere</span> — to sum up · <span lang="nb">rimelig</span> — reasonable · <span lang="nb">et kompromiss</span> — a compromise · <span lang="nb">å evaluere</span> — to evaluate · <span lang="nb">ei ordning</span> — an arrangement · <span lang="nb">ei trivsel</span> — wellbeing · <span lang="nb">permanent</span> — permanent · <span lang="nb">saklig</span> — factual, to the point</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p145/">Read “Home office or office?” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Sick leave and follow-up <small lang="nb">(Sykmelding og oppfølging, B2)</small></h3>
+    <p>Ruslan has back pain. The doctor suggests a graded sick note, and his manager makes a return-to-work plan — without pressure, but with clear agreements.</p>
+    <p lang="nb">Ruslan har vondt i ryggen. Legen foreslår gradert sykmelding, og lederen lager en oppfølgingsplan – uten press, men med tydelige avtaler.</p>
+    <p>Words: <span lang="nb">ei sykmelding</span> — a sick note · <span lang="nb">gradert</span> — graded · <span lang="nb">ei hvile</span> — rest · <span lang="nb">gradvis</span> — gradually · <span lang="nb">et løft</span> — a lift · <span lang="nb">å tilrettelegge</span> — to adapt, accommodate · <span lang="nb">ei oppgave</span> — a task · <span lang="nb">å unngå</span> — to avoid · <span lang="nb">en oppfølgingsplan</span> — a follow-up plan · <span lang="nb">ei opplæring</span> — training · <span lang="nb">et lager</span> — a warehouse · <span lang="nb">å justere</span> — to adjust · <span lang="nb">ei helse</span> — health · <span lang="nb">ei løsning</span> — a solution · <span lang="nb">trygg</span> — safe</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p146/">Read “Sick leave and follow-up” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Parental leave <small lang="nb">(Foreldrepermisjon, B2)</small></h3>
+    <p>Musa and Maria are expecting a baby and plan the leave: the father’s quota, the shared period and the choice between 80 and 100 per cent pay.</p>
+    <p lang="nb">Musa og Maria venter barn og planlegger permisjonen: fedrekvote, fellesperiode og valget mellom 80 og 100 prosent.</p>
+    <p>Words: <span lang="nb">ei foreldrepermisjon</span> — parental leave · <span lang="nb">foreldrepenger</span> — parental benefit · <span lang="nb">ei fedrekvote</span> — the father’s quota · <span lang="nb">ei fellesperiode</span> — the shared period · <span lang="nb">ei lønn</span> — pay, salary · <span lang="nb">et totalbeløp</span> — the total amount · <span lang="nb">ei månedsinntekt</span> — monthly income · <span lang="nb">forbeholdt</span> — reserved for · <span lang="nb">å overføre</span> — to transfer · <span lang="nb">et varsel</span> — notice · <span lang="nb">en vikar</span> — a stand-in · <span lang="nb">å varsle</span> — to notify · <span lang="nb">ei søknad</span> — an application · <span lang="nb">å glede seg til</span> — to look forward to</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p147/">Read “Parental leave” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>A climate debate at school <small lang="nb">(Klimadebatt på skolen, B2)</small></h3>
+    <p>The class debates whether the school canteen should drop meat. The pupils learn to build an argument: claim, evidence, counter-argument and conclusion.</p>
+    <p lang="nb">Klassen debatterer om kantina bør kutte kjøtt. Elevene lærer å bygge et argument: påstand, belegg, motargument og konklusjon.</p>
+    <p>Words: <span lang="nb">en debatt</span> — a debate · <span lang="nb">ei påstand</span> — a claim · <span lang="nb">et belegg</span> — evidence · <span lang="nb">et motargument</span> — a counter-argument · <span lang="nb">ei konklusjon</span> — a conclusion · <span lang="nb">ei kjøttproduksjon</span> — meat production · <span lang="nb">et klimagassutslipp</span> — greenhouse gas emissions · <span lang="nb">et protein</span> — protein · <span lang="nb">ei bønne</span> — a bean · <span lang="nb">ei linse</span> — a lentil · <span lang="nb">et behov</span> — a need · <span lang="nb">villig</span> — willing · <span lang="nb">å skille mellom</span> — to distinguish between · <span lang="nb">fornuftig</span> — sensible · <span lang="nb">et standpunkt</span> — a standpoint · <span lang="nb">et innlegg</span> — a statement, a post</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p148/">Read “A climate debate at school” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Electricity prices and saving <small lang="nb">(Strømpriser og sparing, B2)</small></h3>
+    <p>The December bill was a shock. A neighbour explains spot prices, the state support scheme and simple ways to use less.</p>
+    <p lang="nb">Regningen for desember ble et sjokk. Naboen forklarer spotpris, strømstøtte og enkle måter å bruke mindre på.</p>
+    <p>Words: <span lang="nb">ei strømregning</span> — an electricity bill · <span lang="nb">en spotpris</span> — a spot price · <span lang="nb">en fastpris</span> — a fixed price · <span lang="nb">å svinge</span> — to fluctuate · <span lang="nb">ei strømstøtte</span> — electricity support · <span lang="nb">ei andel</span> — a share · <span lang="nb">en snittpris</span> — an average price · <span lang="nb">å overstige</span> — to exceed · <span lang="nb">ei grense</span> — a limit · <span lang="nb">å senke</span> — to lower · <span lang="nb">en trekk</span> — a draught · <span lang="nb">å lønne seg</span> — to be worth it · <span lang="nb">et veddemål</span> — a bet · <span lang="nb">ei forutsigbarhet</span> — predictability · <span lang="nb">et sparetiltak</span> — a saving measure · <span lang="nb">et utslag</span> — an effect</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p149/">Read “Electricity prices and saving” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Cultural differences at work <small lang="nb">(Kulturforskjeller på jobb, B2)</small></h3>
+    <p>Ruslan does not understand why colleagues say “maybe” instead of “no”, or why everyone uses the boss’s first name. Maria explains Norwegian work culture.</p>
+    <p lang="nb">Ruslan skjønner ikke hvorfor kollegene sier «kanskje» i stedet for nei, eller hvorfor alle sier du til sjefen. Maria forklarer norsk arbeidskultur.</p>
+    <p>Words: <span lang="nb">ei kulturforskjell</span> — a cultural difference · <span lang="nb">ei bemanning</span> — staffing · <span lang="nb">ei beslutning</span> — a decision · <span lang="nb">kollektiv</span> — collective · <span lang="nb">å forankre</span> — to anchor · <span lang="nb">et hierarki</span> — a hierarchy · <span lang="nb">flat</span> — flat · <span lang="nb">et fornavn</span> — a first name · <span lang="nb">et likeverd</span> — equality · <span lang="nb">en mangel</span> — a lack · <span lang="nb">uhøflig</span> — impolite · <span lang="nb">uenig</span> — in disagreement · <span lang="nb">ei småprat</span> — small talk · <span lang="nb">å tolke</span> — to interpret · <span lang="nb">ei avvisning</span> — a refusal · <span lang="nb">nødvendigvis</span> — necessarily</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p150/">Read “Cultural differences at work” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Giving a presentation <small lang="nb">(Å holde en presentasjon, B2)</small></h3>
+    <p>Alina presents to the department for the first time. A colleague helps her cut the slides, prepare an opening and answer tough questions calmly.</p>
+    <p lang="nb">Alina skal holde sin første presentasjon for avdelingen. En kollega hjelper henne å kutte lysbilder, forberede innledningen og svare rolig på vanskelige spørsmål.</p>
+    <p>Words: <span lang="nb">ei presentasjon</span> — a presentation · <span lang="nb">et lysbilde</span> — a slide · <span lang="nb">et innlegg</span> — a talk · <span lang="nb">et hovedbudskap</span> — the main message · <span lang="nb">ei rutine</span> — a routine · <span lang="nb">å spare</span> — to save · <span lang="nb">et bindeord</span> — a linking word · <span lang="nb">for det første</span> — firstly · <span lang="nb">til slutt</span> — finally · <span lang="nb">å stille et spørsmål</span> — to ask a question · <span lang="nb">ærlig</span> — honestly · <span lang="nb">å love</span> — to promise · <span lang="nb">å svekke</span> — to weaken · <span lang="nb">kort sagt</span> — in short · <span lang="nb">tydelig</span> — clear · <span lang="nb">rolig</span> — calm</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p151/">Read “Giving a presentation” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>A letter to the local paper <small lang="nb">(Leserinnlegg i lokalavisa, B2)</small></h3>
+    <p>Maria wants to write about a dangerous crossing near the school. The editor explains how to make the text strong: facts, a solution and no personal attacks.</p>
+    <p lang="nb">Maria vil skrive om et farlig fotgjengerfelt ved skolen. Redaktøren forklarer hvordan teksten blir sterk: fakta, forslag til løsning og ingen personangrep.</p>
+    <p>Words: <span lang="nb">et leserinnlegg</span> — a letter to the editor · <span lang="nb">ei lokalavis</span> — a local paper · <span lang="nb">et fotgjengerfelt</span> — a pedestrian crossing · <span lang="nb">et hovedpoeng</span> — the main point · <span lang="nb">ei kommune</span> — a municipality · <span lang="nb">en fartsdemper</span> — a speed bump · <span lang="nb">ei ulykke</span> — an accident · <span lang="nb">ei fartsmåling</span> — a speed measurement · <span lang="nb">ei foreldregruppe</span> — a parents’ group · <span lang="nb">å telle</span> — to count · <span lang="nb">et personangrep</span> — a personal attack · <span lang="nb">å kritisere</span> — to criticise · <span lang="nb">et vedtak</span> — a decision · <span lang="nb">et tegn</span> — a character · <span lang="nb">å trykke</span> — to print · <span lang="nb">ei mulighet</span> — an opportunity</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p152/">Read “A letter to the local paper” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Your rights as a tenant <small lang="nb">(Rettigheter som leietaker, B2)</small></h3>
+    <p>The landlord wants to raise the rent and enter without notice. A legal adviser explains what the law allows and where to complain.</p>
+    <p lang="nb">Utleieren vil øke husleia og komme inn uten varsel. En jurist forklarer hva loven tillater, og hvor man kan klage.</p>
+    <p>Words: <span lang="nb">en leietaker</span> — a tenant · <span lang="nb">en utleier</span> — a landlord · <span lang="nb">ei husleie</span> — the rent · <span lang="nb">å justere</span> — to adjust · <span lang="nb">ei konsumprisindeks</span> — the consumer price index · <span lang="nb">som hovedregel</span> — as a general rule · <span lang="nb">å varsle</span> — to give notice · <span lang="nb">på forhånd</span> — in advance · <span lang="nb">lovlig</span> — lawful · <span lang="nb">ei vedlikeholdsplikt</span> — a duty to maintain · <span lang="nb">ei utbedring</span> — a repair · <span lang="nb">et avslag i leia</span> — a rent reduction · <span lang="nb">et krav</span> — a demand · <span lang="nb">ei frist</span> — a deadline · <span lang="nb">å klage</span> — to complain · <span lang="nb">ei dokumentasjon</span> — documentation</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p153/">Read “Your rights as a tenant” — Norwegian comic with English translation</a></p>
+  </article>
+  <article>
+    <h3>Volunteering at the sports club <small lang="nb">(Frivillig i idrettslaget, B2)</small></h3>
+    <p>Musa signs his daughter up for football and learns that the club runs on volunteer parents: the kiosk, driving to matches, a police certificate and community spirit.</p>
+    <p lang="nb">Musa melder datteren på fotball og får vite at klubben drives av frivillige foreldre: kiosk, kjøring til kamper, politiattest og dugnadsånd.</p>
+    <p>Words: <span lang="nb">frivillig</span> — a volunteer; voluntary · <span lang="nb">et idrettslag</span> — a sports club · <span lang="nb">ei treningsavgift</span> — a training fee · <span lang="nb">å drive</span> — to run · <span lang="nb">å forvente</span> — to expect · <span lang="nb">ei kioskvakt</span> — a kiosk shift · <span lang="nb">en sesong</span> — a season · <span lang="nb">ei bortekamp</span> — an away match · <span lang="nb">ei turnus</span> — shift work · <span lang="nb">ei politiattest</span> — a police certificate · <span lang="nb">å levere</span> — to submit · <span lang="nb">å gidde</span> — to bother · <span lang="nb">et lim</span> — glue · <span lang="nb">et nabolag</span> — a neighbourhood · <span lang="nb">ei dugnadsånd</span> — community spirit · <span lang="nb">et tilbud</span> — an offer</p>
+    <p><a href="https://bilohash.com/comiks/komiks/p154/">Read “Volunteering at the sports club” — Norwegian comic with English translation</a></p>
+  </article>
   <h2>FAQ</h2>
   <h3>Can I learn Norwegian from zero here?</h3>
   <p>Yes. Start with the A1 comics — simple phrases like “Hvor kommer du fra?” — and every word is translated into English.</p>
@@ -363,7 +637,7 @@
   <div class="foot-bottom"><span>© Комікс·Lab</span><span class="made">Зроблено з ❤️ для вивчення норвезької мови</span><a href="#/terms">Умови використання</a></div>
 </footer>
 
-<!-- ver:js --><script src="data/index.js?v=muacuk2r"></script>
-<script src="assets/boot.js?v=muacuk2r"></script><!-- /ver:js -->
+<!-- ver:js --><script src="data/index.js?v=mufew357"></script>
+<script src="assets/boot.js?v=mufew357"></script><!-- /ver:js -->
 </body>
 </html>

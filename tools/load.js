@@ -6,6 +6,7 @@ module.exports = function load({ skipAudio = false } = {}) {
   const win = {}; win.window = win; vm.createContext(win);
   const run = f => { const p = path.join(ROOT, f); if (fs.existsSync(p)) vm.runInContext(fs.readFileSync(p, 'utf8'), win, { filename: f }); };
   run('data/index.js');
+  run('assets/art.js'); // генератор SVG-кадрів (чистий рядок, без DOM) — потрібен для картинок на SEO-сторінках
   const reg = win.KOMIKS_DATA;
   reg.shared.filter(f => !(skipAudio && f.endsWith('audio.js'))).forEach(run);
   win.COMICS = [];

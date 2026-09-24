@@ -1,0 +1,41 @@
+BILOHASH.COM/COMIKS LICENSE
+Komiks·Lab — learn Norwegian with comics
+Copyright (c) 2026 BILOHASH — https://bilohash.com/comiks/
+All rights reserved.
+
+1. What this is
+   This repository holds the source of Komiks·Lab: program code, comic scripts,
+   drawings generated in code, dictionaries, word lists, grammar material and the
+   texts of the interface. Everything here is the property of BILOHASH.
+
+2. What you may do
+   You may read this repository, study how it is built, run it locally on your own
+   machine for personal learning, and quote short excerpts with a visible credit to
+   https://bilohash.com/comiks/.
+   Teachers and learners may use the live site at https://bilohash.com/comiks/ in
+   class and at home, free of charge, under the terms shown on that site.
+
+3. What you may not do without written permission
+   - copy, publish or host this project, in whole or in substantial part, anywhere else;
+   - sell it, include it in a paid product or service, or use it commercially;
+   - distribute modified versions, or present it as your own work;
+   - reuse the comics, drawings, dictionaries, word lists or recorded voices
+     as separate material, including as training data.
+
+4. Permission
+   Written permission can be requested at https://bilohash.com/comiks/ through the
+   feedback form. Permission is given in writing and only for what it names.
+
+5. The server part
+   The server API (accounts, community walls, feedback, AI calls, writing feedback,
+   payments) is not published in this repository and is not covered by this license.
+
+6. No warranty
+   The project is provided "as is", without warranty of any kind. The stories,
+   characters, drawings, translations and voices are generated with artificial
+   intelligence and may contain mistakes. Komiks·Lab is a learning game: it is not an
+   official language course, it issues no certificates and it does not replace a
+   teacher. BILOHASH is not liable for any damage arising from the use of this project.
+
+7. Trademarks
+   "Komiks·Lab", "BILOHASH" and the logo are not licensed by this document.

@@ -1,23 +1,31 @@
-# Build output (publish dist/ to Hostinger, not git)
+# Build output — publish dist/ to the server, not to git
 dist/
 
-# Neural TTS clips — thousands of mp3s; generate with tools/gen_audio.py
+# Neural TTS clips: thousands of mp3s, ~130 MB. Regenerate with tools/gen_audio.py
 audio/
+tools/audio-items.json
 
-# Secrets and local mail dumps
-api/config.php
-api/data/mail/
+# Server side and secrets — never commit
+api/
+admin.php
+install.php
+_server-config/
+*.env
+*.sql
 *.sqlite
 *.sqlite-journal
 
 # Private / copyrighted drafts
 _private/
 
-# OS and junk
+# Mobile build artefacts
+app/node_modules/
+app/android/
+app/ios/
+
+# Archives and local junk
+*.zip
 .DS_Store
 Thumbs.db
 *.log
-comiks.zip
-dist.zip
-tools/_probe_*.py
-tools/_probe_*.js
+tools/_probe_*

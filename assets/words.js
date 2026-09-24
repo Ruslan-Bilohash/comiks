@@ -9,7 +9,7 @@
       themes: '🗂️ Теми', words_n: n => `${n} слів`, learn: '🙈 Сховати переклад', show: '👀 Показати переклад', play_all: '🔊 Прослухати всі', test: '🧩 Тест з теми',
       all_test: '🧩 Тест з усіх слів', tip: 'Порада: сховай переклад і спробуй згадати значення, потім натисни на картку, щоб перевірити.', back: '← Усі теми', tests: '📝 Слова за темами',
       step: x => `Слова: ${x}`, gender: 'en — чоловічий, ei — жіночий, et — середній рід',
-      know: 'Знаю', know_hint: 'Позначай слова, які вже знаєш, — лічильник потрапляє в кабінет.', known_n: (a, b) => `✅ Знаю: ${a} з ${b}`, known_all: n => `✅ Знаю: ${n}`, reset_known: '↩️ Зняти позначки теми'
+      say: 'Сказати вголос', know: 'Знаю', know_hint: 'Позначай слова, які вже знаєш, — лічильник потрапляє в кабінет.', known_n: (a, b) => `✅ Знаю: ${a} з ${b}`, known_all: n => `✅ Знаю: ${n}`, reset_known: '↩️ Зняти позначки теми'
     },
     en: {
       nav: 'Words', module: ['📝', 'Words', '400+ words by topic with audio'],
@@ -17,7 +17,7 @@
       themes: '🗂️ Topics', words_n: n => `${n} words`, learn: '🙈 Hide translation', show: '👀 Show translation', play_all: '🔊 Listen to all', test: '🧩 Topic test',
       all_test: '🧩 Test on all words', tip: 'Tip: hide the translation and try to remember the meaning, then tap the card to check.', back: '← All topics', tests: '📝 Words by topic',
       step: x => `Words: ${x}`, gender: 'en — masculine, ei — feminine, et — neuter',
-      know: 'I know it', know_hint: 'Mark the words you already know — the counter shows up in your account.', known_n: (a, b) => `✅ Known: ${a} of ${b}`, known_all: n => `✅ Known: ${n}`, reset_known: '↩️ Clear marks in this topic'
+      say: 'Say it out loud', know: 'I know it', know_hint: 'Mark the words you already know — the counter shows up in your account.', known_n: (a, b) => `✅ Known: ${a} of ${b}`, known_all: n => `✅ Known: ${n}`, reset_known: '↩️ Clear marks in this topic'
     },
     no: {
       nav: 'Ord', module: ['📝', 'Ord', 'over 400 ord etter tema, med lyd'],
@@ -25,7 +25,7 @@
       themes: '🗂️ Temaer', words_n: n => `${n} ord`, learn: '🙈 Skjul oversettelsen', show: '👀 Vis oversettelsen', play_all: '🔊 Hør alle', test: '🧩 Test i temaet',
       all_test: '🧩 Test i alle ordene', tip: 'Tips: skjul oversettelsen og prøv å huske betydningen.', back: '← Alle temaer', tests: '📝 Ord etter tema',
       step: x => `Ord: ${x}`, gender: 'en — hankjønn, ei — hunkjønn, et — intetkjønn',
-      know: 'Jeg kan det', know_hint: 'Merk ordene du allerede kan – telleren vises på siden din.', known_n: (a, b) => `✅ Kan: ${a} av ${b}`, known_all: n => `✅ Kan: ${n}`, reset_known: '↩️ Fjern merkene i temaet'
+      say: 'Si det høyt', know: 'Jeg kan det', know_hint: 'Merk ordene du allerede kan – telleren vises på siden din.', known_n: (a, b) => `✅ Kan: ${a} av ${b}`, known_all: n => `✅ Kan: ${n}`, reset_known: '↩️ Fjern merkene i temaet'
     }
   };
   if (window.I18N) for (const l of ['uk', 'en', 'no']) {
@@ -41,7 +41,7 @@
     themes: '🗂️ المواضيع', words_n: n => `${n} كلمة`, learn: '🙈 أخفِ الترجمة', show: '👀 أظهر الترجمة', play_all: '🔊 استمع إلى الكل', test: '🧩 اختبار الموضوع',
     all_test: '🧩 اختبار كل الكلمات', tip: 'نصيحة: أخفِ الترجمة وحاول تذكّر المعنى، ثم اضغط على البطاقة للتحقق.', back: '→ كل المواضيع', tests: '📝 الكلمات حسب المواضيع',
     step: x => `الكلمات: ${x}`, gender: 'en — مذكّر، ei — مؤنّث، et — محايد',
-    know: 'أعرفها', know_hint: 'علّم الكلمات التي تعرفها — يظهر العدد في حسابك.', known_n: (a, b) => `✅ أعرفها: ${a} من ${b}`, known_all: n => `✅ أعرفها: ${n}`, reset_known: '↩️ امسح العلامات في هذا الموضوع'
+    say: 'قلها بصوت عالٍ', know: 'أعرفها', know_hint: 'علّم الكلمات التي تعرفها — يظهر العدد في حسابك.', known_n: (a, b) => `✅ أعرفها: ${a} من ${b}`, known_all: n => `✅ أعرفها: ${n}`, reset_known: '↩️ امسح العلامات في هذا الموضوع'
   };
   const wx = (k, ...a) => { const tbl = WX[C().ui] || WX.en || WX.uk; const v = k in tbl ? tbl[k] : (WX.en || WX.uk)[k]; return typeof v === 'function' ? v(...a) : v; };
   const themes = () => (window.WORDS || { themes: [] }).themes;
@@ -103,10 +103,15 @@
     const refreshCounter = () => { counter.textContent = wx('known_n', knownCount(th.id), th.words.length); };
     grid.append(...th.words.map(([no, uk, en, emoji]) => {
       const mark = h('button', { class: 'wc-know', type: 'button', title: wx('know'), 'aria-label': wx('know'), 'aria-pressed': String(isKnown(th.id, no)) }, '✓');
+      // 🎙️ сказати слово вголос і почути оцінку вимови (де браузер це вміє)
+      const recOut = h('div', { class: 'wc-rec' });
+      const sayBtn = K.canRecord && K.canRecord()
+        ? h('button', { class: 'wc-say', type: 'button', title: wx('say'), 'aria-label': wx('say'), onclick: e => { e.stopPropagation(); K.practice(no, recOut, e.currentTarget); } }, '🎙️')
+        : null;
       const card = h('div', { class: 'word-card' + (isKnown(th.id, no) ? ' known' : '') },
         h('button', { class: 'wc-main', type: 'button', onclick: () => { say(no); card.classList.add('peek'); } },
-          h('span', { class: 'wc-emoji' }, emoji), h('b', { class: 'wc-no' }, no), h('span', { class: 'wc-tr' }, ui === 'en' ? en : ui === 'no' ? `${uk} · ${en}` : uk)),
-        mark);
+          h('span', { class: 'wc-emoji' }, window.KomiksPics && window.KomiksPics.has(no) ? window.KomiksPics.el(no, 46) : emoji), h('b', { class: 'wc-no' }, no), h('span', { class: 'wc-tr' }, ui === 'en' ? en : ui === 'no' ? `${uk} · ${en}` : uk)),
+        mark, sayBtn, recOut);
       mark.addEventListener('click', e => {
         e.stopPropagation();
         const on = toggleKnown(th.id, no);

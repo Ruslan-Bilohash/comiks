@@ -4,7 +4,7 @@
  * Яких слів бракує — покаже node tools/check.js.
  */
 window.DICT = {
-  no: {
+  no: { 'bruk': 'використай, витрать', 'per': 'за (per time — за годину)', 'tas': 'береться', 'sendt': 'надіслав', 'foran': 'перед', 'be': 'просити (be om — попросити)', 'b1': 'рівень B1', 'b2': 'рівень B2', 'søker': 'подаєш заяву; шукаєш', 'send': 'надішли', 'e-post': 'електронна пошта', 'gir': 'даю, дає',
     '17': '17 (сімнадцяте)',
     '1814': '1814 (рік)',
     '1990': '1990 (рік)',
@@ -939,7 +939,7 @@ window.DICT = {
     'pass': 'паспорт',
     'én': 'один (з наголосом)'
   },
-  en: {
+  en: { 'bruk': 'use', 'per': 'per', 'tas': 'is taken', 'sendt': 'sent', 'foran': 'in front of', 'be': 'to ask (be om — ask for)', 'b1': 'level B1', 'b2': 'level B2', 'søker': 'apply; search', 'send': 'send', 'e-post': 'email', 'gir': 'give, gives',
     '17': '17 (seventeenth)',
     '1814': '1814 (year)',
     '1990': '1990 (year)',
