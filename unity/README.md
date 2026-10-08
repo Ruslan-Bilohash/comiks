@@ -6,7 +6,7 @@
 
 ## Як запустити
 
-1. У Unity Hub: **Add ▸ Add project from disk** → папка `unity/` (Unity 6, `6000.0.x`).
+1. У Unity Hub: **Add ▸ Add project from disk** → папка `unity/` (Unity 6.3, `6000.3.11f1`).
 2. Дочекайся імпорту. Скрипт `UrpAutoSetup` сам створить і призначить URP-ассет
    (`Assets/Settings/`). Якщо щось пішло не так — меню **Comiks ▸ Налаштувати URP**.
 3. Меню **Comiks ▸ Створити сцену світу** → зберігається `Assets/Scenes/World.unity`.
