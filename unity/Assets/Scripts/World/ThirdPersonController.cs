@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Comiks.World
 {
     /// <summary>
-    /// Гравець: ходьба, біг, стрибок і плавання. Рухається відносно камери.
+    /// Гравець: ходьба, біг, стрибок. Рухається відносно камери.
     /// Початок координат об'єкта — ступні, CharacterController висотою 1.8 м.
     /// </summary>
     [RequireComponent(typeof(CharacterController))]
@@ -11,19 +11,15 @@ namespace Comiks.World
     {
         public Transform cameraTransform;
         public Transform visual;
-        public float waterLevel = 30f;
 
         public float walkSpeed = 5f;
         public float sprintSpeed = 9f;
-        public float swimSpeed = 3.2f;
         public float jumpHeight = 1.4f;
         public float gravity = -22f;
 
         CharacterController cc;
         float velocityY;
         Vector3 spawn;
-
-        public bool InWater => transform.position.y < waterLevel - 0.9f;
 
         void Awake()
         {
@@ -46,22 +42,11 @@ namespace Comiks.World
             Vector3 wish = forward * input.y + right * input.x;
             if (wish.sqrMagnitude > 1f) wish.Normalize();
 
-            bool swimming = InWater;
-            float speed = swimming ? swimSpeed : (InputProxy.SprintHeld() ? sprintSpeed : walkSpeed);
+            float speed = InputProxy.SprintHeld() ? sprintSpeed : walkSpeed;
 
-            if (swimming)
-            {
-                // Виштовхувальна сила: тримаємось грудьми на поверхні.
-                float targetY = waterLevel - 1.1f;
-                velocityY = (targetY - transform.position.y) * 4f;
-                if (InputProxy.JumpPressed()) velocityY = 6f;
-            }
-            else
-            {
-                if (cc.isGrounded && velocityY < 0f) velocityY = -2f;
-                if (InputProxy.JumpPressed() && cc.isGrounded) velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                velocityY += gravity * dt;
-            }
+            if (cc.isGrounded && velocityY < 0f) velocityY = -2f;
+            if (InputProxy.JumpPressed() && cc.isGrounded) velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            velocityY += gravity * dt;
 
             cc.Move((wish * speed + Vector3.up * velocityY) * dt);
 
