@@ -1,0 +1,28 @@
+# Komiks·Lab для iPhone — онлайн-клієнт (як Android 1.3): вікно з сайтом + оплата StoreKit 2.
+# Проєкт Xcode генерує XcodeGen на Codemagic: `xcodegen generate` (див. codemagic.yaml → ios-online).
+name: KomiksLab
+options:
+  bundleIdPrefix: com.bilohash
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+targets:
+  KomiksLab:
+    type: application
+    platform: iOS
+    sources:
+      - path: KomiksLab
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.bilohash.comiks
+        PRODUCT_NAME: KomiksLab   # назва на екрані — CFBundleDisplayName «Komiks·Lab» в Info.plist
+        INFOPLIST_FILE: KomiksLab/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Manual
+    # Покупки в застосунку (StoreKit) окремого entitlement не потребують; Apple Pay тут НЕ використовується.
