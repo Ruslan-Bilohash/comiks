@@ -40,7 +40,7 @@
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Speech recognition checks your Norwegian pronunciation in the speaking exercises.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>The camera is used only to scan a QR code when you join a class game.</string>
+	<string>The camera is used only if you choose to take a photo to attach to feedback or a support message.</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
