@@ -2,8 +2,9 @@ import SwiftUI
 import WebKit
 
 /// WKWebView із сайтом. Довіряємо лише https://bilohash.com/comiks — решту посилань відкриваємо в Safari.
-/// Доступність: VoiceOver, збільшений текст і Switch Control працюють у WKWebView нативно;
-/// масштабування не вимикаємо (сайт сам має екран доступності).
+/// Доступність: VoiceOver, Switch Control, «Зменшити рух» і «Підвищити контраст» (prefers-* у CSS) працюють у WKWebView нативно.
+/// Збільшений текст iOS (Dynamic Type) WKWebView сам НЕ застосовує — тому масштабуємо сторінку через pageZoom
+/// за системним розміром тексту й стежимо за його зміною. Масштабування пальцями не вимикаємо.
 struct KomiksWebView: UIViewRepresentable {
     static let home = URL(string: "https://bilohash.com/comiks/?app=ios")!
     let store: StoreKitBridge
@@ -34,6 +35,10 @@ struct KomiksWebView: UIViewRepresentable {
         refresh.addTarget(context.coordinator, action: #selector(Coordinator.reload(_:)), for: .valueChanged)
         web.scrollView.refreshControl = refresh
 
+        context.coordinator.applyTextSize()
+        NotificationCenter.default.addObserver(context.coordinator, selector: #selector(Coordinator.textSizeChanged),
+                                               name: UIContentSizeCategory.didChangeNotification, object: nil)
+
         web.load(URLRequest(url: Self.home))
         return web
     }
@@ -49,6 +54,26 @@ struct KomiksWebView: UIViewRepresentable {
             guard let url, url.scheme == "https", url.host == "bilohash.com" else { return false }
             return url.path.hasPrefix("/comiks")
         }
+
+        /// Розмір тексту iOS → масштаб сторінки (сайт адаптивний, тож текст переноситься, а не обрізається).
+        static func zoom(for c: UIContentSizeCategory) -> CGFloat {
+            switch c {
+            case .extraSmall: return 0.85
+            case .small: return 0.9
+            case .medium: return 0.95
+            case .large: return 1.0          // типовий розмір iOS
+            case .extraLarge: return 1.1
+            case .extraExtraLarge: return 1.2
+            case .extraExtraExtraLarge: return 1.3
+            case .accessibilityMedium: return 1.5
+            case .accessibilityLarge: return 1.7
+            case .accessibilityExtraLarge: return 1.85
+            case .accessibilityExtraExtraLarge, .accessibilityExtraExtraExtraLarge: return 2.0
+            default: return 1.0
+            }
+        }
+        func applyTextSize() { web?.pageZoom = Self.zoom(for: UIApplication.shared.preferredContentSizeCategory) }
+        @objc func textSizeChanged() { DispatchQueue.main.async { self.applyTextSize() } }
 
         @objc func reload(_ sender: UIRefreshControl) {
             web?.reload()
