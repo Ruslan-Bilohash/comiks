@@ -7,8 +7,8 @@ options:
     iOS: "16.0"
 settings:
   base:
-    MARKETING_VERSION: "1.0"
-    CURRENT_PROJECT_VERSION: "1"
+    MARKETING_VERSION: "1.0.1"        # 1.0.1: нативний «Sign in with Apple», Google лише разом з Apple, Premium StoreKit (вимкнено сервером)
+    CURRENT_PROJECT_VERSION: "2"      # на Codemagic номер збірки = останній у TestFlight + 1 (agvtool)
     SWIFT_VERSION: "5.9"
     TARGETED_DEVICE_FAMILY: "1,2"
     ENABLE_USER_SCRIPT_SANDBOXING: YES
@@ -25,4 +25,11 @@ targets:
         INFOPLIST_FILE: KomiksLab/Info.plist
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Manual
+    # «Sign in with Apple» (1.0.1): capability увімкнено в App ID com.bilohash.comiks; профіль підпису має її містити
+    # (профіль, створений до ввімкнення, — перевипустити). XcodeGen сам пише файл і CODE_SIGN_ENTITLEMENTS.
+    entitlements:
+      path: KomiksLab/KomiksLab.entitlements
+      properties:
+        com.apple.developer.applesignin:
+          - Default
     # Покупки в застосунку (StoreKit) окремого entitlement не потребують; Apple Pay тут НЕ використовується.

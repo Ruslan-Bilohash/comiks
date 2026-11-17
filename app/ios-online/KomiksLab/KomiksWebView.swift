@@ -5,6 +5,7 @@ import WebKit
 /// Доступність: VoiceOver, Switch Control, «Зменшити рух» і «Підвищити контраст» (prefers-* у CSS) працюють у WKWebView нативно.
 /// Збільшений текст iOS (Dynamic Type) WKWebView сам НЕ застосовує — тому масштабуємо сторінку через pageZoom
 /// за системним розміром тексту й стежимо за його зміною. Масштабування пальцями не вимикаємо.
+/// Вхід (1.0.1): «Sign in with Apple» — обробник KomiksAppleSignIn; Google — ASWebAuthenticationSession (див. NativeSignIn.swift).
 struct KomiksWebView: UIViewRepresentable {
     static let home = URL(string: "https://bilohash.com/comiks/?app=ios")!
     let store: StoreKitBridge
@@ -18,6 +19,7 @@ struct KomiksWebView: UIViewRepresentable {
         config.applicationNameForUserAgent = "KomiksLabIOS/" + (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0")
         let controller = WKUserContentController()
         controller.add(context.coordinator, name: "KomiksStoreKit")
+        controller.add(context.coordinator, name: "KomiksAppleSignIn")   // 1.0.1: нативний «Sign in with Apple»
         config.userContentController = controller
 
         let web = WKWebView(frame: .zero, configuration: config)
@@ -29,6 +31,7 @@ struct KomiksWebView: UIViewRepresentable {
         web.isOpaque = false
         web.accessibilityLabel = "Komiks·Lab"
         context.coordinator.web = web
+        context.coordinator.signIn.web = web
         store.web = web
 
         let refresh = UIRefreshControl()
@@ -47,6 +50,7 @@ struct KomiksWebView: UIViewRepresentable {
 
     final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
         let store: StoreKitBridge
+        let signIn = NativeSignIn()
         weak var web: WKWebView?
         init(store: StoreKitBridge) { self.store = store }
 
@@ -84,6 +88,11 @@ struct KomiksWebView: UIViewRepresentable {
                      decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             guard let url = action.request.url else { decisionHandler(.cancel); return }
             if Self.trusted(url) || url.scheme == "about" { decisionHandler(.allow); return }
+            // вхід через Google з нашої сторінки — у системному вікні входу (Google не пускає вбудовані WebView), код повертається через komikslab://
+            if url.scheme == "https", url.host == "accounts.google.com", action.targetFrame?.isMainFrame ?? true, Self.trusted(webView.url) {
+                signIn.startGoogle(url)
+                decisionHandler(.cancel); return
+            }
             // вбудовані фрейми (відео YouTube на головній) лишаються всередині сторінки
             if action.targetFrame?.isMainFrame == false, url.scheme == "https" { decisionHandler(.allow); return }
             // зовнішні посилання (Google Play, YouTube, пошта) — у системі, а не всередині застосунку
@@ -116,14 +125,20 @@ struct KomiksWebView: UIViewRepresentable {
         }
 
         /// Повідомлення з monetization.js (ті самі типи, що й в Android): billing_config, billing_purchase,
-        /// billing_restore, billing_manage, billing_server_state. Приймаємо лише з довіреної сторінки.
+        /// billing_restore, billing_manage, billing_server_state — і з auth.js: KomiksAppleSignIn {type: "start", nonce}.
+        /// Приймаємо лише з головного кадру довіреної сторінки.
         func userContentController(_ controller: WKUserContentController, didReceive message: WKScriptMessage) {
-            guard message.name == "KomiksStoreKit", message.frameInfo.isMainFrame,
+            guard message.name == "KomiksStoreKit" || message.name == "KomiksAppleSignIn", message.frameInfo.isMainFrame,
                   Self.trusted(message.frameInfo.request.url) || Self.trusted(web?.url),
                   let raw = message.body as? String, raw.count < 4096,
                   let data = raw.data(using: .utf8),
                   let body = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                   let type = body["type"] as? String else { return }
+            if message.name == "KomiksAppleSignIn" {
+                guard type == "start", let nonce = body["nonce"] as? String else { return }
+                signIn.startApple(nonce: nonce)
+                return
+            }
             Task { @MainActor in await store.handle(type: type, body: body) }
         }
     }
