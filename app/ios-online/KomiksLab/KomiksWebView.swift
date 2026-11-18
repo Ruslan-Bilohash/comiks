@@ -1,5 +1,6 @@
 import SwiftUI
 import WebKit
+import StoreKit
 
 /// WKWebView із сайтом. Довіряємо лише https://bilohash.com/comiks — решту посилань відкриваємо в Safari.
 /// Доступність: VoiceOver, Switch Control, «Зменшити рух» і «Підвищити контраст» (prefers-* у CSS) працюють у WKWebView нативно.
@@ -20,6 +21,7 @@ struct KomiksWebView: UIViewRepresentable {
         let controller = WKUserContentController()
         controller.add(context.coordinator, name: "KomiksStoreKit")
         controller.add(context.coordinator, name: "KomiksAppleSignIn")   // 1.0.1: нативний «Sign in with Apple»
+        controller.add(context.coordinator, name: "KomiksReview")        // 1.0.2: системне вікно відгуку App Store
         config.userContentController = controller
 
         let web = WKWebView(frame: .zero, configuration: config)
@@ -128,12 +130,22 @@ struct KomiksWebView: UIViewRepresentable {
         /// billing_restore, billing_manage, billing_server_state — і з auth.js: KomiksAppleSignIn {type: "start", nonce}.
         /// Приймаємо лише з головного кадру довіреної сторінки.
         func userContentController(_ controller: WKUserContentController, didReceive message: WKScriptMessage) {
-            guard message.name == "KomiksStoreKit" || message.name == "KomiksAppleSignIn", message.frameInfo.isMainFrame,
+            guard message.name == "KomiksStoreKit" || message.name == "KomiksAppleSignIn" || message.name == "KomiksReview", message.frameInfo.isMainFrame,
                   Self.trusted(message.frameInfo.request.url) || Self.trusted(web?.url),
                   let raw = message.body as? String, raw.count < 4096,
                   let data = raw.data(using: .utf8),
                   let body = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                   let type = body["type"] as? String else { return }
+            if message.name == "KomiksReview" {
+                // ⭐ Лише системне вікно Apple (правило 5.6.1): iOS сама вирішує, чи показати його (не більше 3 разів на рік)
+                guard type == "review" else { return }
+                Task { @MainActor in
+                    if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                        AppStore.requestReview(in: scene)
+                    }
+                }
+                return
+            }
             if message.name == "KomiksAppleSignIn" {
                 guard type == "start", let nonce = body["nonce"] as? String else { return }
                 signIn.startApple(nonce: nonce)
