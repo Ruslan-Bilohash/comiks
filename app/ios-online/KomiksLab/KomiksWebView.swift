@@ -6,7 +6,7 @@ import StoreKit
 /// Доступність: VoiceOver, Switch Control, «Зменшити рух» і «Підвищити контраст» (prefers-* у CSS) працюють у WKWebView нативно.
 /// Збільшений текст iOS (Dynamic Type) WKWebView сам НЕ застосовує — тому масштабуємо сторінку через pageZoom
 /// за системним розміром тексту й стежимо за його зміною. Масштабування пальцями не вимикаємо.
-/// Вхід (1.0.1): «Sign in with Apple» — обробник KomiksAppleSignIn; Google — ASWebAuthenticationSession (див. NativeSignIn.swift).
+/// Вхід через Apple використовує нативний обробник KomiksAppleSignIn.
 struct KomiksWebView: UIViewRepresentable {
     static let home = URL(string: "https://bilohash.com/comiks/?app=ios")!
     let store: StoreKitBridge
@@ -22,6 +22,8 @@ struct KomiksWebView: UIViewRepresentable {
         controller.add(context.coordinator, name: "KomiksStoreKit")
         controller.add(context.coordinator, name: "KomiksAppleSignIn")   // 1.0.1: нативний «Sign in with Apple»
         controller.add(context.coordinator, name: "KomiksReview")        // 1.0.2: системне вікно відгуку App Store
+        controller.addUserScript(WKUserScript(source: Self.storefrontScript,
+                                              injectionTime: .atDocumentStart, forMainFrameOnly: true))
         config.userContentController = controller
 
         let web = WKWebView(frame: .zero, configuration: config)
@@ -50,6 +52,39 @@ struct KomiksWebView: UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) {}
 
+    private static let storefrontScript = #"""
+    (() => {
+      if (location.origin !== 'https://bilohash.com' || !/^\/comiks(?:\/|$)/.test(location.pathname)) return;
+
+      const style = document.createElement('style');
+      style.textContent = '.au-google, .au-steam { display: none !important; }';
+      if (document.documentElement) document.documentElement.append(style);
+      else document.addEventListener('DOMContentLoaded', () => document.head.append(style), { once: true });
+
+      function observePremium() {
+        let priceElement;
+        function requestPrice() {
+          const next = document.querySelector('.monetization-premium [data-play-price]');
+          if (next === priceElement) return;
+          priceElement = next;
+          if (next) window.webkit.messageHandlers.KomiksStoreKit.postMessage('{"type":"billing_price"}');
+        }
+        new MutationObserver(requestPrice).observe(document.body, { childList: true, subtree: true });
+        requestPrice();
+
+        document.addEventListener('click', event => {
+          const button = event.target instanceof Element && event.target.closest('.monetization-premium [data-play-buy]');
+          if (!button || window.KomiksAccess?.state().account !== false) return;
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          location.hash = '#/login';
+        }, true);
+      }
+
+      document.addEventListener('DOMContentLoaded', observePremium, { once: true });
+    })();
+    """#
+
     final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
         let store: StoreKitBridge
         let signIn = NativeSignIn()
@@ -58,7 +93,11 @@ struct KomiksWebView: UIViewRepresentable {
 
         static func trusted(_ url: URL?) -> Bool {
             guard let url, url.scheme == "https", url.host == "bilohash.com" else { return false }
-            return url.path.hasPrefix("/comiks")
+            return url.path == "/comiks" || url.path.hasPrefix("/comiks/")
+        }
+
+        static func isUnsupportedSignIn(_ url: URL) -> Bool {
+            url.host == "accounts.google.com" || url.host == "steamcommunity.com" && url.path.hasPrefix("/openid/")
         }
 
         /// Розмір тексту iOS → масштаб сторінки (сайт адаптивний, тож текст переноситься, а не обрізається).
@@ -89,12 +128,8 @@ struct KomiksWebView: UIViewRepresentable {
         func webView(_ webView: WKWebView, decidePolicyFor action: WKNavigationAction,
                      decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             guard let url = action.request.url else { decisionHandler(.cancel); return }
+            if Self.isUnsupportedSignIn(url) { decisionHandler(.cancel); return }
             if Self.trusted(url) || url.scheme == "about" { decisionHandler(.allow); return }
-            // вхід через Google з нашої сторінки — у системному вікні входу (Google не пускає вбудовані WebView), код повертається через komikslab://
-            if url.scheme == "https", url.host == "accounts.google.com", action.targetFrame?.isMainFrame ?? true, Self.trusted(webView.url) {
-                signIn.startGoogle(url)
-                decisionHandler(.cancel); return
-            }
             // вбудовані фрейми (відео YouTube на головній) лишаються всередині сторінки
             if action.targetFrame?.isMainFrame == false, url.scheme == "https" { decisionHandler(.allow); return }
             // зовнішні посилання (Google Play, YouTube, пошта) — у системі, а не всередині застосунку
@@ -106,10 +141,14 @@ struct KomiksWebView: UIViewRepresentable {
 
         func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration,
                      for action: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-            if let url = action.request.url {
+            if let url = action.request.url, !Self.isUnsupportedSignIn(url) {
                 if Self.trusted(url) { webView.load(URLRequest(url: url)) } else { UIApplication.shared.open(url) }
             }
             return nil
+        }
+
+        func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+            store.resetSession()
         }
 
         func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) { showOffline(webView) }
