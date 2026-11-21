@@ -13,15 +13,9 @@ import WebKit
 ///    або `_result({error: "cancelled" | "failed" | …})`. Особу визначає ЛИШЕ сервер — за перевіреним identityToken.
 ///    Із fullName передаємо тільки ім'я (givenName): прізвище нам не потрібне.
 ///
-/// 2. Google — лише разом з Apple (App Review 4.8). Вбудований WebView Google не пускає, тому адресу
-///    accounts.google.com відкриваємо в ASWebAuthenticationSession (системне вікно Safari). Сервер повертає
-///    одноразовий код через `komikslab://google?h=…` (той самий шлях, що в Android: app_ch + google_handoff),
-///    і ми передаємо його сторінці як `#/login/gapp?h=…`.
-final class NativeSignIn: NSObject, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding,
-                          ASWebAuthenticationPresentationContextProviding {
+final class NativeSignIn: NSObject, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     weak var web: WKWebView?
     private var controller: ASAuthorizationController?
-    private var webSession: ASWebAuthenticationSession?
 
     // MARK: Sign in with Apple
 
@@ -74,38 +68,6 @@ final class NativeSignIn: NSObject, ASAuthorizationControllerDelegate, ASAuthori
     }
 
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor { anchor() }
-
-    // MARK: Google (ASWebAuthenticationSession)
-
-    func startGoogle(_ url: URL) {
-        guard webSession == nil else { return }
-        let session = ASWebAuthenticationSession(url: url, callbackURLScheme: "komikslab") { [weak self] callback, error in
-            DispatchQueue.main.async {
-                guard let self else { return }
-                self.webSession = nil
-                var query = "e=google-error"
-                if let callback, callback.scheme == "komikslab", callback.host == "google", let q = callback.query,
-                   q.range(of: "^[A-Za-z0-9=&_-]{1,200}$", options: .regularExpression) != nil {
-                    query = q
-                } else if let e = error as? ASWebAuthenticationSessionError, e.code == .canceledLogin {
-                    query = "e=google-cancelled"
-                }
-                // query перевірено білим списком символів — безпечно вставляти в рядок JS
-                self.web?.evaluateJavaScript("location.hash = '#/login/gapp?\(query)';", completionHandler: nil)
-            }
-        }
-        session.presentationContextProvider = self
-        session.prefersEphemeralWebBrowserSession = false
-        webSession = session
-        if !session.start() {
-            webSession = nil
-            web?.evaluateJavaScript("location.hash = '#/login/gapp?e=google-error';", completionHandler: nil)
-        }
-    }
-
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor { anchor() }
-
-    // MARK: спільне
 
     private func anchor() -> ASPresentationAnchor {
         if let window = web?.window { return window }
