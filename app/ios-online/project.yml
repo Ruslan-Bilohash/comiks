@@ -8,7 +8,7 @@ options:
 settings:
   base:
     MARKETING_VERSION: "1.0.2"        # 1.0.2: продаж Premium (StoreKit, перша підписка йде на перевірку з цією версією), системне вікно відгуку App Store; 1.0.1 — «Sign in with Apple»
-    CURRENT_PROJECT_VERSION: "2"      # на Codemagic номер збірки = останній у TestFlight + 1 (agvtool)
+    CURRENT_PROJECT_VERSION: "4"      # на Codemagic номер збірки = останній у TestFlight + 1 (agvtool)
     SWIFT_VERSION: "5.9"
     TARGETED_DEVICE_FAMILY: "1,2"
     ENABLE_USER_SCRIPT_SANDBOXING: YES
