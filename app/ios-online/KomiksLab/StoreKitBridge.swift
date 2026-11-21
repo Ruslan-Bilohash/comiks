@@ -9,11 +9,20 @@ import UIKit
 @MainActor
 final class StoreKitBridge: ObservableObject {
     weak var web: WKWebView?
-    private var productId = ""
+    private let productId = "komiks_premium_monthly"
     private var accountToken: UUID?
     private var product: Product?
-    private var pending: [UInt64: Transaction] = [:]
+    private var productRequest: Task<Product?, Error>?
+    private var purchaseInProgress = false
+    private var awaitingVerification: UInt64?
+    private var queued: [UInt64: (transaction: Transaction, message: [String: Any])] = [:]
     private var updates: Task<Void, Never>?
+
+    func resetSession() {
+        accountToken = nil
+        queued.removeAll()
+        awaitingVerification = nil
+    }
 
     func startListening() {
         guard updates == nil else { return }
@@ -26,53 +35,84 @@ final class StoreKitBridge: ObservableObject {
 
     func handle(type: String, body: [String: Any]) async {
         switch type {
-        case "billing_config":
-            guard let id = body["productId"] as? String, id.range(of: "^[a-z0-9._]{3,80}$", options: .regularExpression) != nil,
-                  let tokenText = body["appAccountToken"] as? String, let token = UUID(uuidString: tokenText) else {
-                emit(["type": "billing_state", "state": "error", "code": "config"]); return
-            }
-            productId = id; accountToken = token
+        case "billing_price":
             await loadProduct()
-            await restore()
+        case "billing_config":
+            guard body["productId"] as? String == productId,
+                  let tokenText = body["appAccountToken"] as? String,
+                  let token = UUID(uuidString: tokenText) else {
+                emit(["type": "billing_state", "state": "error", "code": "config"])
+                return
+            }
+            let accountChanged = accountToken != token
+            accountToken = token
+            await loadProduct()
+            if accountChanged { await restore() }
         case "billing_purchase":
             await purchase()
         case "billing_restore":
-            try? await AppStore.sync()
-            await restore()
+            do {
+                try await AppStore.sync()
+                await restore()
+            } catch {
+                emit(["type": "billing_state", "state": "error", "code": "restore"])
+            }
         case "billing_manage":
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 try? await AppStore.showManageSubscriptions(in: scene)
             }
         case "billing_server_state":
-            // сервер підтвердив покупку — тепер можна завершити транзакцію в StoreKit
-            if (body["verified"] as? Bool) == true {
-                for (_, tx) in pending { await tx.finish() }
-                pending.removeAll()
+            guard let id = awaitingVerification, let entry = queued.removeValue(forKey: id) else { return }
+            if body["verified"] as? Bool == true {
+                await entry.transaction.finish()
                 emit(["type": "billing_state", "state": "verified"])
             }
+            awaitingVerification = nil
+            sendNextTransaction()
         default: break
         }
     }
 
     private func loadProduct() async {
         do {
-            guard let p = try await Product.products(for: [productId]).first else {
-                emit(["type": "billing_state", "state": "unavailable", "code": "product"]); return
+            guard let loaded = try await fetchProduct(),
+                  loaded.type == .autoRenewable, let subscription = loaded.subscription,
+                  subscription.subscriptionPeriod.unit == .month, subscription.subscriptionPeriod.value == 1 else {
+                product = nil
+                emit(["type": "billing_state", "state": "unavailable", "code": "product"])
+                return
             }
-            product = p
+            product = loaded
             var trial = false
-            if let offer = p.subscription?.introductoryOffer, offer.paymentMode == .freeTrial,
-               await p.subscription?.isEligibleForIntroOffer == true { trial = true }
-            emit(["type": "billing_product", "state": "ready", "formattedPrice": p.displayPrice,
-                  "productId": p.id, "freeTrial": trial ? "true" : "false"])
+            if let offer = subscription.introductoryOffer, offer.paymentMode == .freeTrial,
+               offer.period.unit == .day, offer.period.value * offer.periodCount == 3 {
+                trial = await subscription.isEligibleForIntroOffer
+            }
+            emit(["type": "billing_product", "state": "ready", "formattedPrice": loaded.displayPrice,
+                  "productId": loaded.id, "freeTrial": trial ? "true" : "false"])
         } catch {
+            product = nil
             emit(["type": "billing_state", "state": "error", "code": "product"])
         }
     }
 
+    private func fetchProduct() async throws -> Product? {
+        if let productRequest { return try await productRequest.value }
+        let id = productId
+        let request = Task { try await Product.products(for: [id]).first }
+        productRequest = request
+        defer { productRequest = nil }
+        return try await request.value
+    }
+
     private func purchase() async {
-        if product == nil { await loadProduct() }
-        guard let product, let accountToken else { emit(["type": "billing_state", "state": "error", "code": "not_ready"]); return }
+        guard !purchaseInProgress else { return }
+        guard let product, let accountToken else {
+            emit(["type": "billing_state", "state": "error", "code": "not_ready"])
+            return
+        }
+        purchaseInProgress = true
+        defer { purchaseInProgress = false }
         do {
             let result = try await product.purchase(options: [.appAccountToken(accountToken)])
             switch result {
@@ -97,15 +137,24 @@ final class StoreKitBridge: ObservableObject {
 
     /// Передаємо на сервер лише транзакції, які StoreKit перевірив, і лише нашого продукту.
     private func deliver(_ result: VerificationResult<Transaction>, kind: String) async {
-        guard case .verified(let tx) = result, tx.productID == productId || productId.isEmpty else { return }
-        if productId.isEmpty { return }   // ще немає акаунта — сервер не зможе прив'язати покупку
-        pending[tx.id] = tx
-        emit(["type": kind, "state": "server_verify", "signedTransaction": result.jwsRepresentation])
+        guard accountToken != nil, case .verified(let tx) = result, tx.productID == productId else { return }
+        guard queued[tx.id] == nil, awaitingVerification != tx.id else { return }
+        queued[tx.id] = (tx, ["type": kind, "state": "server_verify", "signedTransaction": result.jwsRepresentation])
+        sendNextTransaction()
+    }
+
+    private func sendNextTransaction() {
+        guard awaitingVerification == nil, let (id, entry) = queued.first else { return }
+        awaitingVerification = id
+        emit(entry.message)
     }
 
     private func emit(_ payload: [String: Any]) {
         guard let web, let data = try? JSONSerialization.data(withJSONObject: payload),
               let json = String(data: data, encoding: .utf8) else { return }
-        web.evaluateJavaScript("window.KomiksMoney && window.KomiksMoney._nativeMessage(\(json));", completionHandler: nil)
+        let condition = payload["type"] as? String == "billing_product"
+            ? "window.KomiksMoney && window.KomiksMoney.state().billing !== 'disabled'"
+            : "window.KomiksMoney"
+        web.evaluateJavaScript("\(condition) && window.KomiksMoney._nativeMessage(\(json));", completionHandler: nil)
     }
 }
